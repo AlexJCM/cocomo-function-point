@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/WEB-INF/include/template.xhtml">
+
+        <ui:define name="head">
+            <title>Hello JSF Bootstrap</title>
+            <!-- Custom styles for this template -->
+            <h:outputStylesheet name="css/starter-template.css"/>          
+        </ui:define>
+
+        <ui:define name="body">
+            <!-- SECTION: Footer -->
+            <ui:include src="/components/header.xhtml"/>
+
+            <div class="container">
+                <div class="starter-template">
+                    <h1>COCOMO II: Puntos de función.</h1>
+                    <p class="lead">Use this document as a way <br/> to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
+                </div>
+
+                <!-- SECTION: Tabla de puntos de funcion no ajustado -->
+                <ui:include src="/components/fpnaTable.xhtml"/>              
+                <!-- SECTION: Puntos de funcion ajustado -->
+                
+                <!-- SECTION: Esfuerzo y duracion -->
+                
+                <!-- SECTION: Footer -->
+                <ui:include src="/components/footer.xhtml"/>
+
+            </div>
+        </ui:define>
+    </ui:composition> 
+</html>
+
