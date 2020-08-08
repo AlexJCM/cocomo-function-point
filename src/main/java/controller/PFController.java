@@ -12,7 +12,7 @@ import javax.faces.bean.RequestScoped;
 //a traves delcual se vinculara con los componentes de las vistas JSF.  Indica que las 
 // instancias de la clase seran creadas y gestionadas por el framework JSF.
 @ManagedBean(name = "pf") 
-@RequestScoped 
+@RequestScoped
 public class PFController {        
    
     private PFModel pfModel;
@@ -39,6 +39,7 @@ public class PFController {
     public void actualizarPFNA() {
         calcularSubtotalesDominios();
         pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
+        System.out.println("************** pfModel.getPFNA():" + pfModel.getPFNA() + " ***************");
     }
 
     //Realizará el ajuste de los PF segun la ecuación predefinidae

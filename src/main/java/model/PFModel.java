@@ -14,7 +14,7 @@ public class PFModel {
     private int PFNA; // Valor final Punto Funcion No-Ajustados
     private double factorDeAjuste; //  Valor de Factor de Ajuste (se calcula multiplicando la suma de las preguntas por 0.01 + 0.65)
     private double PFA; //Valor final Punto Funcion Ajustados (resulta al multiplica: factorDeAjuste * PFNA)
-   
+
     public int getPFNA() {
         return PFNA;
     }
