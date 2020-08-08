@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import model.PFModel;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -31,24 +32,33 @@ public class PFController {
     private int aieSimple = 0, aiePromedio = 0, aieComplejo = 0;
 
     //Valores por defecto de calificacion de preguntas
-    private String p1Califiacion="0";
-    private String p2Califiacion="0";
-    private String p3Califiacion="0";
-    private String p4Califiacion="0";
-    private String p5Califiacion="0";
-    private String p6Califiacion="0";
-    private String p7Califiacion="0";
-    private String p8Califiacion="0";
-    private String p9Califiacion="0";
-    private String p10Califiacion="0";
-    private String p11Califiacion="0";
-    private String p12Califiacion="0";
-    private String p13Califiacion="0";
-    private String p14Califiacion="0";
+    private int p1Califiacion=0;
+    private int p2Califiacion=0;
+    private int p3Califiacion=0;
+    private int p4Califiacion=0;
+    private int p5Califiacion=0;
+    private int p6Califiacion=0;
+    private int p7Califiacion=0;
+    private int p8Califiacion=0;
+    private int p9Califiacion=0;
+    private int p10Califiacion=0;
+    private int p11Califiacion=0;
+    private int p12Califiacion=0;
+    private int p13Califiacion=0;
+    private int p14Califiacion=0;
     private int totalCalifiaciones=0;
     
+    private ArrayList<Integer> listaCalificaciones;
+         
     public PFController() {
         pfModel = new PFModel();
+        listaCalificaciones=new ArrayList<>();
+        listaCalificaciones.add(0);
+        listaCalificaciones.add(1);
+        listaCalificaciones.add(2);
+        listaCalificaciones.add(3);
+        listaCalificaciones.add(4);
+        listaCalificaciones.add(5);
     }
     
     //Realizara la suma final de todas las calificaciones y ajustar el PF
@@ -99,23 +109,13 @@ public class PFController {
     }
     
     public void calcularSumaCalifiaciones(){
-        totalCalifiaciones=Integer.parseInt(p1Califiacion)+Integer.parseInt(p2Califiacion)+Integer.parseInt(p3Califiacion)+Integer.parseInt(p4Califiacion)+Integer.parseInt(p5Califiacion)+Integer.parseInt(p6Califiacion)+Integer.parseInt(p7Califiacion)+Integer.parseInt(p8Califiacion)+Integer.parseInt(p9Califiacion)+Integer.parseInt(p10Califiacion)+Integer.parseInt(p11Califiacion)+Integer.parseInt(p12Califiacion)+Integer.parseInt(p13Califiacion)+Integer.parseInt(p14Califiacion);
+        totalCalifiaciones=p1Califiacion+p2Califiacion+p3Califiacion+p4Califiacion+p5Califiacion+p6Califiacion+p7Califiacion+p8Califiacion+p9Califiacion+p10Califiacion+p11Califiacion+p12Califiacion+p13Califiacion+p14Califiacion;
     }
     
     public double redondear2Decimales(double adjustment){
         adjustment= Math.round(adjustment * 100);
         adjustment = adjustment / 100;
         return adjustment;
-    }
-    
-    /*****************************************/    
-    
-    /**
-     * Calcula el subtotal de cada uno de los valores de dominio ingresado en la
-     * tabla     
-     */
-    public void calcularSubtotales(){
-        
     }
     
     // <editor-fold defaultstate="collapsed" desc="GETTERS y SETTERS de las 15 variables de niveles de complejidad">
@@ -283,115 +283,115 @@ public class PFController {
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="GETTERS Y SETTERS de las 14 variables de las califiaciones de cada pregunta">
-    public String getP1Califiacion() {
+    public int getP1Califiacion() {
         return p1Califiacion;
     }
 
-    public void setP1Califiacion(String p1Califiacion) {
+    public void setP1Califiacion(int p1Califiacion) {
         this.p1Califiacion = p1Califiacion;
     }
 
-    public String getP2Califiacion() {
+    public int getP2Califiacion() {
         return p2Califiacion;
     }
 
-    public void setP2Califiacion(String p2Califiacion) {
+    public void setP2Califiacion(int p2Califiacion) {
         this.p2Califiacion = p2Califiacion;
     }
 
-    public String getP3Califiacion() {
+    public int getP3Califiacion() {
         return p3Califiacion;
     }
 
-    public void setP3Califiacion(String p3Califiacion) {
+    public void setP3Califiacion(int p3Califiacion) {
         this.p3Califiacion = p3Califiacion;
     }
 
-    public String getP4Califiacion() {
+    public int getP4Califiacion() {
         return p4Califiacion;
     }
 
-    public void setP4Califiacion(String p4Califiacion) {
+    public void setP4Califiacion(int p4Califiacion) {
         this.p4Califiacion = p4Califiacion;
     }
 
-    public String getP5Califiacion() {
+    public int getP5Califiacion() {
         return p5Califiacion;
     }
 
-    public void setP5Califiacion(String p5Califiacion) {
+    public void setP5Califiacion(int p5Califiacion) {
         this.p5Califiacion = p5Califiacion;
     }
 
-    public String getP6Califiacion() {
+    public int getP6Califiacion() {
         return p6Califiacion;
     }
 
-    public void setP6Califiacion(String p6Califiacion) {
+    public void setP6Califiacion(int p6Califiacion) {
         this.p6Califiacion = p6Califiacion;
     }
 
-    public String getP7Califiacion() {
+    public int getP7Califiacion() {
         return p7Califiacion;
     }
 
-    public void setP7Califiacion(String p7Califiacion) {
+    public void setP7Califiacion(int p7Califiacion) {
         this.p7Califiacion = p7Califiacion;
     }
 
-    public String getP8Califiacion() {
+    public int getP8Califiacion() {
         return p8Califiacion;
     }
 
-    public void setP8Califiacion(String p8Califiacion) {
+    public void setP8Califiacion(int p8Califiacion) {
         this.p8Califiacion = p8Califiacion;
     }
 
-    public String getP9Califiacion() {
+    public int getP9Califiacion() {
         return p9Califiacion;
     }
 
-    public void setP9Califiacion(String p9Califiacion) {
+    public void setP9Califiacion(int p9Califiacion) {
         this.p9Califiacion = p9Califiacion;
     }
 
-    public String getP10Califiacion() {
+    public int getP10Califiacion() {
         return p10Califiacion;
     }
 
-    public void setP10Califiacion(String p10Califiacion) {
+    public void setP10Califiacion(int p10Califiacion) {
         this.p10Califiacion = p10Califiacion;
     }
 
-    public String getP11Califiacion() {
+    public int getP11Califiacion() {
         return p11Califiacion;
     }
 
-    public void setP11Califiacion(String p11Califiacion) {
+    public void setP11Califiacion(int p11Califiacion) {
         this.p11Califiacion = p11Califiacion;
     }
 
-    public String getP12Califiacion() {
+    public int getP12Califiacion() {
         return p12Califiacion;
     }
 
-    public void setP12Califiacion(String p12Califiacion) {
+    public void setP12Califiacion(int p12Califiacion) {
         this.p12Califiacion = p12Califiacion;
     }
 
-    public String getP13Califiacion() {
+    public int getP13Califiacion() {
         return p13Califiacion;
     }
 
-    public void setP13Califiacion(String p13Califiacion) {
+    public void setP13Califiacion(int p13Califiacion) {
         this.p13Califiacion = p13Califiacion;
     }
 
-    public String getP14Califiacion() {
+    public int getP14Califiacion() {
         return p14Califiacion;
     }
     
-    public void setP14Califiacion(String p14Califiacion) {
+    public void setP14Califiacion(int p14Califiacion) {
         this.p14Califiacion = p14Califiacion;
     }
     

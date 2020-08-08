@@ -315,27 +315,31 @@
             </div>
             <!--*****************************************************-->
             <!--**********************LOC*************************-->
-            <form class="form-inline">
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Lineas de Codigo</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected="">Seleccione lenguaje</option>
-                    <option value="1">Lenguaje ensamblador . . . . . LOC/FP: 320</option>
-                    <option value="2">Lenguaje C . . . . . . . . . . LOC/FP: 128</option>
-                    <option value="3">Lenguaje Cobol . . . . . . . . LOC/FP: 105</option>
-                    <option value="4">Lenguaje Fortran . . . . . . . LOC/FP: 105</option>
-                    <option value="5">Lenguaje Pascal . . . . . . . .LOC/FP: 90</option>
-                    <option value="6">Lenguaje Ada . . . . . . . . . LOC/FP: 70</option>
-                    <option value="7">Lenguaje Orientado a Objetos . LOC/FP: 30</option>
-                    <option value="8">Idiomas de cuarta generación . LOC/FP: 20</option>
-                    <option value="9">Generador de Código . . . . . .LOC/FP: 15</option>
-                    <option value="10">Hojas de cálculo . . . . . . .LOC/FP: 6</option>
-                    <option value="11">Lenguajes gráficos . . . . . .LOC/FP: 5</option>
-                    
-                </select>
-                
-                
-                <button type="submit" class="btn btn-primary my-1">Submit</button>
-            </form>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 3:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Lineas de Codigo</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected="">Seleccione lenguaje</option>
+                            <option value="1">Lenguaje ensamblador . . . . . LOC/FP: 320</option>
+                            <option value="2">Lenguaje C . . . . . . . . . . LOC/FP: 128</option>
+                            <option value="3">Lenguaje Cobol . . . . . . . . LOC/FP: 105</option>
+                            <option value="4">Lenguaje Fortran . . . . . . . LOC/FP: 105</option>
+                            <option value="5">Lenguaje Pascal . . . . . . . .LOC/FP: 90</option>
+                            <option value="6">Lenguaje Ada . . . . . . . . . LOC/FP: 70</option>
+                            <option value="7">Lenguaje Orientado a Objetos . LOC/FP: 30</option>
+                            <option value="8">Idiomas de cuarta generación . LOC/FP: 20</option>
+                            <option value="9">Generador de Código . . . . . .LOC/FP: 15</option>
+                            <option value="10">Hojas de cálculo . . . . . . .LOC/FP: 6</option>
+                            <option value="11">Lenguajes gráficos . . . . . .LOC/FP: 5</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary my-1">Submit</button>
+                        
+                    </div>
+                </div>          
+            </div>
             <!--*****************************************************-->
         </h:form>
     </ui:composition>
