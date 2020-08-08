@@ -113,13 +113,8 @@
                                 <tr>
                                     <th scope="row">1. ¿El sistema requiere respaldo y recuperación confiables?</th>
                                     <td>
-                                        <h:selectOneRadio id="radio1" styleClass="toggle-radio-buttons" value="#{pf.p1Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                        <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -127,12 +122,7 @@
                                     <th scope="row">2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?</th>
                                     <td>
                                         <h:selectOneRadio id="radio2" styleClass="toggle-radio-buttons" value="#{pf.p2Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -140,12 +130,7 @@
                                     <th scope="row">3. ¿Existen funciones de procesamiento distribuidas?</th>
                                     <td>
                                         <h:selectOneRadio id="radio3" styleClass="toggle-radio-buttons" value="#{pf.p3Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -153,12 +138,7 @@
                                     <th scope="row">4. ¿El desempeño es crucial?</th>
                                     <td>
                                         <h:selectOneRadio id="radio4" styleClass="toggle-radio-buttons" value="#{pf.p4Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -166,12 +146,7 @@
                                     <th scope="row">5. ¿El sistema correrá¡ en un entorno operativo existente enormemente utilizado?</th>
                                     <td>
                                         <h:selectOneRadio id="radio5" styleClass="toggle-radio-buttons" value="#{pf.p5Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -179,12 +154,7 @@
                                     <th scope="row">6. ¿El sistema requiere entrada de datos en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio6" styleClass="toggle-radio-buttons" value="#{pf.p6Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -192,12 +162,7 @@
                                     <th scope="row">7. ¿La entrada de datos en lí­nea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio7" styleClass="toggle-radio-buttons" value="#{pf.p7Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -205,12 +170,7 @@
                                     <th scope="row">8. ¿Los ALI se actualizan en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio8" styleClass="toggle-radio-buttons" value="#{pf.p8Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -218,12 +178,7 @@
                                     <th scope="row">9. ¿Las entradas, salidas, archivos o consultas son complejos?</th>
                                     <td>
                                         <h:selectOneRadio id="radio9" styleClass="toggle-radio-buttons" value="#{pf.p9Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -231,12 +186,7 @@
                                     <th scope="row">10. ¿El procesamiento interno es complejo?</th>
                                     <td>
                                         <h:selectOneRadio id="radio10" styleClass="toggle-radio-buttons" value="#{pf.p10Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -244,12 +194,7 @@
                                     <th scope="row">11. ¿El código se diseña para ser reutilizable?</th>
                                     <td>
                                         <h:selectOneRadio id="radio11" styleClass="toggle-radio-buttons" value="#{pf.p11Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -257,12 +202,7 @@
                                     <th scope="row">12. ¿La conversión y la instalación se incluyen en el diseño?</th>
                                     <td>
                                         <h:selectOneRadio id="radio12" styleClass="toggle-radio-buttons" value="#{pf.p12Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -270,12 +210,7 @@
                                     <th scope="row">13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio13" styleClass="toggle-radio-buttons" value="#{pf.p13Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -283,12 +218,7 @@
                                     <th scope="row">14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?</th>
                                     <td>
                                         <h:selectOneRadio id="radio14" styleClass="toggle-radio-buttons" value="#{pf.p14Califiacion}">
-                                            <f:selectItem itemValue="0" itemLabel="No hay influencia" />
-                                            <f:selectItem itemValue="1" itemLabel="Incidental" />
-                                            <f:selectItem itemValue="2" itemLabel="Moderado" />
-                                            <f:selectItem itemValue="3" itemLabel="Promedio" />
-                                            <f:selectItem itemValue="4" itemLabel="Significativo" />
-                                            <f:selectItem itemValue="5" itemLabel="Esencial" />
+                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -301,7 +231,8 @@
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF Ajustado" action="#{pf.actualizarPFA()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14"
-                                                    render ="idTC idPFA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA"/>
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA "/>
                                         </h:commandButton>
                                     </th>
                                     <td>
@@ -314,29 +245,25 @@
                 </div>          
             </div>
             <!--*****************************************************-->
+            
             <!--**********************LOC*************************-->
             <div class="card">
                 <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 3:</h4>
                 <div class="card-body">
                     <div id="table" class="table-editable">
-                        
                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Lineas de Codigo</label>
-                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                            <option selected="">Seleccione lenguaje</option>
-                            <option value="1">Lenguaje ensamblador . . . . . LOC/FP: 320</option>
-                            <option value="2">Lenguaje C . . . . . . . . . . LOC/FP: 128</option>
-                            <option value="3">Lenguaje Cobol . . . . . . . . LOC/FP: 105</option>
-                            <option value="4">Lenguaje Fortran . . . . . . . LOC/FP: 105</option>
-                            <option value="5">Lenguaje Pascal . . . . . . . .LOC/FP: 90</option>
-                            <option value="6">Lenguaje Ada . . . . . . . . . LOC/FP: 70</option>
-                            <option value="7">Lenguaje Orientado a Objetos . LOC/FP: 30</option>
-                            <option value="8">Idiomas de cuarta generación . LOC/FP: 20</option>
-                            <option value="9">Generador de Código . . . . . .LOC/FP: 15</option>
-                            <option value="10">Hojas de cálculo . . . . . . .LOC/FP: 6</option>
-                            <option value="11">Lenguajes gráficos . . . . . .LOC/FP: 5</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary my-1">Submit</button>
-                        
+                        <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.LC}">
+                            <f:selectItems value="#{pf.listaLenguajes}" />
+                        </h:selectOneMenu>
+                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Lineas de Codigo" action="#{pf.actualizarLC()}">
+                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
+                                    select1"
+                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                    idTC idPFA 
+                                    idLC"/>
+                        </h:commandButton>
+                        <h:outputText id="idLC" value="#{pf.valorLC}" class="form-control"/>
                     </div>
                 </div>          
             </div>

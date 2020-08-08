@@ -47,8 +47,14 @@ public class PFController {
     private int p13Califiacion=0;
     private int p14Califiacion=0;
     private int totalCalifiaciones=0;
+
+    private String LC="0";
+
+    private double valorLC=0;
     
     private ArrayList<Integer> listaCalificaciones;
+
+    private ArrayList<String> listaLenguajes;
          
     public PFController() {
         pfModel = new PFModel();
@@ -59,7 +65,54 @@ public class PFController {
         listaCalificaciones.add(3);
         listaCalificaciones.add(4);
         listaCalificaciones.add(5);
+        listaLenguajes=new ArrayList<>();
+        listaLenguajes.add("ABAP (SAP) *28");
+        listaLenguajes.add("ASP *51");
+        listaLenguajes.add("Assembler *119");
+        listaLenguajes.add("Brio *14");
+        listaLenguajes.add("C *97");
+        listaLenguajes.add("C++ *50");
+        listaLenguajes.add("C# *54");
+        listaLenguajes.add("COBOL *61");
+        listaLenguajes.add("Cognos Impromptu Scripts *47");
+        listaLenguajes.add("Cross System Products (CSP) *20");
+        listaLenguajes.add("Cool:Gen/IEF *32");
+        listaLenguajes.add("Datastage *71");
+        listaLenguajes.add("Excel *209");
+        listaLenguajes.add("Focus *43");
+        listaLenguajes.add("FoxPro *36");
+        listaLenguajes.add("HTML *34");
+        listaLenguajes.add("J2EE *46");
+        listaLenguajes.add("Java *53");
+        listaLenguajes.add("JavaScript *47");
+        listaLenguajes.add("JCL *62");
+        listaLenguajes.add("LINC II *29");
+        listaLenguajes.add("Lotus Notes *23");
+        listaLenguajes.add("Natural *40");
+        listaLenguajes.add(".NET *7");
+        listaLenguajes.add("Oracle *37");
+        listaLenguajes.add("PACBASE *35");
+        listaLenguajes.add("Perl *24");
+        listaLenguajes.add("PL/I *64");
+        listaLenguajes.add("PL/SQL *37");
+        listaLenguajes.add("Powerbuilder *26");
+        listaLenguajes.add("REXX *77");
+        listaLenguajes.add("Sabretalk *70");
+        listaLenguajes.add("SAS *38");
+        listaLenguajes.add("Siebel *59");
+        listaLenguajes.add("SLOGAN *75");
+        listaLenguajes.add("SQL *21");
+        listaLenguajes.add("VB.NET *52");
+        listaLenguajes.add("Visual Basic *42");
     }
+    
+    //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
+    public void actualizarLC() {
+        actualizarPFNA();
+        actualizarPFA();
+        this.setValorLC(redondear2Decimales(pfModel.getPFA()*this.conversionLC(this.LC)));
+    }
+
     
     //Realizara la suma final de todas las calificaciones y ajustar el PF
     public void actualizarPFA() {
@@ -108,14 +161,23 @@ public class PFController {
         subTotalAIE = aieSimple * 5 + aiePromedio * 7 + aieComplejo * 10;        
     }
     
+    //Suma de las calificaciones 
     public void calcularSumaCalifiaciones(){
         totalCalifiaciones=p1Califiacion+p2Califiacion+p3Califiacion+p4Califiacion+p5Califiacion+p6Califiacion+p7Califiacion+p8Califiacion+p9Califiacion+p10Califiacion+p11Califiacion+p12Califiacion+p13Califiacion+p14Califiacion;
     }
     
+    //Redondear a 2 decimales en double
     public double redondear2Decimales(double adjustment){
         adjustment= Math.round(adjustment * 100);
         adjustment = adjustment / 100;
         return adjustment;
+    }
+    
+    //Conversion de un String x*12 a un numero en double
+    public double conversionLC(String LC) {
+        String[] parts = LC.split("\\*");
+        double vLC = Double.valueOf(parts[1]);
+        return vLC;
     }
     
     // <editor-fold defaultstate="collapsed" desc="GETTERS y SETTERS de las 15 variables de niveles de complejidad">
@@ -404,4 +466,41 @@ public class PFController {
     }
     
     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="GETTERS Y SETTERS de las Listas">
+    public ArrayList<Integer> getListaCalificaciones() {
+        return listaCalificaciones;
+    }
+
+    public void setListaCalificaciones(ArrayList<Integer> listaCalificaciones) {
+        this.listaCalificaciones = listaCalificaciones;
+    }
+    
+    public ArrayList<String> getListaLenguajes() {
+        return listaLenguajes;
+    }
+
+    public void setListaLenguajes(ArrayList<String> listaLenguajes) {
+        this.listaLenguajes = listaLenguajes;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="GETTERS Y SETTERS de las Lineas de Codigo">
+    public String getLC() {
+        return LC;
+    }
+
+    public void setLC(String LC) {
+        this.LC = LC;
+    }
+    
+    public double getValorLC() {
+        return valorLC;
+    }
+
+    public void setValorLC(double valorLC) {
+        this.valorLC = valorLC;
+    }
+    // </editor-fold>
+    
 }
