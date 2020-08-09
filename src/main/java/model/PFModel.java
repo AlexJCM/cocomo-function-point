@@ -1,5 +1,8 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /*
 Esta clase encapsulará los datos principales del modelo: 
     -Punto Funcion No-Ajustados
@@ -9,34 +12,12 @@ Esta clase encapsulará los datos principales del modelo:
     -Duracion ???
 Asi como los distintos metodos para interactuar con los mismos.
  */
+@Getter
+@Setter
 public class PFModel {
-
+    
     private int PFNA; // Valor final Punto Funcion No-Ajustados
     private double factorDeAjuste; //  Valor de Factor de Ajuste (se calcula multiplicando la suma de las preguntas por 0.01 + 0.65)
     private double PFA; //Valor final Punto Funcion Ajustados (resulta al multiplica: factorDeAjuste * PFNA)
-
-    public int getPFNA() {
-        return PFNA;
-    }
-
-    public void setPFNA(int PFNA) {
-        this.PFNA = PFNA;
-    }
-
-    public double getFactorDeAjuste() {
-        return factorDeAjuste;
-    }
-
-    public void setFactorDeAjuste(double factorDeAjuste) {
-        this.factorDeAjuste = factorDeAjuste;
-    }
-
-    public double getPFA() {
-        return PFA;
-    }
-
-    public void setPFA(double PFA) {
-        this.PFA = PFA;
-    }
 
 }
