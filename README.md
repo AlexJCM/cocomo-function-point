@@ -6,7 +6,7 @@
 
 - IDE: [Apache Netbeans 12](https://netbeans.apache.org/download/index.html)
 - Lenguaje Backend: [Java EE 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-- Server: [GlassFish Server 5](https://javaee.github.io/glassfish/download)
+- Server: [WildFly](https://wildfly.org/news/2019/02/27/WildFly16-Final-Released/)
 - Java Framework: [JSF 2.3 (Java Server Faces)](https://javaee.github.io/javaserverfaces-spec/)
 - CSS Framework: [Bootstrap 4.5](https://getbootstrap.com/)
 

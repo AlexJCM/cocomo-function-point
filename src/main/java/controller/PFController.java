@@ -72,13 +72,36 @@ public class PFController {
     private int p13Califiacion = 0;
     private int p14Califiacion = 0;
     private int totalCalifiaciones = 0;
-
+    // Variables para calcular LOC
     @Getter
     @Setter
     private String LC = "0";
     @Getter
     @Setter
-    private double valorLC = 0;
+    private double sLoC = 0.0;
+    @Getter
+    @Setter
+    private double kLoC = 0.0;
+    //Variables para calcular esfuerzo y duracion
+    @Getter
+    @Setter
+    private double spOab = 2.4,spObb = 1.05,spOcb = 2.5,spOdb = 0.38;
+    @Getter
+    @Setter
+    private double spSab = 3.0,spSbb = 1.12,spScb = 2.5,spSdb = 0.35;
+    @Getter
+    @Setter
+    private double spEab = 3.6,spEbb = 1.20,spEcb = 2.5,spEdb = 0.32;
+    @Getter
+    @Setter
+    private int SP = 0;
+    @Getter
+    @Setter
+    private double effort = 0.0;
+    @Getter
+    @Setter
+    private double duration = 0.0;
+    //ArrayList
     @Getter
     @Setter
     private ArrayList<Integer> listaCalificaciones;
@@ -135,12 +158,21 @@ public class PFController {
         listaLenguajes.add("VB.NET *52");
         listaLenguajes.add("Visual Basic *42");
     }
+    
+    //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
+    public void actualizarSP() {
+        actualizarPFNA();
+        actualizarPFA();
+        actualizarLC();
+        this.slocTOkloc();
+        this.calcularED();
+    }
 
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarLC() {
         actualizarPFNA();
         actualizarPFA();
-        this.setValorLC(redondear2Decimales(pfModel.getPFA() * this.conversionLC(this.LC)));
+        this.setSLoC(redondear2Decimales(pfModel.getPFA() * this.conversionLC(this.LC)));
     }
 
     //Realizara la suma final de todas las calificaciones y ajustar el PF
@@ -155,12 +187,34 @@ public class PFController {
     public void actualizarPFNA() {
         calcularSubtotalesDominios();
         pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
-        System.out.println("************** pfModel.getPFNA():" + pfModel.getPFNA() + " ***************");
     }
 
     //Realizará el ajuste de los PF segun la ecuación predefinidae
     public void ajustarPuntoDeFuncion() {
         pfModel.setPFA(redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
+    }
+    
+    //Conversion de SLOC a KLOC
+    public void slocTOkloc(){
+        this.setKLoC(sLoC/1000);
+    }
+    
+    //Calcula el esfuerzo y la duracion del proyecto de software
+    public void calcularED(){
+        switch(SP){
+            case 0:
+                this.setEffort(redondear2Decimales(spOab*Math.pow(kLoC, spObb)));
+                this.setDuration(redondear2Decimales(spOcb*Math.pow(this.getEffort(), spOdb)));
+                break;
+            case 1:
+                this.setEffort(redondear2Decimales(spSab*Math.pow(kLoC, spSbb)));
+                this.setDuration(redondear2Decimales(spScb*Math.pow(this.getEffort(), spSdb)));
+                break;
+            case 2:
+                this.setEffort(redondear2Decimales(spEab*Math.pow(kLoC, spEbb)));
+                this.setDuration(redondear2Decimales(spEcb*Math.pow(this.getEffort(), spEdb)));
+                break;
+        }
     }
 
     //metodos a ser llamados desde la vista

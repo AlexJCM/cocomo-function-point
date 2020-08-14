@@ -8,36 +8,26 @@
     <ui:composition template="/WEB-INF/include/template.xhtml">
 
         <ui:define name="head">
-            <title>Hello JSF Bootstrap</title>
+            <title>JSF Application</title>
             <!-- Custom styles for this template -->
             <h:outputStylesheet name="css/starter-template.css"/>          
         </ui:define>
 
         <ui:define name="body">
-            <!-- SECTION: Footer -->
+            <!-- SECTION: Header -->
             <ui:include src="/components/header.xhtml"/>
 
             <div class="container">
                 <div class="starter-template">
                     <h1>COCOMO II: Puntos de función.</h1>
-                    <p class="lead">Use this document as a way <br/> to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
+                    <p class="lead">La presente aplicación web <br/> realiza el cálculo de los puntos de función, 
+                    <br/>para ello hay que llenar los datos solicitados en los pasos 1 y 2.</p>
                 </div>
-
-                <!-- SECTION: Tabla de puntos de funcion no ajustado -->
-                <ui:include src="/components/fpnaTable.xhtml"/>              
-                <!-- SECTION: Puntos de funcion ajustado -->
-
-                
-                <!-- SECTION: LOCS, Esfuerzo y duracion -->
-
-
-                <!-- SECTION: Esfuerzo y duracion -->
-
-                
-                <!-- SECTION: Footer -->
-                <ui:include src="/components/footer.xhtml"/>
-
+                <ui:include src="/components/functionPoints.xhtml"/>              
             </div>
+            
+            <!-- SECTION: Footer -->
+            <ui:include src="/components/footer.xhtml"/>
         </ui:define>
     </ui:composition> 
 </html>
