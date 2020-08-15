@@ -1,7 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
 import model.PFModel;
+import controller.Utils;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
@@ -20,25 +20,33 @@ import lombok.Setter;
 @ViewScoped //@RequestScoped
 public class PFController {
 
+    //Modelo y Utilidades
     private PFModel pfModel;
+    private Utils util;
 
-    @Getter
-    @Setter
-    private int subTotalEE = 0; //suma de todas las Entradas Externas
-    @Getter
-    @Setter
-    private int subTotalSE = 0; //suma de todas las Salidas Externas
-    @Getter
-    @Setter
-    private int subTotalCE = 0; //suma de todas las Consultas Externas
-    @Getter
-    @Setter
-    private int subTotalALI = 0; //suma de todos los Archivos Logicos Internos
-    @Getter
-    @Setter
-    private int subTotalAIE = 0; //uma de todos los Archivos de Interfaz Externos
+    public PFController() {
+        pfModel = new PFModel();    
+        util = new Utils();
+    }
+    
+    public double getFactorAjuste() {
+        return pfModel.getFactorDeAjuste();
+    }
 
-    // Valores por defecto de cada nivel  comlejiddad de los factores de ponderacion
+    public void setFactorAjuste(double aux) {
+        pfModel.setFactorDeAjuste(util.redondear2Decimales(aux * 0.01 + 0.65));
+    }
+
+    public double getPFA() {
+        return pfModel.getPFA();
+    }
+
+    public int getPFNA() {
+        return pfModel.getPFNA();
+    }
+    
+// PAS0 1
+    // Valores por defecto de cada nivel comlejiddad de los factores de ponderacion
     @Getter
     @Setter
     private int eeSimple = 0, eePromedio = 0, eeComplejo = 0;
@@ -54,24 +62,104 @@ public class PFController {
     @Getter
     @Setter
     private int aieSimple = 0, aiePromedio = 0, aieComplejo = 0;
-
+    @Getter
+    @Setter
+    private int subTotalEE = 0; //suma de todas las Entradas Externas
+    @Getter
+    @Setter
+    private int subTotalSE = 0; //suma de todas las Salidas Externas
+    @Getter
+    @Setter
+    private int subTotalCE = 0; //suma de todas las Consultas Externas
+    @Getter
+    @Setter
+    private int subTotalALI = 0; //suma de todos los Archivos Logicos Internos
+    @Getter
+    @Setter
+    private int subTotalAIE = 0; //uma de todos los Archivos de Interfaz Externos
+    
+    //Realizará la suma final de todos los puntos funcion No Ajustados parciales y los reflejará en el modelo
+    public void actualizarPFNA() {
+        calcularSubtotalesDominios();
+        pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
+    }
+    
+    //Calcular subtotales de Dominios
+    public void calcularSubtotalesDominios() {
+        subTotalEE = eeSimple * 3 + eePromedio * 4 + eeComplejo * 6;
+        subTotalSE = seSimple * 4 + sePromedio * 5 + seComplejo * 7;
+        subTotalCE = ceSimple * 3 + cePromedio * 4 + ceComplejo * 6;
+        subTotalALI = aliSimple * 7 + aliPromedio * 10 + aliComplejo * 15;
+        subTotalAIE = aieSimple * 5 + aiePromedio * 7 + aieComplejo * 10;
+    }
+    
+// PAS0 2
     //Valores por defecto de calificacion de preguntas
-    // TODO: Implmentar las siguientes variablesen de calificacion en un arreglo
+    @Getter
+    @Setter
     private int p1Califiacion = 0;
+    @Getter
+    @Setter
     private int p2Califiacion = 0;
+    @Getter
+    @Setter
     private int p3Califiacion = 0;
+    @Getter
+    @Setter
     private int p4Califiacion = 0;
+    @Getter
+    @Setter
     private int p5Califiacion = 0;
+    @Getter
+    @Setter
     private int p6Califiacion = 0;
+    @Getter
+    @Setter
     private int p7Califiacion = 0;
+    @Getter
+    @Setter
     private int p8Califiacion = 0;
+    @Getter
+    @Setter
     private int p9Califiacion = 0;
+    @Getter
+    @Setter
     private int p10Califiacion = 0;
+    @Getter
+    @Setter
     private int p11Califiacion = 0;
+    @Getter
+    @Setter
     private int p12Califiacion = 0;
+    @Getter
+    @Setter
     private int p13Califiacion = 0;
+    @Getter
+    @Setter
     private int p14Califiacion = 0;
+    @Getter
+    @Setter
     private int totalCalifiaciones = 0;
+    
+    //Suma de las calificaciones 
+    public void calcularSumaCalifiaciones() {
+        totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
+    }
+    
+    //Realizará el ajuste de los PF segun la ecuación predefinidae
+    public void ajustarPuntoDeFuncion() {
+        pfModel.setPFA(util.redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
+    }
+    
+    //Realizara la suma final de todas las calificaciones y ajustar el PF
+    public void actualizarPFA() {
+        actualizarPFNA();
+        calcularSumaCalifiaciones();
+        setFactorAjuste(Double.valueOf(totalCalifiaciones));
+        ajustarPuntoDeFuncion();
+    }
+
+// PAS0 3    
     // Variables para calcular LOC
     @Getter
     @Setter
@@ -82,6 +170,15 @@ public class PFController {
     @Getter
     @Setter
     private double kLoC = 0.0;
+    
+    //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
+    public void actualizarLC() {
+        actualizarPFNA();
+        actualizarPFA();
+        sLoC=util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(LC));
+    }
+    
+// PAS0 4 modelo basico    
     //Variables para calcular esfuerzo y duracion
     @Getter
     @Setter
@@ -101,62 +198,28 @@ public class PFController {
     @Getter
     @Setter
     private double duration = 0.0;
-    //ArrayList
-    @Getter
-    @Setter
-    private ArrayList<Integer> listaCalificaciones;
-    @Getter
-    @Setter
-    private ArrayList<String> listaLenguajes;
-
-    public PFController() {
-        pfModel = new PFModel();        
-        listaCalificaciones = new ArrayList<>();
-        listaCalificaciones.add(0);
-        listaCalificaciones.add(1);
-        listaCalificaciones.add(2);
-        listaCalificaciones.add(3);
-        listaCalificaciones.add(4);
-        listaCalificaciones.add(5);
-        listaLenguajes = new ArrayList<>();
-        listaLenguajes.add("ABAP (SAP) *28");
-        listaLenguajes.add("ASP *51");
-        listaLenguajes.add("Assembler *119");
-        listaLenguajes.add("Brio *14");
-        listaLenguajes.add("C *97");
-        listaLenguajes.add("C++ *50");
-        listaLenguajes.add("C# *54");
-        listaLenguajes.add("COBOL *61");
-        listaLenguajes.add("Cognos Impromptu Scripts *47");
-        listaLenguajes.add("Cross System Products (CSP) *20");
-        listaLenguajes.add("Cool:Gen/IEF *32");
-        listaLenguajes.add("Datastage *71");
-        listaLenguajes.add("Excel *209");
-        listaLenguajes.add("Focus *43");
-        listaLenguajes.add("FoxPro *36");
-        listaLenguajes.add("HTML *34");
-        listaLenguajes.add("J2EE *46");
-        listaLenguajes.add("Java *53");
-        listaLenguajes.add("JavaScript *47");
-        listaLenguajes.add("JCL *62");
-        listaLenguajes.add("LINC II *29");
-        listaLenguajes.add("Lotus Notes *23");
-        listaLenguajes.add("Natural *40");
-        listaLenguajes.add(".NET *7");
-        listaLenguajes.add("Oracle *37");
-        listaLenguajes.add("PACBASE *35");
-        listaLenguajes.add("Perl *24");
-        listaLenguajes.add("PL/I *64");
-        listaLenguajes.add("PL/SQL *37");
-        listaLenguajes.add("Powerbuilder *26");
-        listaLenguajes.add("REXX *77");
-        listaLenguajes.add("Sabretalk *70");
-        listaLenguajes.add("SAS *38");
-        listaLenguajes.add("Siebel *59");
-        listaLenguajes.add("SLOGAN *75");
-        listaLenguajes.add("SQL *21");
-        listaLenguajes.add("VB.NET *52");
-        listaLenguajes.add("Visual Basic *42");
+    
+    //Conversion de SLOC a KLOC
+    public void slocTOkloc(){
+        kLoC=(sLoC/1000);
+    }
+    
+    //Calcula el esfuerzo y la duracion del proyecto de software
+    public void calcularED(){
+        switch(SP){
+            case 0:
+                effort=(util.redondear2Decimales(spOab*Math.pow(kLoC, spObb)));
+                duration=(util.redondear2Decimales(spOcb*Math.pow(effort, spOdb)));
+                break;
+            case 1:
+                effort=(util.redondear2Decimales(spSab*Math.pow(kLoC, spSbb)));
+                duration=(util.redondear2Decimales(spScb*Math.pow(effort, spSdb)));
+                break;
+            case 2:
+                effort=(util.redondear2Decimales(spEab*Math.pow(kLoC, spEbb)));
+                duration=(util.redondear2Decimales(spEcb*Math.pow(effort, spEdb)));
+                break;
+        }
     }
     
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
@@ -164,227 +227,119 @@ public class PFController {
         actualizarPFNA();
         actualizarPFA();
         actualizarLC();
-        this.slocTOkloc();
-        this.calcularED();
+        slocTOkloc();
+        calcularED();
     }
-
-    //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
-    public void actualizarLC() {
+    
+// PAS0 4 modelo completo
+    @Getter
+    @Setter
+    private double prec = 0.0;
+    @Getter
+    @Setter
+    private double flex = 0.0;
+    @Getter
+    @Setter
+    private double resl = 0.0;
+    @Getter
+    @Setter
+    private double team = 0.0;
+    @Getter
+    @Setter
+    private double pmat = 0.0;
+    @Getter
+    @Setter
+    private double sumFE = 0.0;
+    
+    //Suma de las calificaciones Factores de escala
+    public void sumaCalifiacionesFE() {
+       sumFE=(util.redondear2Decimales(prec+flex+resl+team+pmat));
+    }
+    
+    //Realizara el calculo de el factor de escala 
+    public void factorEscala(){
+        feB=(0.91+0.01*sumFE);
+    }
+    
+    //Realizara la multiplicacion y actualizacion del factor de escala 5
+    public void actualizarFE5() {
         actualizarPFNA();
         actualizarPFA();
-        this.setSLoC(redondear2Decimales(pfModel.getPFA() * this.conversionLC(this.LC)));
+        actualizarLC();
+        sumaCalifiacionesFE();
+        factorEscala();
     }
 
-    //Realizara la suma final de todas las calificaciones y ajustar el PF
-    public void actualizarPFA() {
+// PAS0 5 
+    @Getter
+    @Setter
+    private double feB = 0.0;
+    @Getter
+    @Setter
+    private double rely = 1.0;
+    @Getter
+    @Setter
+    private double data = 1.0;
+    @Getter
+    @Setter
+    private double cplx = 1.0;
+    @Getter
+    @Setter
+    private double docu = 1.0;
+    @Getter
+    @Setter
+    private double ruse = 1.0;
+    @Getter
+    @Setter
+    private double time = 1.0;
+    @Getter
+    @Setter
+    private double stor = 1.0;
+    @Getter
+    @Setter
+    private double virt = 1.0;
+    @Getter
+    @Setter
+    private double turn = 1.0;
+    @Getter
+    @Setter
+    private double acap = 1.0;
+    @Getter
+    @Setter
+    private double aexp = 1.0;
+    @Getter
+    @Setter
+    private double pcap = 1.0;
+    @Getter
+    @Setter
+    private double vexp = 1.0;
+    @Getter
+    @Setter
+    private double lexp = 1.0;
+    @Getter
+    @Setter
+    private double modp = 1.0;
+    @Getter
+    @Setter
+    private double tool = 1.0;
+    @Getter
+    @Setter
+    private double sced = 1.0;
+    @Getter
+    @Setter
+    private double fm = 1.0;
+
+     //multiplicacion de las calificaciones de factores de esfuerzo compuesto
+    public void factorMultiplicativo() {
+       fm=(util.redondear2Decimales(rely*data*cplx*docu*ruse*time*stor*virt*turn*acap*aexp*pcap*vexp*lexp*modp*tool*sced));
+    }
+    
+    //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
+    public void actualizarFEC() {
+        actualizarFE5();
         actualizarPFNA();
-        calcularSumaCalifiaciones();
-        this.setFactorAjuste(Double.valueOf(totalCalifiaciones));
-        this.ajustarPuntoDeFuncion();
+        actualizarPFA();
+        actualizarLC();
+        factorMultiplicativo();
     }
-
-    //Realizará la suma final de todos los puntos funcion No Ajustados parciales y los reflejará en el modelo
-    public void actualizarPFNA() {
-        calcularSubtotalesDominios();
-        pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
-    }
-
-    //Realizará el ajuste de los PF segun la ecuación predefinidae
-    public void ajustarPuntoDeFuncion() {
-        pfModel.setPFA(redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
-    }
-    
-    //Conversion de SLOC a KLOC
-    public void slocTOkloc(){
-        this.setKLoC(sLoC/1000);
-    }
-    
-    //Calcula el esfuerzo y la duracion del proyecto de software
-    public void calcularED(){
-        switch(SP){
-            case 0:
-                this.setEffort(redondear2Decimales(spOab*Math.pow(kLoC, spObb)));
-                this.setDuration(redondear2Decimales(spOcb*Math.pow(this.getEffort(), spOdb)));
-                break;
-            case 1:
-                this.setEffort(redondear2Decimales(spSab*Math.pow(kLoC, spSbb)));
-                this.setDuration(redondear2Decimales(spScb*Math.pow(this.getEffort(), spSdb)));
-                break;
-            case 2:
-                this.setEffort(redondear2Decimales(spEab*Math.pow(kLoC, spEbb)));
-                this.setDuration(redondear2Decimales(spEcb*Math.pow(this.getEffort(), spEdb)));
-                break;
-        }
-    }
-
-    //metodos a ser llamados desde la vista
-    public double getFactorAjuste() {
-        return pfModel.getFactorDeAjuste();
-    }
-
-    public void setFactorAjuste(double aux) {
-        pfModel.setFactorDeAjuste(redondear2Decimales(aux * 0.01 + 0.65));
-    }
-
-    public double getPFA() {
-        return pfModel.getPFA();
-    }
-
-    public int getPFNA() {
-        return pfModel.getPFNA();
-    }
-
-    /**
-     * ************** Calcular subtotales de Dominios  ***************
-     */
-    public void calcularSubtotalesDominios() {
-        subTotalEE = eeSimple * 3 + eePromedio * 4 + eeComplejo * 6;
-        subTotalSE = seSimple * 4 + sePromedio * 5 + seComplejo * 7;
-        subTotalCE = ceSimple * 3 + cePromedio * 4 + ceComplejo * 6;
-        subTotalALI = aliSimple * 7 + aliPromedio * 10 + aliComplejo * 15;
-        subTotalAIE = aieSimple * 5 + aiePromedio * 7 + aieComplejo * 10;
-    }
-
-    //Suma de las calificaciones 
-    public void calcularSumaCalifiaciones() {
-        totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
-    }
-
-    //Redondear a 2 decimales en double
-    public double redondear2Decimales(double adjustment) {
-        adjustment = Math.round(adjustment * 100);
-        adjustment = adjustment / 100;
-        return adjustment;
-    }
-
-    //Conversion de un String x*12 a un numero en double
-    public double conversionLC(String LC) {
-        String[] parts = LC.split("\\*");
-        double vLC = Double.valueOf(parts[1]);
-        return vLC;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="GETTERS Y SETTERS de las 14 variables de las califiaciones de cada pregunta">
-    public int getP1Califiacion() {
-        return p1Califiacion;
-    }
-
-    public void setP1Califiacion(int p1Califiacion) {
-        this.p1Califiacion = p1Califiacion;
-    }
-
-    public int getP2Califiacion() {
-        return p2Califiacion;
-    }
-
-    public void setP2Califiacion(int p2Califiacion) {
-        this.p2Califiacion = p2Califiacion;
-    }
-
-    public int getP3Califiacion() {
-        return p3Califiacion;
-    }
-
-    public void setP3Califiacion(int p3Califiacion) {
-        this.p3Califiacion = p3Califiacion;
-    }
-
-    public int getP4Califiacion() {
-        return p4Califiacion;
-    }
-
-    public void setP4Califiacion(int p4Califiacion) {
-        this.p4Califiacion = p4Califiacion;
-    }
-
-    public int getP5Califiacion() {
-        return p5Califiacion;
-    }
-
-    public void setP5Califiacion(int p5Califiacion) {
-        this.p5Califiacion = p5Califiacion;
-    }
-
-    public int getP6Califiacion() {
-        return p6Califiacion;
-    }
-
-    public void setP6Califiacion(int p6Califiacion) {
-        this.p6Califiacion = p6Califiacion;
-    }
-
-    public int getP7Califiacion() {
-        return p7Califiacion;
-    }
-
-    public void setP7Califiacion(int p7Califiacion) {
-        this.p7Califiacion = p7Califiacion;
-    }
-
-    public int getP8Califiacion() {
-        return p8Califiacion;
-    }
-
-    public void setP8Califiacion(int p8Califiacion) {
-        this.p8Califiacion = p8Califiacion;
-    }
-
-    public int getP9Califiacion() {
-        return p9Califiacion;
-    }
-
-    public void setP9Califiacion(int p9Califiacion) {
-        this.p9Califiacion = p9Califiacion;
-    }
-
-    public int getP10Califiacion() {
-        return p10Califiacion;
-    }
-
-    public void setP10Califiacion(int p10Califiacion) {
-        this.p10Califiacion = p10Califiacion;
-    }
-
-    public int getP11Califiacion() {
-        return p11Califiacion;
-    }
-
-    public void setP11Califiacion(int p11Califiacion) {
-        this.p11Califiacion = p11Califiacion;
-    }
-
-    public int getP12Califiacion() {
-        return p12Califiacion;
-    }
-
-    public void setP12Califiacion(int p12Califiacion) {
-        this.p12Califiacion = p12Califiacion;
-    }
-
-    public int getP13Califiacion() {
-        return p13Califiacion;
-    }
-
-    public void setP13Califiacion(int p13Califiacion) {
-        this.p13Califiacion = p13Califiacion;
-    }
-
-    public int getP14Califiacion() {
-        return p14Califiacion;
-    }
-
-    public void setP14Califiacion(int p14Califiacion) {
-        this.p14Califiacion = p14Califiacion;
-    }
-
-    public int getTotalCalifiaciones() {
-        return totalCalifiaciones;
-    }
-
-    public void setTotalCalifiaciones(int totalCalifiaciones) {
-        this.totalCalifiaciones = totalCalifiaciones;
-    }
-
-    // </editor-fold>
-    
 }

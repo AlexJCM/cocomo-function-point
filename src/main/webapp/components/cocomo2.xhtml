@@ -114,7 +114,7 @@
                                     <th scope="row">1. ¿El sistema requiere respaldo y recuperación confiables?</th>
                                     <td>
                                         <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons" >
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -122,7 +122,7 @@
                                     <th scope="row">2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?</th>
                                     <td>
                                         <h:selectOneRadio id="radio2" value="#{pf.p2Califiacion}" styleClass="toggle-radio-buttons" >
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -130,7 +130,7 @@
                                     <th scope="row">3. ¿Existen funciones de procesamiento distribuidas?</th>
                                     <td>
                                         <h:selectOneRadio id="radio3" value="#{pf.p3Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -138,7 +138,7 @@
                                     <th scope="row">4. ¿El desempeño es crucial?</th>
                                     <td>
                                         <h:selectOneRadio id="radio4" value="#{pf.p4Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -146,7 +146,7 @@
                                     <th scope="row">5. ¿El sistema correrá¡ en un entorno operativo existente enormemente utilizado?</th>
                                     <td>
                                         <h:selectOneRadio id="radio5" value="#{pf.p5Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -154,7 +154,7 @@
                                     <th scope="row">6. ¿El sistema requiere entrada de datos en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio6" value="#{pf.p6Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -162,7 +162,7 @@
                                     <th scope="row">7. ¿La entrada de datos en lí­nea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio7" value="#{pf.p7Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -170,7 +170,7 @@
                                     <th scope="row">8. ¿Los ALI se actualizan en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio8" value="#{pf.p8Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -178,7 +178,7 @@
                                     <th scope="row">9. ¿Las entradas, salidas, archivos o consultas son complejos?</th>
                                     <td>
                                         <h:selectOneRadio id="radio9" value="#{pf.p9Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -186,7 +186,7 @@
                                     <th scope="row">10. ¿El procesamiento interno es complejo?</th>
                                     <td>
                                         <h:selectOneRadio id="radio10" value="#{pf.p10Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -194,7 +194,7 @@
                                     <th scope="row">11. ¿El código se diseña para ser reutilizable?</th>
                                     <td>
                                         <h:selectOneRadio id="radio11" value="#{pf.p11Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -202,7 +202,7 @@
                                     <th scope="row">12. ¿La conversión y la instalación se incluyen en el diseño?</th>
                                     <td>
                                         <h:selectOneRadio id="radio12" value="#{pf.p12Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -210,7 +210,7 @@
                                     <th scope="row">13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio13" value="#{pf.p13Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -218,7 +218,7 @@
                                     <th scope="row">14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?</th>
                                     <td>
                                         <h:selectOneRadio id="radio14" value="#{pf.p14Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -263,7 +263,7 @@
                                 <tr>
                                     <th scope="row">
                                         <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.LC}">
-                                            <f:selectItems value="#{pf.listaLenguajes}" />
+                                            <f:selectItems value="#{util.listaLenguajes}" />
                                         </h:selectOneMenu>
                                     </th>
                                     <td><h:outputText id="idLC" value="#{pf.SLoC}" class="form-control"/></td>
@@ -287,11 +287,346 @@
             </div>
             <!--*****************************************************-->
            
-            <!--************** SECCION DE ANTHONY ********************-->
+            <!--**************FACTORES DE ESCALA CINCO********************-->
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 4:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Factores de Escala</th>
+                                    <th scope="col">Califiación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Precedentes (PREC)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select2" styleClass="form-control" value="#{pf.prec}">
+                                            <f:selectItem itemLabel="6.20 - Muy Bajo" itemValue="6.20"/>
+                                            <f:selectItem itemLabel="4.96 - Bajo" itemValue="4.96"/>
+                                            <f:selectItem itemLabel="3.72 - Normal" itemValue="3.72"/>
+                                            <f:selectItem itemLabel="2.48 - Alto" itemValue="2.48"/>
+                                            <f:selectItem itemLabel="1.24 - Muy Alto" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.00"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Flexibildad de Desarrollo(FLEX)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select3" styleClass="form-control" value="#{pf.flex}">
+                                            <f:selectItem itemLabel="5.07 - Muy Bajo" itemValue="5.07"/>
+                                            <f:selectItem itemLabel="4.05 - Bajo" itemValue="4.05"/>
+                                            <f:selectItem itemLabel="3.04 - Normal" itemValue="3.04"/>
+                                            <f:selectItem itemLabel="2.03 - Alto" itemValue="2.03"/>
+                                            <f:selectItem itemLabel="1.01 - Muy Alto" itemValue="1.01"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Resolución de Arquitectura/Riesgo (RESL)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select4" styleClass="form-control" value="#{pf.resl}">
+                                            <f:selectItem itemLabel="7.07 - Muy Bajo" itemValue="7.07"/>
+                                            <f:selectItem itemLabel="5.65 - Bajo" itemValue="5.65"/>
+                                            <f:selectItem itemLabel="4.24 - Normal" itemValue="4.24"/>
+                                            <f:selectItem itemLabel="2.83 - Alto" itemValue="2.83"/>
+                                            <f:selectItem itemLabel="1.41 - Muy Alto" itemValue="1.41"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Cohesion del equipo de trabajo (TEAM)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select5" styleClass="form-control" value="#{pf.team}">
+                                            <f:selectItem itemLabel="5.48 - Muy Bajo" itemValue="5.48"/>
+                                            <f:selectItem itemLabel="4.38 - Bajo" itemValue="4.38"/>
+                                            <f:selectItem itemLabel="3.29 - Normal" itemValue="3.29"/>
+                                            <f:selectItem itemLabel="2.19 - Alto" itemValue="2.19"/>
+                                            <f:selectItem itemLabel="1.10 - Muy Alto" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Madurez del Proceso (PMAT)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select6" styleClass="form-control" value="#{pf.pmat}">
+                                            <f:selectItem itemLabel="7.80 - Muy Bajo" itemValue="7.80"/>
+                                            <f:selectItem itemLabel="6.24 - Bajo" itemValue="6.24"/>
+                                            <f:selectItem itemLabel="4.68 - Normal" itemValue="4.68"/>
+                                            <f:selectItem itemLabel="3.12 - Alto" itemValue="3.12"/>
+                                            <f:selectItem itemLabel="1.56 - Muy Alto" itemValue="1.56"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Calificación Total:</th>
+                                    <td>
+                                        <h:outputText id="idsumFE" value="#{pf.sumFE}" class="form-control"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores de Escala" action="#{pf.actualizarFE5()}">
+                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
+                                                    select1
+                                                    select2 select3 select4 select5 select6"
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA 
+                                                    idLC
+                                                    idsumFE idFE"/>
+                                        </h:commandButton>
+                                    </th>
+                                    <td>
+                                        <h:outputText id="idFE" value="#{pf.feB}" class="form-control"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
             
             <!--*****************************************************-->
             
+            <!--**************FACTORES DE ESFUERZO COMPUESTO********************-->
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 5:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" colspan="2">Factores de Esfuerzo Compuesto</th>
+                                    <tr>
+                                        <th scope="col">Multiplicadores de Esfuerzo</th>
+                                        <th scope="col">Valoracion</th>
+                                    </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Atributos del producto</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Fiabilidad requerida del software (RELY)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select7" styleClass="form-control" value="#{pf.rely}">
+                                            <f:selectItem itemLabel="0.75 - Muy Bajo" itemValue="0.75"/>
+                                            <f:selectItem itemLabel="0.88 - Bajo" itemValue="0.88"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.40 - Muy Alto" itemValue="1.40"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tamanio de la base de datos (DATA)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select8" styleClass="form-control" value="#{pf.data}">
+                                            <f:selectItem itemLabel="0.94 - Bajo" itemValue="0.94"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.08 - Alto" itemValue="1.08"/>
+                                            <f:selectItem itemLabel="1.16 - Muy Alto" itemValue="1.16"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Complejidad del producto (CPLX)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select9" styleClass="form-control" value="#{pf.cplx}">
+                                            <f:selectItem itemLabel="0.70 - Muy Bajo" itemValue="0.70"/>
+                                            <f:selectItem itemLabel="0.85 - Bajo" itemValue="0.85"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                            <f:selectItem itemLabel="1.65 - Extra" itemValue="1.65"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Atributos de la computadora</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Restricciones del tiempo de ejecucion (TIME)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select10" styleClass="form-control" value="#{pf.time}">
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.11 - Alto" itemValue="1.11"/>
+                                            <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                            <f:selectItem itemLabel="1.66 - Extra" itemValue="1.66"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Restricciones del almacenamiento principal (STOR)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select11" styleClass="form-control" value="#{pf.stor}">
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.06 - Alto" itemValue="1.06"/>
+                                            <f:selectItem itemLabel="1.21 - Muy Alto" itemValue="1.21"/>
+                                            <f:selectItem itemLabel="1.56 - Extra" itemValue="1.56"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Inestabilidad de la maquina virtual (VIRT)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select12" styleClass="form-control" value="#{pf.virt}">
+                                            <f:selectItem itemLabel="0.87 - Bajo" itemValue="0.87"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tiempo de respuesta del computador (TURN)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select13" styleClass="form-control" value="#{pf.turn}">
+                                            <f:selectItem itemLabel="0.87 - Bajo" itemValue="0.87"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.07 - Alto" itemValue="1.07"/>
+                                            <f:selectItem itemLabel="1.15 - Muy Alto" itemValue="1.15"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Atributos del personal</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Capacidad del analista (ACAP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select14" styleClass="form-control" value="#{pf.acap}">
+                                            <f:selectItem itemLabel="1.46 - Muy Bajo" itemValue="1.46"/>
+                                            <f:selectItem itemLabel="1.19 - Bajo" itemValue="1.19"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.86 - Alto" itemValue="0.86"/>
+                                            <f:selectItem itemLabel="0.71 - Muy Alto" itemValue="0.71"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia en la aplicacion (AEXP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select15" styleClass="form-control" value="#{pf.aexp}">
+                                            <f:selectItem itemLabel="1.29 - Muy Bajo" itemValue="1.29"/>
+                                            <f:selectItem itemLabel="1.13 - Bajo" itemValue="1.13"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
+                                            <f:selectItem itemLabel="0.82 - Muy Alto" itemValue="0.82"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Capacidad de los programadores (PCAP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select16" styleClass="form-control" value="#{pf.pcap}">
+                                            <f:selectItem itemLabel="1.42 - Muy Bajo" itemValue="1.42"/>
+                                            <f:selectItem itemLabel="1.17 - Bajo" itemValue="1.17"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.86 - Alto" itemValue="0.86"/>
+                                            <f:selectItem itemLabel="0.70 - Muy Alto" itemValue="0.70"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia en S.O utilizado (VEXP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select17" styleClass="form-control" value="#{pf.vexp}">
+                                            <f:selectItem itemLabel="1.21 - Muy Bajo" itemValue="1.21"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.90 - Alto" itemValue="0.90"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia en el Lenguaje de Programacion (LEXP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select18" styleClass="form-control" value="#{pf.lexp}">
+                                            <f:selectItem itemLabel="1.14 - Muy Bajo" itemValue="1.14"/>
+                                            <f:selectItem itemLabel="1.07 - Bajo" itemValue="1.07"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.95 - Alto" itemValue="0.95"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Atributos del proyecto</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Uso de practicas de programacion modernas (MODP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select19" styleClass="form-control" value="#{pf.modp}">
+                                            <f:selectItem itemLabel="1.24 - Muy Bajo" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
+                                            <f:selectItem itemLabel="0.82 - Muy Alto" itemValue="0.82"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Uso de herramientas software (TOOL)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select20" styleClass="form-control" value="#{pf.tool}">
+                                            <f:selectItem itemLabel="1.24 - Muy Bajo" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
+                                            <f:selectItem itemLabel="0.83 - Muy Alto" itemValue="0.83"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Restricciones en la duracion del proyecto (SCED)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select21" styleClass="form-control" value="#{pf.sced}">
+                                            <f:selectItem itemLabel="1.23 - Muy Bajo" itemValue="1.23"/>
+                                            <f:selectItem itemLabel="1.08 - Bajo" itemValue="1.08"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.04 - Alto" itemValue="1.04"/>
+                                            <f:selectItem itemLabel="1.10 - Muy Alto" itemValue="1.10"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores Multiplicativo" action="#{pf.actualizarFEC()}" >
+                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
+                                                    select1
+                                                    select2 select3 select4 select5 select6
+                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21"
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA 
+                                                    idLC
+                                                    idsumFE idFE
+                                                    idFEC"/>
+                                        </h:commandButton>
+                                    </th>
+                                    <td>
+                                        <h:outputText id="idFEC" value="#{pf.fm}" class="form-control"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
             
+            <!--*****************************************************-->
             
             <!--**************** SECCION DE DIEGO ********************-->
             
