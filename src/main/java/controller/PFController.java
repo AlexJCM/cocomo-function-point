@@ -164,6 +164,9 @@ public class PFController {
     @Getter
     @Setter
     private String LC = "0";
+     @Getter
+    @Setter
+    private Integer LCM = 0;
     @Getter
     @Setter
     private double sLoC = 0.0;
@@ -176,6 +179,12 @@ public class PFController {
         actualizarPFNA();
         actualizarPFA();
         sLoC=util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(LC));
+    }
+      //Realizara la multiplicacion y actualizacion del las lineas de codigo que se ingreso de manera manual con el PF
+        public void actualizarLCManual() {
+        actualizarPFNA();
+        actualizarPFA();
+        sLoC=util.redondear2Decimales(pfModel.getPFA() * LCM);
     }
     
 // PAS0 4 modelo basico    
