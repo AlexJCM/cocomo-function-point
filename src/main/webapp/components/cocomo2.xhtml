@@ -4,8 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<!--    COCOMO 2 BASICO-->
     <ui:composition>
+        <!--        COCOMO 2 COMPLETO-->
         <h:form id="PF">
             <!--*********************PF NO AJUSTADO******************-->
             <br></br>
@@ -286,79 +286,20 @@
                 </div>          
             </div>
             <!--*****************************************************-->
-
-            <!--***************Esfuerzo y Duración*******************-->
-            <br></br>
-            <div class="card">
-                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 4:</h4>
-                <div class="card-body">
-                    <div id="table" class="table-editable">
-                        <table class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr class="text-center">
-                                    <th scope="col" >Proyecto de Software</th>                               
-                                    <th scope="col" >a<sub>b</sub></th>
-                                    <th scope="col" >b<sub>b</sub></th>
-                                    <th scope="col" >c<sub>b</sub></th>
-                                    <th scope="col" >d<sub>b</sub></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Organico</th>
-                                    <td><h:outputText id="input16" value="#{pf.spOab}" class="form-control"/></td>
-                                    <td><h:outputText id="input17" value="#{pf.spObb}" class="form-control"/></td>
-                                    <td><h:outputText id="input18" value="#{pf.spOcb}" class="form-control"/></td>
-                                    <td><h:outputText id="input19" value="#{pf.spOdb}" class="form-control"/></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Semi-Embebido</th>
-                                    <td><h:outputText id="input20" value="#{pf.spSab}" class="form-control"/></td>
-                                    <td><h:outputText id="input21" value="#{pf.spSbb}" class="form-control"/></td>
-                                    <td><h:outputText id="input22" value="#{pf.spScb}" class="form-control"/></td>
-                                    <td><h:outputText id="input23" value="#{pf.spSdb}" class="form-control"/></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Incrustado</th>
-                                    <td><h:outputText id="input24" value="#{pf.spEab}" class="form-control"/></td>
-                                    <td><h:outputText id="input25" value="#{pf.spEbb}" class="form-control"/></td>
-                                    <td><h:outputText id="input26" value="#{pf.spEcb}" class="form-control"/></td>
-                                    <td><h:outputText id="input27" value="#{pf.spEdb}" class="form-control"/></td>
-                                </tr>
-                                 <tr>
-                                    <th scope="row">Tipo de Proyecto</th>
-                                    <td colspan="4">
-                                        <h:selectOneMenu id="select2" styleClass="form-control" value="#{pf.SP}">
-                                            <f:selectItem itemValue="0" itemLabel="Organico" />
-                                            <f:selectItem itemValue="1" itemLabel="Semi-Embebido" />
-                                            <f:selectItem itemValue="2" itemLabel="Incrustado" />
-                                        </h:selectOneMenu>
-                                    </td>
-                                 </tr>
-                            </tbody>
-                        </table>  
-                        <center>
-                            <p class="lead"><strong>Esfuerzo</strong> a<sub>b</sub>(KLOC)^b<sub>b</sub></p> 
-                            <h:outputText id="idE" value="#{pf.effort}" class="form-control" />
-                            <br></br>
-                            <p class="lead"><strong>Duración</strong> c<sub>b</sub>(Esfuerzo)^d<sub>b</sub></p>
-                            <h:outputText id="idD" value="#{pf.duration}" class="form-control"/>
-                        </center>
-                        <br></br>
-                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Proyecto de Software" action="#{pf.actualizarSP()}">
-                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                    select1
-                                    input16 input17 input18 input19 input20 input21 input22 input23 input24 input25 input26 input27
-                                    select2"
-                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                    idTC idPFA 
-                                    idLC
-                                    idE idD"/>
-                        </h:commandButton>
-                    </div>
-                </div>          
-            </div>
+           
+            <!--************** SECCION DE ANTHONY ********************-->
+            
+            <!--*****************************************************-->
+            
+            
+            
+            <!--**************** SECCION DE DIEGO ********************-->
+            
+            <!--*****************************************************-->
+            
+            
+            <!--**************** SECCION ALEX ********************-->
+            
             <!--*****************************************************-->
         </h:form>
     </ui:composition>
