@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition>
+        <!--        COCOMO 2 COMPLETO-->
+        <h:form id="PF1">
+            <!--*********************PF NO AJUSTADO******************-->
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 01:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" width="280">Parámetros de medición</th>                               
+                                    <th scope="col" width="60" colspan="2">Simple</th>
+                                    <th scope="col" width="60" colspan="2">Promedio</th>
+                                    <th scope="col" width="60" colspan="2">Complejo</th>
+                                    <th scope="col" width="15"></th>
+                                    <th scope="col" width="50" colspan="2">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Cantidad de entradas del usuario</th>
+                                    <td><h:inputText id="input1" class="form-control" value="#{pf.eeSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText> </td>                                
+                                    <td>x&nbsp;3&nbsp;+</td>
+                                    <td><h:inputText id="input2" class="form-control" value="#{pf.eePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                               
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input3" class="form-control" value="#{pf.eeComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                              
+                                    <td>x&nbsp;6</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalEE" class="form-control" value="#{pf.subTotalEE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> Número de salidas de usuario</th>
+                                    <td><h:inputText id="input4" class="form-control" value="#{pf.seSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                                
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input5" class="form-control" value="#{pf.sePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                               
+                                    <td>x&nbsp;5&nbsp;+</td>
+                                    <td><h:inputText id="input6" class="form-control" value="#{pf.seComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                              
+                                    <td>x&nbsp;7</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalSE" class="form-control" value="#{pf.subTotalSE}"/></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de consultas de usuarios</th>
+                                    <td><h:inputText id="input7" class="form-control" value="#{pf.ceSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                                
+                                    <td>x&nbsp;3&nbsp;+</td>
+                                    <td><h:inputText id="input8" class="form-control" value="#{pf.cePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                               
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input9" class="form-control" value="#{pf.ceComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                              
+                                    <td>x&nbsp;6</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalCE" class="form-control" value="#{pf.subTotalCE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de archivos</th>
+                                    <td><h:inputText id="input10" class="form-control" value="#{pf.aliSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                                
+                                    <td>x&nbsp;7&nbsp;+</td>
+                                    <td><h:inputText id="input11" class="form-control" value="#{pf.aliPromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                               
+                                    <td>x&nbsp;10&nbsp;+</td>
+                                    <td><h:inputText id="input12" class="form-control" value="#{pf.aliComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                              
+                                    <td>x&nbsp;15</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalALI" class="form-control" value="#{pf.subTotalALI}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de interfaces externas.</th>
+                                    <td><h:inputText id="input13" class="form-control" value="#{pf.aieSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                                
+                                    <td>x&nbsp;5&nbsp;+</td>
+                                    <td><h:inputText id="input14" class="form-control" value="#{pf.aiePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                               
+                                    <td>x&nbsp;7&nbsp;+</td>
+                                    <td><h:inputText id="input15" class="form-control" value="#{pf.aieComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarPFNA()}" render="idPFNA" /></h:inputText></td>                              
+                                    <td>x&nbsp;10</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalAIE" class="form-control" value="#{pf.subTotalAIE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="8" class="text-right">Valor Total No Ajustado:</th>
+                                    <td><h:outputText id="idPFNA" class="form-control" value="#{pf.PFNA}"/></td>
+                                </tr>
+                            </tbody>
+                        </table>   
+
+<!--                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF No ajustado" action="#{pf.actualizarPFNA()}" >
+                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15"
+                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA"/>
+                        </h:commandButton>-->
+
+                    </div>
+                </div>          
+            </div>
+            <!--*****************************************************-->            
+        </h:form>
+    </ui:composition>
+</html>

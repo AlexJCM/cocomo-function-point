@@ -8,7 +8,7 @@
     <ui:composition template="/WEB-INF/include/template.xhtml">
 
         <ui:define name="head">
-            <title>JSF Application</title>
+            <title>Manual de usuario</title>
             <!-- Custom files CSS for this template -->
             <h:outputStylesheet name="css/starter-template.css"/>  
             <!-- Custom files JS for this template -->
@@ -21,20 +21,15 @@
 
             <div class="container">
                 <div class="starter-template">
-                    <h1>COCOMO II : Puntos de función.</h1>
-                    <p class="lead">La presente aplicación web <br/> realiza el cálculo de los puntos de función, 
-                    <br/>para ello hay que llenar los datos solicitados en los pasos 1 y 2.</p>
+                    <h1>MANUAL DE USUARIO.</h1>
+                    <p class="lead">La presente guía <br/> detalla los pasos básicos 
+                        <br/>y el significado de los distintos componentes  y valores de la aplicacion web Cocomo2-PF</p>
                 </div>    
-                
-                <!--  <ui:include src="/components/cocomo2.xhtml"/> -->
-                <ui:include src="/components/step1.xhtml"/>
-                <ui:include src="/components/step2.xhtml"/>
-                <ui:include src="/components/step3.xhtml"/>
-                <ui:include src="/components/step4.xhtml"/>
-                <ui:include src="/components/step5.xhtml"/>
-                <ui:include src="/components/step6.xhtml"/>                
-            </div>
-            
+
+                <!-- SECION: Manual de usuario-->                
+               <embed src="resources/files/manual.pdf" type="application/pdf" width="100%" height="600px" />
+            </div>                    
+
             <!-- SECTION: Footer -->
             <ui:include src="/components/footer.xhtml"/>
         </ui:define>

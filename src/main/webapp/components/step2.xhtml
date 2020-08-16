@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition>
+        <!--        COCOMO 2 COMPLETO-->
+        <h:form id="PF2">           
+
+            <!--*********************PF AJUSTADO*********************-->
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 02:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" >Preguntas</th>                               
+                                    <th scope="col" >Calificacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1. ¿El sistema requiere respaldo y recuperación confiables?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons" >
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio2" value="#{pf.p2Califiacion}" styleClass="toggle-radio-buttons" >
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">3. ¿Existen funciones de procesamiento distribuidas?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio3" value="#{pf.p3Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">4. ¿El desempeño es crucial?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio4" value="#{pf.p4Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">5. ¿El sistema correrá¡ en un entorno operativo existente enormemente utilizado?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio5" value="#{pf.p5Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <th scope="row">6. ¿El sistema requiere entrada de datos en lí­nea?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio6" value="#{pf.p6Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">7. ¿La entrada de datos en lí­nea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio7" value="#{pf.p7Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">8. ¿Los ALI se actualizan en lí­nea?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio8" value="#{pf.p8Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">9. ¿Las entradas, salidas, archivos o consultas son complejos?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio9" value="#{pf.p9Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <th scope="row">10. ¿El procesamiento interno es complejo?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio10" value="#{pf.p10Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">11. ¿El código se diseña para ser reutilizable?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio11" value="#{pf.p11Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">12. ¿La conversión y la instalación se incluyen en el diseño?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio12" value="#{pf.p12Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio13" value="#{pf.p13Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio14" value="#{pf.p14Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.actualizarPFA()}" render="idTC idPFA" />
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>
+                                <tr>                                    
+                                    <th scope="row" class="text-right">Suma Total Calificaciónes:</th>
+                                    <td><h:outputText id="idTC"  value="#{pf.totalCalifiaciones}" class="form-control"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Punto de función Ajustado:</th>
+                                    <td><h:outputText id="idPFA" value="#{pf.PFA}" class="form-control"/></td>
+            <!--                    <th scope="row">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF Ajustado" action="#{pf.actualizarPFA()}">
+                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14"
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA "/>
+                                        </h:commandButton>
+                                    </th>                 -->
+                                </tr>
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>          
+            </div>
+            <!--*****************************************************-->
+
+        </h:form>
+    </ui:composition>
+</html>
