@@ -193,17 +193,12 @@ public class PFController {
     @Setter
     private double tot = 0;
 
-
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarLC() {
         actualizarPFNA();
         actualizarPFA();
         sLoC = util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(LC));
     }
-
-
-     
-
     //Realizara la multiplicacion y actualizacion del las lineas de codigo que se ingreso de manera manual con el PF
 
     public void actualizarLCManual() {
@@ -388,8 +383,8 @@ public class PFController {
         actualizarLC();
         factorMultiplicativo();
     }
-
-    /**
+    
+      /**
      * Método para general PDF
      * @throws IOException 
      */

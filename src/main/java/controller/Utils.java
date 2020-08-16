@@ -20,13 +20,10 @@ import java.nio.file.Paths;
 /**
  * Esta clase sera la encargada de realizar todas las operaciones respectivas al
  * calculo del PF y hacer que estos cambios se reflejen en el modelo.
- *
- * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre,
- * en este caso "pf", a traves del cual se vinculara con los componentes de las
- * vistas JSF. Es decir las páginas JSF mediante dichas etiquetas pueden accder
- * al ManagedBean (ya sea a sus propiedades o metodos)
- * @RequestScoped.- Indica que las instancias de la clase seran creadas y
- * gestionadas por el framework JSF.
+ * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a traves
+ * del cual se vinculara con los componentes de las vistas JSF. Es decir las páginas JSF mediante dichas
+ * etiquetas pueden accder al ManagedBean (ya sea a sus propiedades o metodos)
+ * @RequestScoped.- Indica que las instancias de la clase seran creadas y gestionadas por el framework JSF.
  */
 @ManagedBean(name = "util")
 @ViewScoped //@RequestScoped
@@ -38,6 +35,7 @@ public class Utils {
     @Getter
     @Setter
     private ArrayList<String> listaLenguajes;
+
 
     public Utils() {
         listaCalificaciones = new ArrayList<>();
@@ -89,7 +87,7 @@ public class Utils {
     }
 
     //Redondear a 2 decimales en double
-    public double redondear2Decimales(double adjustment) {
+     public double redondear2Decimales(double adjustment) {
         adjustment = Math.round(adjustment * 100);
         adjustment = adjustment / 100;
         return adjustment;
@@ -101,6 +99,7 @@ public class Utils {
         double vLC = Double.valueOf(parts[1]);
         return vLC;
     }
+
 
     //******************* Funcionalidad para generar archivo PDF*************  
     /**
@@ -143,7 +142,6 @@ public class Utils {
         HtmlConverter.convertToPdf(HTML, new FileOutputStream("my-second-pdf.pdf"));
         System.out.println("PDF created :)!");
     }
-
 //*********************************************************************** 
 
 }
