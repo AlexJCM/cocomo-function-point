@@ -658,33 +658,40 @@
                             <thead class="thead-dark">
                                 <tr class="text-center">
                                     <!--titulos-->
+                                    <th scope="col" width="1">Sueldo</th>
                                     <th scope="col">Resultados</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <th scope="row">
+                                        Ingrese sueldo mensual <h:inputText id="idSueld"  class="form-control" value="#{pf.sueld}"> </h:inputText>
+                                    </th>
                                     <th scope="row"> 
+
                                         Esfuerzo <h:outputText id="idEsf" value="#{pf.esf}" class="form-control"/>
                                         Duración <h:outputText id="idDur" value="#{pf.dur}" class="form-control"/>
-                                        Personas <h:outputText id="idCh" value="#{pf.ch}" class="form-control"/>
+                                        Num. personas <h:outputText id="idCh" value="#{pf.ch}" class="form-control"/>                                  
+                                        Costo total <h:outputText id="idTot" value="#{pf.tot}" class="form-control"/>
                                     </th>
-                            
+
                                 </tr>
                                 <tr>
-
+                                    
                                     <th scope="row">
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Resultados Finales" action="#{pf.generarResult()}" >
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
                                                     select1 LCm
                                                     select2 select3 select4 select5 select6
-                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21"
+                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21
+                                                    idSueld"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
                                                     idTC idPFA 
                                                     idLC
                                                     idsumFE idFE
                                                     idFEC
-                                                    idEsf idDur idCh"/>
+                                                    idEsf idDur idCh idTot"/>
                                         </h:commandButton>
                                     </th>
                                 </tr>
@@ -695,7 +702,7 @@
             </div>
             <!--*****************************************************-->
 
-
+            
             <!--**************** SECCION ALEX ********************-->
 
             <!--*****************************************************-->

@@ -11,10 +11,13 @@ import lombok.Setter;
 /**
  * Esta clase sera la encargada de realizar todas las operaciones respectivas al
  * calculo del PF y hacer que estos cambios se reflejen en el modelo.
- * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a traves
- * del cual se vinculara con los componentes de las vistas JSF. Es decir las páginas JSF mediante dichas
- * etiquetas pueden accder al ManagedBean (ya sea a sus propiedades o metodos)
- * @RequestScoped.- Indica que las instancias de la clase seran creadas y gestionadas por el framework JSF.
+ *
+ * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre,
+ * en este caso "pf", a traves del cual se vinculara con los componentes de las
+ * vistas JSF. Es decir las páginas JSF mediante dichas etiquetas pueden accder
+ * al ManagedBean (ya sea a sus propiedades o metodos)
+ * @RequestScoped.- Indica que las instancias de la clase seran creadas y
+ * gestionadas por el framework JSF.
  */
 @ManagedBean(name = "pf")
 @ViewScoped //@RequestScoped
@@ -25,10 +28,10 @@ public class PFController {
     private Utils util;
 
     public PFController() {
-        pfModel = new PFModel();    
+        pfModel = new PFModel();
         util = new Utils();
     }
-    
+
     public double getFactorAjuste() {
         return pfModel.getFactorDeAjuste();
     }
@@ -44,7 +47,7 @@ public class PFController {
     public int getPFNA() {
         return pfModel.getPFNA();
     }
-    
+
 // PAS0 1
     // Valores por defecto de cada nivel comlejiddad de los factores de ponderacion
     @Getter
@@ -77,13 +80,13 @@ public class PFController {
     @Getter
     @Setter
     private int subTotalAIE = 0; //uma de todos los Archivos de Interfaz Externos
-    
+
     //Realizará la suma final de todos los puntos funcion No Ajustados parciales y los reflejará en el modelo
     public void actualizarPFNA() {
         calcularSubtotalesDominios();
         pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
     }
-    
+
     //Calcular subtotales de Dominios
     public void calcularSubtotalesDominios() {
         subTotalEE = eeSimple * 3 + eePromedio * 4 + eeComplejo * 6;
@@ -92,7 +95,7 @@ public class PFController {
         subTotalALI = aliSimple * 7 + aliPromedio * 10 + aliComplejo * 15;
         subTotalAIE = aieSimple * 5 + aiePromedio * 7 + aieComplejo * 10;
     }
-    
+
 // PAS0 2
     //Valores por defecto de calificacion de preguntas
     @Getter
@@ -140,17 +143,17 @@ public class PFController {
     @Getter
     @Setter
     private int totalCalifiaciones = 0;
-    
+
     //Suma de las calificaciones 
     public void calcularSumaCalifiaciones() {
         totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
     }
-    
+
     //Realizará el ajuste de los PF segun la ecuación predefinidae
     public void ajustarPuntoDeFuncion() {
         pfModel.setPFA(util.redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
     }
-    
+
     //Realizara la suma final de todas las calificaciones y ajustar el PF
     public void actualizarPFA() {
         actualizarPFNA();
@@ -164,7 +167,7 @@ public class PFController {
     @Getter
     @Setter
     private String LC = "0";
-     @Getter
+    @Getter
     @Setter
     private Integer LCM = 0;
     @Getter
@@ -182,42 +185,50 @@ public class PFController {
     @Getter
     @Setter
     private Integer ch = 0;
-    
+    @Getter
+    @Setter
+    private double sueld = 0;
+    @Getter
+    @Setter
+    private double tot = 0;
+
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarLC() {
         actualizarPFNA();
         actualizarPFA();
-        sLoC=util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(LC));
+        sLoC = util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(LC));
     }
-      //Realizara la multiplicacion y actualizacion del las lineas de codigo que se ingreso de manera manual con el PF
-        public void actualizarLCManual() {
+    //Realizara la multiplicacion y actualizacion del las lineas de codigo que se ingreso de manera manual con el PF
+
+    public void actualizarLCManual() {
         actualizarPFNA();
         actualizarPFA();
-        sLoC=util.redondear2Decimales(pfModel.getPFA() * LCM);
+        sLoC = util.redondear2Decimales(pfModel.getPFA() * LCM);
     }
-         //calculamos el esfuerzo, duracion, cantidad personas
-        public void generarResult() {
+    //calculamos el esfuerzo, duracion, cantidad personas, imprevistos, sueldo y costo total
+
+    public void generarResult() {
         slocTOkloc();
-        esf=util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm );
-         double expDur = 0.28+0.002*sumFE;
-        dur= util.redondear2Decimales(3.67 * Math.pow(esf, expDur) );
-        ch = (int) Math.round(util.redondear2Decimales(esf/dur));
-        
-        
+        esf = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
+        double expDur = 0.28 + 0.002 * sumFE;
+        dur = util.redondear2Decimales(3.67 * Math.pow(esf, expDur));
+        ch = (int) Math.round(util.redondear2Decimales(esf / dur));
+        double subTot = sueld * (dur * 1.25) * ch;
+        tot = util.redondear2Decimales(subTot * 1.10);
     }
-                 
+
     
 // PAS0 4 modelo basico    
     //Variables para calcular esfuerzo y duracion
     @Getter
     @Setter
-    private double spOab = 2.4,spObb = 1.05,spOcb = 2.5,spOdb = 0.38;
+    private double spOab = 2.4, spObb = 1.05, spOcb = 2.5, spOdb = 0.38;
     @Getter
     @Setter
-    private double spSab = 3.0,spSbb = 1.12,spScb = 2.5,spSdb = 0.35;
+    private double spSab = 3.0, spSbb = 1.12, spScb = 2.5, spSdb = 0.35;
     @Getter
     @Setter
-    private double spEab = 3.6,spEbb = 1.20,spEcb = 2.5,spEdb = 0.32;
+    private double spEab = 3.6, spEbb = 1.20, spEcb = 2.5, spEdb = 0.32;
     @Getter
     @Setter
     private int SP = 0;
@@ -227,30 +238,30 @@ public class PFController {
     @Getter
     @Setter
     private double duration = 0.0;
-    
+
     //Conversion de SLOC a KLOC
-    public void slocTOkloc(){
-        kLoC=(sLoC/1000);
+    public void slocTOkloc() {
+        kLoC = (sLoC / 1000);
     }
-    
+
     //Calcula el esfuerzo y la duracion del proyecto de software
-    public void calcularED(){
-        switch(SP){
+    public void calcularED() {
+        switch (SP) {
             case 0:
-                effort=(util.redondear2Decimales(spOab*Math.pow(kLoC, spObb)));
-                duration=(util.redondear2Decimales(spOcb*Math.pow(effort, spOdb)));
+                effort = (util.redondear2Decimales(spOab * Math.pow(kLoC, spObb)));
+                duration = (util.redondear2Decimales(spOcb * Math.pow(effort, spOdb)));
                 break;
             case 1:
-                effort=(util.redondear2Decimales(spSab*Math.pow(kLoC, spSbb)));
-                duration=(util.redondear2Decimales(spScb*Math.pow(effort, spSdb)));
+                effort = (util.redondear2Decimales(spSab * Math.pow(kLoC, spSbb)));
+                duration = (util.redondear2Decimales(spScb * Math.pow(effort, spSdb)));
                 break;
             case 2:
-                effort=(util.redondear2Decimales(spEab*Math.pow(kLoC, spEbb)));
-                duration=(util.redondear2Decimales(spEcb*Math.pow(effort, spEdb)));
+                effort = (util.redondear2Decimales(spEab * Math.pow(kLoC, spEbb)));
+                duration = (util.redondear2Decimales(spEcb * Math.pow(effort, spEdb)));
                 break;
         }
     }
-    
+
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarSP() {
         actualizarPFNA();
@@ -259,7 +270,7 @@ public class PFController {
         slocTOkloc();
         calcularED();
     }
-    
+
 // PAS0 4 modelo completo
     @Getter
     @Setter
@@ -279,17 +290,17 @@ public class PFController {
     @Getter
     @Setter
     private double sumFE = 0.0;
-    
+
     //Suma de las calificaciones Factores de escala
     public void sumaCalifiacionesFE() {
-       sumFE=(util.redondear2Decimales(prec+flex+resl+team+pmat));
+        sumFE = (util.redondear2Decimales(prec + flex + resl + team + pmat));
     }
-    
+
     //Realizara el calculo de el factor de escala 
-    public void factorEscala(){
-        feB=(0.91+0.01*sumFE);
+    public void factorEscala() {
+        feB = (0.91 + 0.01 * sumFE);
     }
-    
+
     //Realizara la multiplicacion y actualizacion del factor de escala 5
     public void actualizarFE5() {
         actualizarPFNA();
@@ -358,11 +369,11 @@ public class PFController {
     @Setter
     private double fm = 1.0;
 
-     //multiplicacion de las calificaciones de factores de esfuerzo compuesto
+    //multiplicacion de las calificaciones de factores de esfuerzo compuesto
     public void factorMultiplicativo() {
-       fm=(util.redondear2Decimales(rely*data*cplx*docu*ruse*time*stor*virt*turn*acap*aexp*pcap*vexp*lexp*modp*tool*sced));
+        fm = (util.redondear2Decimales(rely * data * cplx * docu * ruse * time * stor * virt * turn * acap * aexp * pcap * vexp * lexp * modp * tool * sced));
     }
-    
+
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarFEC() {
         actualizarFE5();
