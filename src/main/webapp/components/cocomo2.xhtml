@@ -280,7 +280,7 @@
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código" action="#{pf.actualizarLC()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1"
+                                                    select1 LCm"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
                                                     idTC idPFA 
                                                     idLC"/>
@@ -292,7 +292,7 @@
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código Manual" action="#{pf.actualizarLCManual()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    LCm"
+                                                    select1 LCm"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
                                                     idTC idPFA 
                                                     idLC"/>
@@ -390,13 +390,14 @@
                                     <td>
                                         <h:outputText id="idsumFE" value="#{pf.sumFE}" class="form-control"/>
                                     </td>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores de Escala" action="#{pf.actualizarFE5()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1
+                                                    select1 LCm
                                                     select2 select3 select4 select5 select6"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
                                                     idTC idPFA 
@@ -625,7 +626,7 @@
                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores Multiplicativo" action="#{pf.actualizarFEC()}" >
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1
+                                                    select1 LCm
                                                     select2 select3 select4 select5 select6
                                                     select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
@@ -648,7 +649,50 @@
             <!--*****************************************************-->
 
             <!--**************** SECCION DE DIEGO ********************-->
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 6:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <!--titulos-->
+                                    <th scope="col">Resultados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"> 
+                                        Esfuerzo <h:outputText id="idEsf" value="#{pf.esf}" class="form-control"/>
+                                        Duración <h:outputText id="idDur" value="#{pf.dur}" class="form-control"/>
+                                        Personas <h:outputText id="idCh" value="#{pf.ch}" class="form-control"/>
+                                    </th>
+                            
+                                </tr>
+                                <tr>
 
+                                    <th scope="row">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Resultados Finales" action="#{pf.generarResult()}" >
+                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
+                                                    select1 LCm
+                                                    select2 select3 select4 select5 select6
+                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21"
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA 
+                                                    idLC
+                                                    idsumFE idFE
+                                                    idFEC
+                                                    idEsf idDur idCh"/>
+                                        </h:commandButton>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
             <!--*****************************************************-->
 
 

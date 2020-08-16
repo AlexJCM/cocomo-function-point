@@ -173,6 +173,15 @@ public class PFController {
     @Getter
     @Setter
     private double kLoC = 0.0;
+    @Getter
+    @Setter
+    private double esf = 0.0;
+    @Getter
+    @Setter
+    private double dur = 0.0;
+    @Getter
+    @Setter
+    private Integer ch = 0;
     
     //Realizara la multiplicacion y actualizacion del las lineas de codigo con el PF
     public void actualizarLC() {
@@ -186,6 +195,17 @@ public class PFController {
         actualizarPFA();
         sLoC=util.redondear2Decimales(pfModel.getPFA() * LCM);
     }
+         //calculamos el esfuerzo, duracion, cantidad personas
+        public void generarResult() {
+        slocTOkloc();
+        esf=util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm );
+         double expDur = 0.28+0.002*sumFE;
+        dur= util.redondear2Decimales(3.67 * Math.pow(esf, expDur) );
+        ch = (int) Math.round(util.redondear2Decimales(esf/dur));
+        
+        
+    }
+                 
     
 // PAS0 4 modelo basico    
     //Variables para calcular esfuerzo y duracion
