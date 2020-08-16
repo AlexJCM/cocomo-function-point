@@ -114,7 +114,7 @@
                                     <th scope="row">1. ¿El sistema requiere respaldo y recuperación confiables?</th>
                                     <td>
                                         <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons" >
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -122,7 +122,7 @@
                                     <th scope="row">2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?</th>
                                     <td>
                                         <h:selectOneRadio id="radio2" value="#{pf.p2Califiacion}" styleClass="toggle-radio-buttons" >
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -130,7 +130,7 @@
                                     <th scope="row">3. ¿Existen funciones de procesamiento distribuidas?</th>
                                     <td>
                                         <h:selectOneRadio id="radio3" value="#{pf.p3Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -138,7 +138,7 @@
                                     <th scope="row">4. ¿El desempeño es crucial?</th>
                                     <td>
                                         <h:selectOneRadio id="radio4" value="#{pf.p4Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -146,7 +146,7 @@
                                     <th scope="row">5. ¿El sistema correrá¡ en un entorno operativo existente enormemente utilizado?</th>
                                     <td>
                                         <h:selectOneRadio id="radio5" value="#{pf.p5Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -154,7 +154,7 @@
                                     <th scope="row">6. ¿El sistema requiere entrada de datos en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio6" value="#{pf.p6Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -162,7 +162,7 @@
                                     <th scope="row">7. ¿La entrada de datos en lí­nea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio7" value="#{pf.p7Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -170,7 +170,7 @@
                                     <th scope="row">8. ¿Los ALI se actualizan en lí­nea?</th>
                                     <td>
                                         <h:selectOneRadio id="radio8" value="#{pf.p8Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -178,7 +178,7 @@
                                     <th scope="row">9. ¿Las entradas, salidas, archivos o consultas son complejos?</th>
                                     <td>
                                         <h:selectOneRadio id="radio9" value="#{pf.p9Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -186,7 +186,7 @@
                                     <th scope="row">10. ¿El procesamiento interno es complejo?</th>
                                     <td>
                                         <h:selectOneRadio id="radio10" value="#{pf.p10Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -194,7 +194,7 @@
                                     <th scope="row">11. ¿El código se diseña para ser reutilizable?</th>
                                     <td>
                                         <h:selectOneRadio id="radio11" value="#{pf.p11Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -202,7 +202,7 @@
                                     <th scope="row">12. ¿La conversión y la instalación se incluyen en el diseño?</th>
                                     <td>
                                         <h:selectOneRadio id="radio12" value="#{pf.p12Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -210,7 +210,7 @@
                                     <th scope="row">13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?</th>
                                     <td>
                                         <h:selectOneRadio id="radio13" value="#{pf.p13Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -218,7 +218,7 @@
                                     <th scope="row">14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?</th>
                                     <td>
                                         <h:selectOneRadio id="radio14" value="#{pf.p14Califiacion}" styleClass="toggle-radio-buttons">
-                                            <f:selectItems value="#{pf.listaCalificaciones}"/>
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -263,7 +263,7 @@
                                 <tr>
                                     <th scope="row">
                                         <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.LC}">
-                                            <f:selectItems value="#{pf.listaLenguajes}" />
+                                            <f:selectItems value="#{util.listaLenguajes}" />
                                         </h:selectOneMenu>
                                     </th>
                                     <td><h:outputText id="idLC" value="#{pf.SLoC}" class="form-control"/></td>
