@@ -3,14 +3,20 @@ package model;
 import lombok.Getter;
 import lombok.Setter;
 
-/*
-Esta clase encapsulará los datos principales del modelo: 
-    -Punto Funcion No-Ajustados
-    -Punto Funcion Ajustados
-    -Factor de Ajuste
-    -Esfuerzo ???
-    -Duracion ???
-Asi como los distintos metodos para interactuar con los mismos.
+/**
+ * Esta clase encapsulará los datos principales del modelo: 
+ *  Punto Funcion No-Ajustados
+ *  Punto Funcion Ajustados
+ *  Factor de Ajuste
+ * 
+ * @author: Alex Chamba, Diego Merino, Anthony Ortega
+ * 
+ * @version: 16/08/2020/PF
+ * 
+ * @Getter.- Genera todos los getters de los respectivos atributos de la clase
+ * 
+ * @Setter.- Genera todos los setters de los respectivos atributos de la clase
+ * 
  */
 @Getter
 @Setter

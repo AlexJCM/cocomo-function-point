@@ -6,61 +6,38 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition>
-        <!--        COCOMO 2 COMPLETO-->
         <h:form id="PF3">           
-            <!--**********************LOC****************************-->
             <br></br>
             <div class="card">
-                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 3:</h4>
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 03:</h4>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr class="text-center">
-                                    <!--titulos-->
                                     <th scope="col">Líneas de Código</th>
-                                    <th scope="col" width="50" colspan="2">Total</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col" width="150" >Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        <!--Muestra lista de lenguajes y selecciona uno guardandolo en "pf.LC" -->
-                                        Seleccione lineas establecidas<h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.LC}">
+                                        Seleccione Lenguaje de Programación
+                                        <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.strLC}">
                                             <f:selectItems value="#{util.listaLenguajes}" />
-                                            
+                                            <f:ajax listener="#{pf.actualizarLC()}" render="idLC ideLC" />
                                         </h:selectOneMenu>
-                                        <!--Mediante un input ingresa el dato numerico y lo guarda en "pf.PCM" -->
-                                        Ingrese lineas manualmente<h:inputText id="LCm" class="form-control" value="#{pf.LCM}" > </h:inputText> 
-
                                     </th>
-                                    <!-- Muestra el valor almacenado en "pf.SLoc"-->
-                                    <th scope="row"> Sloc <h:outputText id="idLC" value="#{pf.SLoC}" class="form-control"/></th>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código" action="#{pf.actualizarLC()}">
-                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1 LCm"
-                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                                    idTC idPFA 
-                                                    idLC"/>
-                                        </h:commandButton>
-
+                                    <th scope="row"> 
+                                        Ingrese Líneas de Código 
+                                        <h:inputText id="ideLC" value="#{pf.LC}" class="form-control" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.actualizarLC()}" render="idLC" />
+                                        </h:inputText>
                                     </th>
-                                    <th scope="row">
-
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código Manual" action="#{pf.actualizarPFNA()}">                                            
-                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1 LCm"
-                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                                    idTC idPFA 
-                                                    idLC"/>                                                     
-                                        </h:commandButton>                                      
-                                        
+                                    <th scope="row"> 
+                                        SLoC 
+                                        <h:outputText id="idLC" value="#{pf.SLoC}" class="form-control"/>
                                     </th>
                                 </tr>
                             </tbody>
@@ -68,8 +45,6 @@
                     </div>
                 </div>          
             </div>
-            <!--*****************************************************-->
-           
         </h:form>
     </ui:composition>
 </html>

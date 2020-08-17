@@ -6,10 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition>
-        <!--        COCOMO 2 COMPLETO-->
         <h:form id="PF2">           
-
-            <!--*********************PF AJUSTADO*********************-->
             <br></br>
             <div class="card">
                 <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 02:</h4>
@@ -19,7 +16,7 @@
                             <thead class="thead-dark">
                                 <tr class="text-center">
                                     <th scope="col" >Preguntas</th>                               
-                                    <th scope="col" >Calificacion</th>
+                                    <th scope="col" width="250">Calificación</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,22 +153,12 @@
                                 <tr>
                                     <th scope="row" class="text-right">Punto de función Ajustado:</th>
                                     <td><h:outputText id="idPFA" value="#{pf.PFA}" class="form-control"/></td>
-            <!--                    <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF Ajustado" action="#{pf.actualizarPFA()}">
-                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14"
-                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                                    idTC idPFA "/>
-                                        </h:commandButton>
-                                    </th>                 -->
                                 </tr>
                             </tbody>
                         </table>  
                     </div>
                 </div>          
             </div>
-            <!--*****************************************************-->
-
         </h:form>
     </ui:composition>
 </html>

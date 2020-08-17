@@ -6,20 +6,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition>
-        <!--        COCOMO 2 COMPLETO-->
         <h:form id="PF4">           
-        
-            <!--**************FACTORES DE ESCALA CINCO********************-->
             <br></br>
             <div class="card">
-                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 4:</h4>
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 04:</h4>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr class="text-center">
                                     <th scope="col">Factores de Escala</th>
-                                    <th scope="col">Califiación</th>
+                                    <th scope="col" width="350">Valoración</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,11 +30,12 @@
                                             <f:selectItem itemLabel="2.48 - Alto" itemValue="2.48"/>
                                             <f:selectItem itemLabel="1.24 - Muy Alto" itemValue="1.24"/>
                                             <f:selectItem itemLabel="0.00 - Extra" itemValue="0.00"/>
+                                            <f:ajax listener="#{pf.actualizarFE5()}" render="idsumFE idFE" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Flexibildad de Desarrollo(FLEX)</th>
+                                    <th scope="row">Flexibildad de Desarrollo (FLEX)</th>
                                     <td>
                                         <h:selectOneMenu id="select3" styleClass="form-control" value="#{pf.flex}">
                                             <f:selectItem itemLabel="5.07 - Muy Bajo" itemValue="5.07"/>
@@ -46,6 +44,7 @@
                                             <f:selectItem itemLabel="2.03 - Alto" itemValue="2.03"/>
                                             <f:selectItem itemLabel="1.01 - Muy Alto" itemValue="1.01"/>
                                             <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                            <f:ajax listener="#{pf.actualizarFE5()}" render="idsumFE idFE" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -59,11 +58,12 @@
                                             <f:selectItem itemLabel="2.83 - Alto" itemValue="2.83"/>
                                             <f:selectItem itemLabel="1.41 - Muy Alto" itemValue="1.41"/>
                                             <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                            <f:ajax listener="#{pf.actualizarFE5()}" render="idsumFE idFE" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Cohesion del equipo de trabajo (TEAM)</th>
+                                    <th scope="row">Cohesión del equipo de trabajo (TEAM)</th>
                                     <td>
                                         <h:selectOneMenu id="select5" styleClass="form-control" value="#{pf.team}">
                                             <f:selectItem itemLabel="5.48 - Muy Bajo" itemValue="5.48"/>
@@ -72,6 +72,7 @@
                                             <f:selectItem itemLabel="2.19 - Alto" itemValue="2.19"/>
                                             <f:selectItem itemLabel="1.10 - Muy Alto" itemValue="1.10"/>
                                             <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                            <f:ajax listener="#{pf.actualizarFE5()}" render="idsumFE idFE" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -85,40 +86,23 @@
                                             <f:selectItem itemLabel="3.12 - Alto" itemValue="3.12"/>
                                             <f:selectItem itemLabel="1.56 - Muy Alto" itemValue="1.56"/>
                                             <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                            <f:ajax listener="#{pf.actualizarFE5()}" render="idsumFE idFE" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="text-right">Calificación Total:</th>
-                                    <td>
-                                        <h:outputText id="idsumFE" value="#{pf.sumFE}" class="form-control"/>
-                                    </td>
-
+                                    <th scope="row" class="text-right">Valoración Total:</th>
+                                    <td><h:outputText id="idsumFE" value="#{pf.sumFE}" class="form-control"/></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores de Escala" action="#{pf.actualizarFE5()}">
-                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1 LCm
-                                                    select2 select3 select4 select5 select6"
-                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                                    idTC idPFA 
-                                                    idLC
-                                                    idsumFE idFE"/>
-                                        </h:commandButton>
-                                    </th>
-                                    <td>
-                                        <h:outputText id="idFE" value="#{pf.feB}" class="form-control"/>
-                                    </td>
+                                    <th scope="row" class="text-right">Factor Escala</th>
+                                    <td><h:outputText id="idFE" value="#{pf.feB}" class="form-control"/></td>
                                 </tr>
                             </tbody>
                         </table>   
                     </div>
                 </div>          
             </div>
-
-
         </h:form>
     </ui:composition>
 </html>

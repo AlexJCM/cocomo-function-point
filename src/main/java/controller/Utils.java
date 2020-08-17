@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 //****** Libraries for PDF Report *************
 import java.io.FileNotFoundException;
@@ -18,25 +17,35 @@ import java.nio.file.Paths;
 //********************************************
 
 /**
- * Esta clase sera la encargada de realizar todas las operaciones respectivas al
- * calculo del PF y hacer que estos cambios se reflejen en el modelo.
- * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a traves
- * del cual se vinculara con los componentes de las vistas JSF. Es decir las páginas JSF mediante dichas
- * etiquetas pueden accder al ManagedBean (ya sea a sus propiedades o metodos)
- * @RequestScoped.- Indica que las instancias de la clase seran creadas y gestionadas por el framework JSF.
+ * Esta clase tendra metodos variados y componentes que tienen un grado de reutilizacion
+ * 
+ * @author: Alex Chamba, Diego Merino, Anthony Ortega
+ * 
+ * @version: 16/08/2020/PF
+ * 
+ * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a traves del cual se vinculara con los componentes de las vistas JSF. Es decir las páginas JSF mediante dichas etiquetas pueden accder al ManagedBean (ya sea a sus propiedades o metodos)
+ * 
+ * @RequestScoped.- Indica que las instancias de la clase seran creadas y estionadas por el framework JSF.
+ * 
  */
 @ManagedBean(name = "util")
 @ViewScoped //@RequestScoped
 public class Utils {
-
+    
+    //ArrayList con la lista de los puntajes para califiacar PF2
     @Getter
     @Setter
     private ArrayList<Integer> listaCalificaciones;
+    //ArrayList con la lista de los lenguajes de programacion y sus respectivos valores para seleccionar PF3
     @Getter
     @Setter
     private ArrayList<String> listaLenguajes;
 
+    /**
 
+     * Contructor Utils, su principal funcion es cargar los ArrayList
+
+     */
     public Utils() {
         listaCalificaciones = new ArrayList<>();
         listaCalificaciones.add(0);
@@ -86,27 +95,43 @@ public class Utils {
         listaLenguajes.add("Visual Basic *42");
     }
 
-    //Redondear a 2 decimales en double
-     public double redondear2Decimales(double adjustment) {
+    /**
+
+     * Metodo para redondear numeros Double en dos decimales
+
+     * @param adjustment El parámetro adjustment define el número que vamos a redondear
+     
+     * @return double retorna el numero redondeado en dos decimales
+
+     */
+    public double redondear2Decimales(double adjustment) {
         adjustment = Math.round(adjustment * 100);
         adjustment = adjustment / 100;
         return adjustment;
     }
 
-    //Conversion de un String x*12 a un numero en double
-    public double conversionLC(String LC) {
+    /**
+
+     * Metodo para dividir un String por '*' y luego convertir su parte decimal a Integer
+
+     * @param LC El parámetro LC es el string completo
+     
+     * @return int retorna el numero convertido
+
+     */
+    public int conversionLC(String LC) {
         String[] parts = LC.split("\\*");
-        double vLC = Double.valueOf(parts[1]);
+        int vLC = Integer.parseInt(parts[1]);
         return vLC;
     }
 
-
-    //******************* Funcionalidad para generar archivo PDF*************  
+    //Funcionalidad para generar archivo PDF
     /**
      * Método para generar un PDF a partir de una variable hardcoreada
-     *
+    
      * @throws FileNotFoundException
      * @throws IOException
+     
      */
     public void toPDF() throws FileNotFoundException, IOException {     
 //        File directory = new File("./");
@@ -123,9 +148,10 @@ public class Utils {
 
     /**
      * Metodo para convertir una pagina página html en PDF
-     *
+     
      * @throws FileNotFoundException
      * @throws IOException
+     
      */
 //    public void htmlToPDF() throws FileNotFoundException, IOException {
 //        HtmlConverter.convertToPdf(new FileInputStream("../../webapp/index.html"),
@@ -142,6 +168,4 @@ public class Utils {
         HtmlConverter.convertToPdf(HTML, new FileOutputStream("my-second-pdf.pdf"));
         System.out.println("PDF created :)!");
     }
-//*********************************************************************** 
-
 }

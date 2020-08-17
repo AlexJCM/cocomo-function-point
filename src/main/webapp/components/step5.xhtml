@@ -6,27 +6,25 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition>
-        <!--        COCOMO 2 COMPLETO-->
-        <h:form id="PF5">   
-            <!--**************FACTORES DE ESFUERZO COMPUESTO********************-->
+        <h:form id="PF5">
             <br></br>
             <div class="card">
-                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 5:</h4>
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 05:</h4>
                 <div class="card-body">
                     <div id="table" class="table-editable">
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr class="text-center">
                                     <th scope="col" colspan="2">Factores de Esfuerzo Compuesto</th>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th scope="col">Multiplicadores de Esfuerzo</th>
-                                        <th scope="col">Valoracion</th>
+                                        <th scope="col" width="350">Valoración</th>
                                     </tr>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
-                                    <th scope="row" colspan="2">Atributos del producto</th>
+                                    <th scope="row" colspan="2">Atributos del Producto</th>
                                 </tr>
                                 <tr>
                                     <th scope="row">Fiabilidad requerida del software (RELY)</th>
@@ -37,17 +35,19 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
                                             <f:selectItem itemLabel="1.40 - Muy Alto" itemValue="1.40"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Tamanio de la base de datos (DATA)</th>
+                                    <th scope="row">Tamaño de la base de datos (DATA)</th>
                                     <td>
                                         <h:selectOneMenu id="select8" styleClass="form-control" value="#{pf.data}">
                                             <f:selectItem itemLabel="0.94 - Bajo" itemValue="0.94"/>
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.08 - Alto" itemValue="1.08"/>
                                             <f:selectItem itemLabel="1.16 - Muy Alto" itemValue="1.16"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -61,21 +61,22 @@
                                             <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
                                             <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
                                             <f:selectItem itemLabel="1.65 - Extra" itemValue="1.65"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
-
                                 <tr class="text-center">
-                                    <th scope="row" colspan="2">Atributos de la computadora</th>
+                                    <th scope="row" colspan="2">Atributos de la Computadora</th>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Restricciones del tiempo de ejecucion (TIME)</th>
+                                    <th scope="row">Restricciones del tiempo de ejecución (TIME)</th>
                                     <td>
                                         <h:selectOneMenu id="select10" styleClass="form-control" value="#{pf.time}">
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.11 - Alto" itemValue="1.11"/>
                                             <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
                                             <f:selectItem itemLabel="1.66 - Extra" itemValue="1.66"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -87,17 +88,19 @@
                                             <f:selectItem itemLabel="1.06 - Alto" itemValue="1.06"/>
                                             <f:selectItem itemLabel="1.21 - Muy Alto" itemValue="1.21"/>
                                             <f:selectItem itemLabel="1.56 - Extra" itemValue="1.56"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Inestabilidad de la maquina virtual (VIRT)</th>
+                                    <th scope="row">Inestabilidad de la máquina virtual (VIRT)</th>
                                     <td>
                                         <h:selectOneMenu id="select12" styleClass="form-control" value="#{pf.virt}">
                                             <f:selectItem itemLabel="0.87 - Bajo" itemValue="0.87"/>
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
                                             <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -109,11 +112,12 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.07 - Alto" itemValue="1.07"/>
                                             <f:selectItem itemLabel="1.15 - Muy Alto" itemValue="1.15"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr class="text-center">
-                                    <th scope="row" colspan="2">Atributos del personal</th>
+                                    <th scope="row" colspan="2">Atributos del Personal</th>
                                 </tr>
                                 <tr>
                                     <th scope="row">Capacidad del analista (ACAP)</th>
@@ -124,11 +128,12 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.86 - Alto" itemValue="0.86"/>
                                             <f:selectItem itemLabel="0.71 - Muy Alto" itemValue="0.71"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Experiencia en la aplicacion (AEXP)</th>
+                                    <th scope="row">Experiencia en la aplicación (AEXP)</th>
                                     <td>
                                         <h:selectOneMenu id="select15" styleClass="form-control" value="#{pf.aexp}">
                                             <f:selectItem itemLabel="1.29 - Muy Bajo" itemValue="1.29"/>
@@ -136,6 +141,7 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
                                             <f:selectItem itemLabel="0.82 - Muy Alto" itemValue="0.82"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -148,6 +154,7 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.86 - Alto" itemValue="0.86"/>
                                             <f:selectItem itemLabel="0.70 - Muy Alto" itemValue="0.70"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -159,22 +166,24 @@
                                             <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.90 - Alto" itemValue="0.90"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Experiencia en el Lenguaje de Programacion (LEXP)</th>
+                                    <th scope="row">Experiencia en el Lenguaje de Programación (LEXP)</th>
                                     <td>
                                         <h:selectOneMenu id="select18" styleClass="form-control" value="#{pf.lexp}">
                                             <f:selectItem itemLabel="1.14 - Muy Bajo" itemValue="1.14"/>
                                             <f:selectItem itemLabel="1.07 - Bajo" itemValue="1.07"/>
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.95 - Alto" itemValue="0.95"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr class="text-center">
-                                    <th scope="row" colspan="2">Atributos del proyecto</th>
+                                    <th scope="row" colspan="2">Atributos del Proyecto</th>
                                 </tr>
                                 <tr>
                                     <th scope="row">Uso de practicas de programacion modernas (MODP)</th>
@@ -185,6 +194,7 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
                                             <f:selectItem itemLabel="0.82 - Muy Alto" itemValue="0.82"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -197,11 +207,12 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
                                             <f:selectItem itemLabel="0.83 - Muy Alto" itemValue="0.83"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Restricciones en la duracion del proyecto (SCED)</th>
+                                    <th scope="row">Restricciones en la duración del proyecto (SCED)</th>
                                     <td>
                                         <h:selectOneMenu id="select21" styleClass="form-control" value="#{pf.sced}">
                                             <f:selectItem itemLabel="1.23 - Muy Bajo" itemValue="1.23"/>
@@ -209,37 +220,19 @@
                                             <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
                                             <f:selectItem itemLabel="1.04 - Alto" itemValue="1.04"/>
                                             <f:selectItem itemLabel="1.10 - Muy Alto" itemValue="1.10"/>
+                                            <f:ajax listener="#{pf.actualizarFEC()}" render="idFEC" />
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Factores Multiplicativo" action="#{pf.actualizarFEC()}" >
-                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
-                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
-                                                    select1 LCm
-                                                    select2 select3 select4 select5 select6
-                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21"
-                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
-                                                    idTC idPFA 
-                                                    idLC
-                                                    idsumFE idFE
-                                                    idFEC"/>
-                                        </h:commandButton>
-                                    </th>
-                                    <td>
-                                        <h:outputText id="idFEC" value="#{pf.fm}" class="form-control"/>
-                                    </td>
+                                    <th scope="row" class="text-right">Multiplicador de Esfuerzo</th>
+                                    <td><h:outputText id="idFEC" value="#{pf.fm}" class="form-control"/></td>
                                 </tr>
                             </tbody>
                         </table>   
                     </div>
                 </div>          
             </div>
-
-            <!--*****************************************************-->
-
-         
         </h:form>
     </ui:composition>
 </html>
