@@ -5,6 +5,9 @@ import controller.Utils;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +15,13 @@ import lombok.Setter;
  * Esta clase será la encargada de realizar todas las operaciones respectivas al cálculo del PF y hacer que estos cambios se reflejen en el modelo.
  * 
  */
-@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
-@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
-public class PFController {
+@Named("pf")
+@SessionScoped
+//@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
+//@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
+public class PFController implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     private PFModel pfModel;//Instancia de PFModel
     private Utils util;//Instancia de Utils
