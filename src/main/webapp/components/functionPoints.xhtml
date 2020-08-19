@@ -87,7 +87,7 @@
                             </tbody>
                         </table>   
 
-                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF No ajustado" action="#{pf.actualizarPFNA()}">
+                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF No ajustado" action="#{pf.acturalizarBasico()}">
                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15"
                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA"/>
                         </h:commandButton>
@@ -228,7 +228,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF Ajustado" action="#{pf.actualizarPFA()}">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular PF Ajustado" action="#{pf.acturalizarBasico()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14"
                                                     render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
@@ -270,7 +270,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código" action="#{pf.actualizarLC()}">
+                                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Líneas de Código" action="#{pf.acturalizarBasico()}">
                                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
                                                     select1"
@@ -345,7 +345,7 @@
                             <h:outputText id="idD" value="#{pf.duration}" class="form-control"/>
                         </center>
                         <br></br>
-                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Proyecto de Software" action="#{pf.actualizarSP()}">
+                        <h:commandButton class="btn btn-lg btn-primary" value="Calcular Proyecto de Software" action="#{pf.acturalizarBasico()}">
                             <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
                                     radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
                                     select1

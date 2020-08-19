@@ -24,11 +24,11 @@
                                     <th scope="row">
                                         Sueldo Mensual 
                                         <h:inputText id="idS"  class="form-control" value="#{pf.sueldo}" p:type="number" p:min="0"> 
-                                            <f:ajax listener="#{pf.acturalizarED()}" render="idE idD idP idCT" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idE idD idP idCT" />
                                         </h:inputText>
                                         Imprevistos
                                         <h:inputText id="idI"  class="form-control" value="#{pf.imprevistos}" p:type="number" p:min="0"> 
-                                            <f:ajax listener="#{pf.acturalizarED()}" render="idE idD idP idCT" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idE idD idP idCT" />
                                         </h:inputText>
                                     </th>
                                     <th scope="row"> 
@@ -36,6 +36,24 @@
                                         Duración <h:outputText id="idD" value="#{pf.duration}" class="form-control"/>
                                         Número de personas <h:outputText id="idP" value="#{pf.personas}" class="form-control"/>                                  
                                         Costo total <h:outputText id="idCT" value="#{pf.costoTotal}" class="form-control"/>
+                                    </th>
+                                </tr>
+                                 <tr>
+                                     <th scope="row" colspan="2" class="text-center"> 
+                                         <h:commandButton class="btn btn-lg btn-primary" value="Calcular Proyecto" action="#{pf.acturalizarComplejo()}" >
+                                            <f:ajax execute="input1 input2 input3 input4 input5 input6 input7 input8 input9 input10 input11 input12 input13 input14 input15 
+                                                    radio1 radio2 radio3 radio4 radio5 radio6 radio7 radio8 radio9 radio10 radio11 radio12 radio13 radio14
+                                                    select1
+                                                    select2 select3 select4 select5 select6
+                                                    select7 select8 select9 select10 select11 select12 select13 select14 select15 select16 select17 select18 select19 select20 select21 select22 select23
+                                                    idS idI"
+                                                    render ="idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idPFNA
+                                                    idTC idPFA 
+                                                    idLC
+                                                    idsumFE idFE
+                                                    idFEC
+                                                    idE idD idP idCT"/>
+                                         </h:commandButton>
                                     </th>
                                 </tr>
                             </tbody>

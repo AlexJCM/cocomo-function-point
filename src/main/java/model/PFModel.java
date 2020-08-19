@@ -5,25 +5,17 @@ import lombok.Setter;
 
 /**
  * Esta clase encapsulará los datos principales del modelo: 
- *  Punto Funcion No-Ajustados
- *  Punto Funcion Ajustados
+ *  Punto Función No-Ajustados
+ *  Punto Función Ajustados
  *  Factor de Ajuste
- * 
- * @author: Alex Chamba, Diego Merino, Anthony Ortega
- * 
- * @version: 16/08/2020/PF
- * 
- * @Getter.- Genera todos los getters de los respectivos atributos de la clase
- * 
- * @Setter.- Genera todos los setters de los respectivos atributos de la clase
- * 
+ *
  */
-@Getter
-@Setter
+@Getter//Genera todos los getters de los respectivos atributos de la clase
+@Setter//Genera todos los setters de los respectivos atributos de la clase
 public class PFModel {
     
-    private int PFNA; // Valor final Punto Funcion No-Ajustados
-    private double factorDeAjuste; //  Valor de Factor de Ajuste (se calcula multiplicando la suma de las preguntas por 0.01 + 0.65)
-    private double PFA; //Valor final Punto Funcion Ajustados (resulta al multiplica: factorDeAjuste * PFNA)
+    private int PFNA; // Valor final Punto Función No-Ajustados
+    private double factorDeAjuste; // Valor de Factor de Ajuste (se calcula multiplicando la suma de las preguntas por 0.01 + 0.65)
+    private double PFA; //Valor final Punto Función Ajustados (resulta al multiplica: factorDeAjuste * PFNA)
 
 }

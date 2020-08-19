@@ -17,33 +17,25 @@ import java.nio.file.Paths;
 //********************************************
 
 /**
- * Esta clase tendra metodos variados y componentes que tienen un grado de reutilizacion
- * 
- * @author: Alex Chamba, Diego Merino, Anthony Ortega
- * 
- * @version: 16/08/2020/PF
- * 
- * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a traves del cual se vinculara con los componentes de las vistas JSF. Es decir las páginas JSF mediante dichas etiquetas pueden accder al ManagedBean (ya sea a sus propiedades o metodos)
- * 
- * @RequestScoped.- Indica que las instancias de la clase seran creadas y estionadas por el framework JSF.
+ * Esta clase tendrá métodos variados y componentes que tienen un grado de reutilización
  * 
  */
-@ManagedBean(name = "util")
-@ViewScoped //@RequestScoped
+@ManagedBean(name = "util")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "util", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos)
+@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
 public class Utils {
     
-    //ArrayList con la lista de los puntajes para califiacar PF2
+    //ArrayList con la lista de los puntajes para calificar PF2
     @Getter
     @Setter
     private ArrayList<Integer> listaCalificaciones;
-    //ArrayList con la lista de los lenguajes de programacion y sus respectivos valores para seleccionar PF3
+    //ArrayList con la lista de los lenguajes de programación y sus respectivos valores para seleccionar PF3
     @Getter
     @Setter
     private ArrayList<String> listaLenguajes;
 
     /**
 
-     * Contructor Utils, su principal funcion es cargar los ArrayList
+     * Constructor Utils, su principal función es cargar los ArrayList
 
      */
     public Utils() {
@@ -97,11 +89,11 @@ public class Utils {
 
     /**
 
-     * Metodo para redondear numeros Double en dos decimales
+     * Método para redondear números Double en dos decimales
 
      * @param adjustment El parámetro adjustment define el número que vamos a redondear
      
-     * @return double retorna el numero redondeado en dos decimales
+     * @return double retorna el número redondeado en dos decimales
 
      */
     public double redondear2Decimales(double adjustment) {
@@ -112,11 +104,11 @@ public class Utils {
 
     /**
 
-     * Metodo para dividir un String por '*' y luego convertir su parte decimal a Integer
+     * Método para dividir un String por '*' y luego convertir su parte decimal a Integer
 
      * @param LC El parámetro LC es el string completo
      
-     * @return int retorna el numero convertido
+     * @return int retorna el número convertido
 
      */
     public int conversionLC(String LC) {
@@ -126,38 +118,39 @@ public class Utils {
     }
 
     //Funcionalidad para generar archivo PDF
-    /**
-     * Método para generar un PDF a partir de una variable hardcoreada
-    
-     * @throws FileNotFoundException
-     * @throws IOException
-     
-     */
-    public void toPDF() throws FileNotFoundException, IOException {     
-//        File directory = new File("./");
-//        System.out.println(directory.getAbsolutePath());
-        //
-        // String directorioTrabajo = System.getProperty("user.dir");
-        // System.out.println("El directorio de trabajo es " + directorioTrabajo);
-        //
-//        Path rutaRelativa = Paths.get("PFController.java");
-//        System.out.println("ruta Relativa: " + rutaRelativa);
-//        Path rutaAbsoluta = rutaRelativa.toAbsolutePath();
-//        System.out.println("ruta Abasoluta: " + rutaAbsoluta);
-    }
-
-    /**
-     * Metodo para convertir una pagina página html en PDF
-     
-     * @throws FileNotFoundException
-     * @throws IOException
-     
-     */
-//    public void htmlToPDF() throws FileNotFoundException, IOException {
-//        HtmlConverter.convertToPdf(new FileInputStream("../../webapp/index.html"),
-//                new FileOutputStream("index-to-pdf.pdf"));
-//        System.out.println("PDF v2 Created :v!");
+//    /**
+//     * Método para generar un PDF a partir de una variable hardcoreada
+//    
+//     * @throws FileNotFoundException
+//     * @throws IOException
+//     
+//     */
+//    public void toPDF() throws FileNotFoundException, IOException {     
+////        File directory = new File("./");
+////        System.out.println(directory.getAbsolutePath());
+//        //
+//        // String directorioTrabajo = System.getProperty("user.dir");
+//        // System.out.println("El directorio de trabajo es " + directorioTrabajo);
+//        //
+////        Path rutaRelativa = Paths.get("PFController.java");
+////        System.out.println("ruta Relativa: " + rutaRelativa);
+////        Path rutaAbsoluta = rutaRelativa.toAbsolutePath();
+////        System.out.println("ruta Abasoluta: " + rutaAbsoluta);
 //    }
+//
+//
+////    public void htmlToPDF() throws FileNotFoundException, IOException {
+////        HtmlConverter.convertToPdf(new FileInputStream("../../webapp/index.html"),
+////                new FileOutputStream("index-to-pdf.pdf"));
+////        System.out.println("PDF v2 Created :v!");
+////    }
+    /**
+     * Método para convertir una página página html en PDF
+     * @param costoTotal Variable que tiene el costo total del proyecto
+     * @param tiempoTotal Variable que tiene la duración del proyecto 
+     * @throws FileNotFoundException Para evitar errores de documentos nulos
+     * @throws IOException Exepciones Varias
+     */
     public void plantillaParaPDF(double costoTotal, double tiempoTotal) throws FileNotFoundException, IOException {
         String HTML = "<h1>REPORTE DE LA ESTIMACIÓN DE COSTOS</h1>"
                 + "<p>A continuación se presenta un resumen de los resultados obtenidos luego de haber seguido <br></br>"
