@@ -9,24 +9,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Esta clase sera la encargada de realizar todas las operaciones respectivas al
- * calculo del PF y hacer que estos cambios se reflejen en el modelo.
- * 
- * @author: Alex Chamba, Diego Merino, Anthony Ortega
- * 
- * @version: 16/08/2020/PF
- * 
- * @ManagedBean.- Registramos la clase con JSF y le etiquetamos con un nombre,
- * en este caso "pf", a traves del cual se vinculara con los componentes de las
- * vistas JSF. Es decir las páginas JSF mediante dichas etiquetas pueden accder
- * al ManagedBean (ya sea a sus propiedades o metodos)
- * 
- * @RequestScoped.- Indica que las instancias de la clase seran creadas y
- * gestionadas por el framework JSF.
+ * Esta clase será la encargada de realizar todas las operaciones respectivas al cálculo del PF y hacer que estos cambios se reflejen en el modelo.
  * 
  */
-@ManagedBean(name = "pf")
-@ViewScoped //@RequestScoped
+@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
+@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
 public class PFController {
 
     private PFModel pfModel;//Instancia de PFModel
@@ -34,7 +21,7 @@ public class PFController {
 
     /**
 
-     * Contructor PFController, su principal funcion es crear una instancia del modelo PFModel y de la clase Utils
+     * Constructor PFController, su principal función es crear una instancia del modelo PFModel y de la clase Utils.
 
      */
     public PFController() {
@@ -43,7 +30,7 @@ public class PFController {
     }
 
 // PAS0 01
-    // Valores por defecto de cada nivel comlejiddad de los factores de ponderacion
+    // Valores por defecto de cada nivel complejidad de los factores de ponderación.
     @Getter
     @Setter
     private int eeSimple = 0, eePromedio = 0, eeComplejo = 0;
@@ -61,23 +48,23 @@ public class PFController {
     private int aieSimple = 0, aiePromedio = 0, aieComplejo = 0;
     @Getter
     @Setter
-    private int subTotalEE = 0; //suma de todas las Entradas Externas
+    private int subTotalEE = 0; //Suma de todas las Entradas Externas
     @Getter
     @Setter
-    private int subTotalSE = 0; //suma de todas las Salidas Externas
+    private int subTotalSE = 0; //Suma de todas las Salidas Externas
     @Getter
     @Setter
-    private int subTotalCE = 0; //suma de todas las Consultas Externas
+    private int subTotalCE = 0; //Suma de todas las Consultas Externas
     @Getter
     @Setter
-    private int subTotalALI = 0; //suma de todos los Archivos Logicos Internos
+    private int subTotalALI = 0; //Suma de todos los Archivos Lógicos Internos
     @Getter
     @Setter
-    private int subTotalAIE = 0; //uma de todos los Archivos de Interfaz Externos
+    private int subTotalAIE = 0; //Suma de todos los Archivos de Interfaz Externos
     
      /**
 
-     * Metodo para calcular subtotales de Dominios
+     * Método para calcular subtotales de Dominios
 
      */
     public void calcularSubtotalesDominios() {
@@ -90,9 +77,9 @@ public class PFController {
     
     /**
 
-     * Metodo para obtener el valor de los Puntos de Funcion NO Ajustados
+     * Método para obtener el valor de los Puntos de Función NO Ajustados
      
-     * @return Puntos de Funcion NO Ajustados
+     * @return Puntos de Función NO Ajustados
 
      */
     public int getPFNA() {
@@ -101,7 +88,7 @@ public class PFController {
 
     /**
 
-     * Metodo para realizar la suma final de todos los puntos funcion No Ajustados parciales y los reflejará en el modelo
+     * Método para realizar la suma final de todos los puntos función No Ajustados parciales y los reflejará en el modelo
 
      */
     public void actualizarPFNA() {
@@ -111,7 +98,7 @@ public class PFController {
 
     
 // PAS0 02
-    //Valores por defecto de calificacion de preguntas para Ajustar los Puntos de Funcion
+    //Valores por defecto de calificación de preguntas para Ajustar los Puntos de Función
     @Getter
     @Setter
     private int p1Califiacion = 0, p2Califiacion = 0, p3Califiacion = 0, p4Califiacion = 0;
@@ -132,7 +119,7 @@ public class PFController {
 
     /**
 
-     * Metodo para realizar la suma final de todas las calificaciones para Ajuste de los Puntos de Funcion
+     * Método para realizar la suma final de todas las calificaciones para Ajuste de los Puntos de Función
 
      */
     public void calcularSumaCalifiaciones() {
@@ -141,7 +128,7 @@ public class PFController {
 
     /**
 
-     * Metodo para obtener el Factor de Ajuste del Modelo PFModel
+     * Método para obtener el Factor de Ajuste del Modelo PFModel
      
      * @return double retorna el valor del Factor de Ajuste
 
@@ -152,9 +139,9 @@ public class PFController {
     
     /**
 
-     * Metodo para calcular el Factor de Ajuste
+     * Método para calcular el Factor de Ajuste
      
-     * @param totalCalifiaciones Valor para cacular el Factor de Ajuste
+     * @param totalCalifiaciones Valor para calcular el Factor de Ajuste
 
      */
     public void setFactorAjuste(double totalCalifiaciones) {
@@ -163,7 +150,7 @@ public class PFController {
     
     /**
 
-     * Metodo para calcular los puntos de funcion
+     * Método para calcular los puntos de función
 
      */
     public void ajustarPuntoDeFuncion() {
@@ -172,9 +159,9 @@ public class PFController {
 
     /**
 
-     * Metodo para obtener el valor de los Puntos de Funcion Ajustados
+     * Método para obtener el valor de los Puntos de Función Ajustados
      
-     * @return Puntos de Funcion Ajustados
+     * @return Puntos de Función Ajustados
 
      */
     public double getPFA() {
@@ -183,15 +170,13 @@ public class PFController {
 
     /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
+     * Método para realizar un conjunto de llamados a otros métodos:
      *  Calculara la suma de todas las calificaciones
      *  Calculara el factor de ajuste
-     *  Ajustara los Puntos de Funcion
+     *  Ajustara los Puntos de Función
 
      */
     public void actualizarPFA() {
-        actualizarPFNA();
         calcularSumaCalifiaciones();
         setFactorAjuste(Double.valueOf(totalCalifiaciones));
         ajustarPuntoDeFuncion();
@@ -200,10 +185,10 @@ public class PFController {
 // PAS0 03    
     @Getter
     @Setter
-    private String strLC = "0";//Lineas de codigo en formato String para guardar el valor obtenido de el Select
+    private String strLC = "Java *53";//Líneas de código en formato String para guardar el valor obtenido del Select
     @Getter
     @Setter
-    private int LC = 0;//Valor de las seleccionada Lineas de Codigo
+    private int LC = 0;//Valor de las seleccionada Líneas de Código
     @Getter
     @Setter
     private double sLoC = 0.0;//Valor de las Líneas de código fuente
@@ -213,15 +198,11 @@ public class PFController {
     
     /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
-     *  Realizara la actualizacion del metodo PFA del paso 02
-     *  Multiplicacion de los Puntos de Funcion Ajustados con las lineas de codigo seleccionadas
+     * Método para realizar un conjunto de llamados a otros métodos:
+     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas
 
      */
     public void actualizarLC() {
-        actualizarPFNA();
-        actualizarPFA();
         if(LC>0){
             sLoC = util.redondear2Decimales(pfModel.getPFA() * LC);
         }else{
@@ -231,7 +212,7 @@ public class PFController {
     }
 
 // PAS0 04 modelo basico    
-    //Variables para calcular esfuerzo y duracion
+    //Variables para calcular esfuerzo y duración
     @Getter
     @Setter
     private double spOab = 2.4, spObb = 1.05, spOcb = 2.5, spOdb = 0.38;
@@ -244,10 +225,16 @@ public class PFController {
     @Getter
     @Setter
     private int SP = 0;//Tipo de Proyecto de Software(Software Proyect)
+    @Getter
+    @Setter
+    private double effort = 0.0;//Esfuerzo
+    @Getter
+    @Setter
+    private double duration = 0.0;//Duración 
 
     /**
 
-     * Metodo para calcular Kilo Líneas de código fuente
+     * Método para calcular Kilo Líneas de código fuente
      *  Se realizar dividiendo sobre 1000 las Líneas de código fuente
 
      */
@@ -257,8 +244,8 @@ public class PFController {
 
     /**
 
-     * Metodo para calcular el Esfuerzo y la Duracion dependiendo de la eleccion de Proyecto de Software
-     *  0 para PS Organico
+     * Método para calcular el Esfuerzo y la Duración dependiendo de la elección de Proyecto de Software
+     *  0 para PS Orgánico
      *  1 para PS Semi-Embebido
      *  2 para PS Incrustado
 
@@ -282,20 +269,28 @@ public class PFController {
 
      /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
-     *  Realizara la actualizacion del metodo PFA del paso 02
-     *  Realizara la actualizacion del metodo LC del paso 03
+     * Método para realizar un conjunto de llamados a otros métodos:
      *  Calculara las KLOC y LOC
-     *  Calculara el Esfuerzo y Duracion con realacion al tipo de proyecto de software
+     *  Calculara el Esfuerzo y Duración con relación al tipo de proyecto de software
 
      */
     public void actualizarSP() {
+        slocTOkloc();
+        calcularED();
+    }
+    
+    /**
+     * Método para actualizar todos los métodos de COCOMO 2 Modelo Básico
+     *  Realizara la actualización del método PFNA del paso 01
+     *  Realizara la actualización del método PFA del paso 02
+     *  Realizara la actualización del método LC del paso 03
+     *  Realizara la actualización del método SP del paso 04
+     */
+    public void acturalizarBasico() {
         actualizarPFNA();
         actualizarPFA();
         actualizarLC();
-        slocTOkloc();
-        calcularED();
+        actualizarSP();
     }
 
 // PAS0 04
@@ -310,20 +305,20 @@ public class PFController {
     private double resl = 0.0;//Resolución de Arquitectura/Riesgo
     @Getter
     @Setter
-    private double team = 0.0;//Cohesion del equipo de trabajo
+    private double team = 0.0;//Cohesión del equipo de trabajo
     @Getter
     @Setter
     private double pmat = 0.0;//Madurez del Proceso 
     @Getter
     @Setter
-    private double sumFE = 0.0;// Suma total de las valoraciones
+    private double sumFE = 0.0;//Suma total de las valoraciones
     @Getter
     @Setter
     private double feB = 0.0;//Factor de Escala 
     
     /**
 
-     * Metodo para sumar todas las valoraciones de los Factores de escala
+     * Método para sumar todas las valoraciones de los Factores de escala
 
      */
     public void sumaCalifiacionesFE() {
@@ -332,7 +327,7 @@ public class PFController {
 
     /**
 
-     * Metodo para calcular el factor de Escala utilizando la suma total de las valoraciones
+     * Método para calcular el factor de Escala utilizando la suma total de las valoraciones
 
      */
     public void factorEscala() {
@@ -341,18 +336,12 @@ public class PFController {
 
     /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
-     *  Realizara la actualizacion del metodo PFA del paso 02
-     *  Realizara la actualizacion del metodo LC del paso 03
-     *  Se sumara el total de las valoracion de cada factor
+     * Método para realizar un conjunto de llamados a otros métodos:
+     *  Se sumará el total de las valoraciones de cada factor
      *  Calculara el factor de escala a base de la suma total de los factores
 
      */
     public void actualizarFE5() {
-        actualizarPFNA();
-        actualizarPFA();
-        actualizarLC();
         sumaCalifiacionesFE();
         factorEscala();
     }
@@ -363,7 +352,7 @@ public class PFController {
     private double rely = 1.0;//Fiabilidad requerida del software 
     @Getter
     @Setter
-    private double data = 1.0;//Tamanio de la base de datos
+    private double data = 1.0;//Tamaño de la base de datos
     @Getter
     @Setter
     private double cplx = 1.0;//Complejidad del producto
@@ -375,13 +364,13 @@ public class PFController {
     private double ruse = 1.0;//Porcentaje requerido de componentes reutilizables
     @Getter
     @Setter
-    private double time = 1.0;//Restricciones del tiempo de ejecucion
+    private double time = 1.0;//Restricciones del tiempo de ejecución
     @Getter
     @Setter
     private double stor = 1.0;//Restricciones del almacenamiento principal
     @Getter
     @Setter
-    private double virt = 1.0;//Inestabilidad de la maquina virtual
+    private double virt = 1.0;//Inestabilidad de la máquina virtual
     @Getter
     @Setter
     private double turn = 1.0;//Tiempo de respuesta del computador
@@ -390,7 +379,7 @@ public class PFController {
     private double acap = 1.0;//Capacidad del analista
     @Getter
     @Setter
-    private double aexp = 1.0;//Experiencia en la aplicacion
+    private double aexp = 1.0;//Experiencia en la aplicación
     @Getter
     @Setter
     private double pcap = 1.0;//Capacidad de los programadores
@@ -399,10 +388,10 @@ public class PFController {
     private double vexp = 1.0;//Experiencia en S.O utilizado
     @Getter
     @Setter
-    private double lexp = 1.0;//Experiencia en el Lenguaje de Programacion
+    private double lexp = 1.0;//Experiencia en el Lenguaje de Programación
     @Getter
     @Setter
-    private double modp = 1.0;//Uso de practicas de programacion modernas
+    private double modp = 1.0;//Uso de prácticas de programación modernas
     @Getter
     @Setter
     private double tool = 1.0;//Uso de herramientas software
@@ -415,7 +404,7 @@ public class PFController {
 
      /**
 
-     * Metodo para calcular la multiplicacion total de todos los factores compuestos
+     * Método para calcular la multiplicación total de todos los factores compuestos
 
      */
     public void factorMultiplicativo() {
@@ -424,73 +413,67 @@ public class PFController {
 
     /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
-     *  Realizara la actualizacion del metodo PFA del paso 02
-     *  Realizara la actualizacion del metodo LC del paso 03
-     *  Realizara la actualizacion del metodo FE5 del paso 04
-     *  Calculo del factor Multiplicativo(Multiplicador de Esfuerzo)
+     * Método para realizar un conjunto de llamados a otros métodos:
+     *  Calculo del factor Multiplicativo (Multiplicador de Esfuerzo)
 
      */
     public void actualizarFEC() {
-        actualizarPFNA();
-        actualizarPFA();
-        actualizarLC();
-        actualizarFE5();
         factorMultiplicativo();
     }
     
 //PASO 06
     @Getter
     @Setter
-    private double effort = 0.0;//Esfuerzo
-    @Getter
-    @Setter
-    private double duration = 0.0;//Duracion
-    @Getter
-    @Setter
-    private int personas = 0;//Numero de personas
+    private int personas = 0;//Número de personas
     @Getter
     @Setter
     private double imprevistos = 0;//Imprevisto
     @Getter
     @Setter
-    private double sueldo = 0;// Sueldo de programadores
+    private double sueldo = 0;//Sueldo de programadores
     @Getter
     @Setter
-    private double costoTotal = 0;//costo total del proyecto
+    private double costoTotal = 0;//Costo total del proyecto
 
     /**
 
-     * Metodo para realizar un conjunto de llamados a otros metodos:
-     *  Realizara la actualizacion del metodo PFNA del paso 01
-     *  Realizara la actualizacion del metodo PFA del paso 02
-     *  Realizara la actualizacion del metodo LC del paso 03
+     * Método para realizar un conjunto de llamados a otros métodos:
      *  Calculara el KLOC
-     *  Realizara la actualizacion del metodo FE5 del paso 04
-     *  Realizara la actualizacion del metodo FEC del paso 05
-     *  Calculamos el Esfuerzo, Duracion, Personas y Costo total
+     *  Calculamos el Esfuerzo, Duración, Personas y Costo total
 
      */
     public void acturalizarED() {
-        actualizarPFNA();
-        actualizarPFA();
-        actualizarLC();
         slocTOkloc();
-        actualizarFE5();
-        actualizarFEC();
         effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
         duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
         personas =(int) Math.ceil(util.redondear2Decimales(effort / duration));
         costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas * 1.10)) + imprevistos));
     }
     
-//Generacion PDF    
+    /**
+     * Método para actualizar todos los métodos de COCOMO 2 Modelo Completo
+     *  Realizara la actualización del método PFNA del paso 01
+     *  Realizara la actualización del método PFA del paso 02
+     *  Realizara la actualización del método LC del paso 03
+     *  Realizara la actualización del método FE5 del paso 04
+     *  Realizara la actualización del método FEC del paso 05
+     *  Realizara la actualización del método ED del paso 06
+     */
+    public void acturalizarComplejo() {
+        actualizarPFNA();
+        actualizarPFA();
+        actualizarLC();
+        actualizarFE5();
+        actualizarFEC();
+        acturalizarED();
+    }
+    
+//Generación PDF    
     /**
       
      * Método para general PDF
      
-     * @throws IOException 
+     * @throws IOException Excepciones varias
      
      */
     public void generarPDF() throws IOException{

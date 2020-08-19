@@ -26,13 +26,13 @@
                                         Seleccione Lenguaje de Programación
                                         <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.strLC}">
                                             <f:selectItems value="#{util.listaLenguajes}" />
-                                            <f:ajax listener="#{pf.actualizarLC()}" render="idLC ideLC" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idLC ideLC" />
                                         </h:selectOneMenu>
                                     </th>
                                     <th scope="row"> 
                                         Ingrese Líneas de Código 
                                         <h:inputText id="ideLC" value="#{pf.LC}" class="form-control" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.actualizarLC()}" render="idLC" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idLC" />
                                         </h:inputText>
                                     </th>
                                     <th scope="row"> 
