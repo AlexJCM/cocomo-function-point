@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:composition>
@@ -16,8 +17,13 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <div class="navbar-nav">
-                    <h:link class="nav-link active" value="Principal" outcome="index" />
-                    <h:link class="nav-link"  value="Manual de usuario" outcome="manual" /><!--                               -->
+                    <h:link class="nav-link" value="Principal" outcome="index" >
+                        <f:ajax listener="#{pf.cerrarSesion()}"/>  
+                    </h:link>
+                    <h:link class="nav-link" value="Modelo Básico" outcome="modeloBasico" >
+                        <f:ajax listener="#{pf.cerrarSesion()}"/>  
+                    </h:link>
+                    <h:link class="nav-link" value="Manual de usuario" outcome="manual" />
                 </div>
             </div>
         </nav>

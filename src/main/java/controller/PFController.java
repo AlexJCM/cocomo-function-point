@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -198,6 +199,9 @@ public class PFController implements Serializable{
     private int LC = 0;//Valor de las seleccionada Líneas de Código
     @Getter
     @Setter
+    private Boolean editar = false;//Boolean para conocer si el valor se editara
+    @Getter
+    @Setter
     private double sLoC = 0.0;//Valor de las Líneas de código fuente
     @Getter
     @Setter
@@ -206,16 +210,16 @@ public class PFController implements Serializable{
     /**
 
      * Método para realizar un conjunto de llamados a otros métodos:
-     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas
+     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
 
      */
     public void actualizarLC() {
-        if(LC>0){
+        if(editar==true){
             sLoC = util.redondear2Decimales(pfModel.getPFA() * LC);
         }else{
+        LC=util.conversionLC(strLC);
             sLoC = util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(strLC));
         }
-        
     }
 
 // PAS0 04 modelo basico    
@@ -356,55 +360,56 @@ public class PFController implements Serializable{
 // PAS0 05 
     @Getter
     @Setter
-    private double rely = 1.0;//Fiabilidad requerida del software 
+    private double rely = 1.0;//Seguridad requerida
     @Getter
     @Setter
-    private double data = 1.0;//Tamaño de la base de datos
+    private double data = 1.0;//Tamaño de base de datos
     @Getter
     @Setter
-    private double cplx = 1.0;//Complejidad del producto
+    private double docu = 1.0;//Documentación adaptada de ciclo de vida
     @Getter
     @Setter
-    private double docu = 1.0;//Alcance de la documentación requerida
+    private double cplx = 1.0;//Complejidad
     @Getter
     @Setter
-    private double ruse = 1.0;//Porcentaje requerido de componentes reutilizables
+    private double ruse = 1.0;//Reutilización requerida
     @Getter
     @Setter
-    private double time = 1.0;//Restricciones del tiempo de ejecución
+    private double time = 1.0;//Tiempo de ejecución requerido
     @Getter
     @Setter
-    private double stor = 1.0;//Restricciones del almacenamiento principal
+    private double stor = 1.0;//Almacenamiento principal requerido
     @Getter
     @Setter
-    private double virt = 1.0;//Inestabilidad de la máquina virtual
-    @Getter
-    @Setter
-    private double turn = 1.0;//Tiempo de respuesta del computador
+    private double pvol = 1.0;//Volatilidad de la plataforma
     @Getter
     @Setter
     private double acap = 1.0;//Capacidad del analista
     @Getter
     @Setter
-    private double aexp = 1.0;//Experiencia en la aplicación
+    private double aexp = 1.0;//Experiencia del analista
     @Getter
     @Setter
-    private double pcap = 1.0;//Capacidad de los programadores
+    private double pcap = 1.0;//Capacidad del programador
     @Getter
     @Setter
-    private double vexp = 1.0;//Experiencia en S.O utilizado
+    private double pexp = 1.0;//Experiencia en la plataforma de S.O
     @Getter
     @Setter
-    private double lexp = 1.0;//Experiencia en el Lenguaje de Programación
+    private double ltex = 1.0;//Experiencia en lenguaje y herramienta
     @Getter
     @Setter
-    private double modp = 1.0;//Uso de prácticas de programación modernas
+    private double pcon = 1.0;//Continuidad del personal
     @Getter
     @Setter
-    private double tool = 1.0;//Uso de herramientas software
+    private double tool = 1.0;//Uso de herramientas de software
     @Getter
     @Setter
-    private double sced = 1.0;//Uso de herramientas software
+    private double site = 1.0;//Desarrollo multitarea
+    @Getter
+    @Setter
+    private double sced = 1.0;//Esquema de desarrollo programado
+    
     @Getter
     @Setter
     private double fm = 1.0;//Factor Multiplicativo (Multiplicador de Esfuerzo)
@@ -415,7 +420,7 @@ public class PFController implements Serializable{
 
      */
     public void factorMultiplicativo() {
-        fm = (util.redondear2Decimales(rely * data * cplx * docu * ruse * time * stor * virt * turn * acap * aexp * pcap * vexp * lexp * modp * tool * sced));
+        fm = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
     }
 
     /**
@@ -454,7 +459,8 @@ public class PFController implements Serializable{
         effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
         duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
         personas =(int) Math.ceil(util.redondear2Decimales(effort / duration));
-        costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas * 1.10)) + imprevistos));
+        imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas))*0.1));
+        costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
     }
     
     /**
@@ -485,5 +491,35 @@ public class PFController implements Serializable{
      */
     public void generarPDF() throws IOException{
         util.plantillaParaPDF( pfModel.getPFA(), sLoC);
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean
+     
+     */
+    public void cerrarSesion(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
+     
+     * @throws IOException Excepciones varias
+     
+     */
+    public void cerrarSesionCOCOMO1() throws IOException{
+        cerrarSesion();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/modeloBasico.xhtml");
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
+     
+     * @throws IOException Excepciones varias
+     
+     */
+    public void cerrarSesionCOCOMO2() throws IOException{
+        cerrarSesion();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/index.xhtml");
     }
 }
