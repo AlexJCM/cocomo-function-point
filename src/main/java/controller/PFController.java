@@ -224,9 +224,14 @@ public class PFController implements Serializable {
     /**
      *
      * Método para realizar un conjunto de llamados a otros métodos:
+<<<<<<< HEAD
      *  Multiplicación de los Puntos de Función Ajustados con las líneas de código 
      * seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
      *
+=======
+     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
+
+>>>>>>> 5295e88681fc1578766ff2baa59809f74d582313
      */
     public void actualizarLC() {
         if(editar==true){
@@ -534,5 +539,5 @@ public class PFController implements Serializable {
     public void cerrarSesionCOCOMO2() throws IOException{
         cerrarSesion();
         FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/index.xhtml");
-    }
+    }     
 }
