@@ -30,14 +30,6 @@ public class PFController implements Serializable {
     @Setter
     private PFModel pfModel;//Instancia de PFModel
     private Utils util;//Instancia de Utils
-   
-    //New feature v2 by alex
-    public PFModel getPfModel() {
-        if (pfModel == null) {
-            pfModel = new PFModel();
-        }
-        return pfModel;
-    }
 
     /**
      * Constructor PFController, su principal función es crear una instancia del
@@ -49,6 +41,16 @@ public class PFController implements Serializable {
         util = new Utils();
     }
     
+    /**
+     * Método para retornar el modelo 
+     * @return Retorna el modelo
+     */
+    public PFModel getPfModel() {
+        if (pfModel == null) {
+            pfModel = new PFModel();
+        }
+        return pfModel;
+    }
 
 // PAS0 01
     // Valores por defecto de cada nivel complejidad de los factores de ponderación.
@@ -503,7 +505,7 @@ public class PFController implements Serializable {
     }
 
 //Generación PDF    
-    /**     *
+    /** 
      * Método para general PDF
      * @throws IOException Excepciones varias
      */
@@ -513,31 +515,11 @@ public class PFController implements Serializable {
     
     /**
      * Método para cerrar sesion del ManagedBean
-     
+     * @param dir direccion a redirigir
+     * @throws IOException Excepciones varias
      */
-    public void cerrarSesion(){
+    public void cerrarSesion(String dir) throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesContext.getCurrentInstance().getExternalContext().redirect(dir);
     }
-    
-    /**
-     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
-     
-     * @throws IOException Excepciones varias
-     
-     */
-    public void cerrarSesionCOCOMO1() throws IOException{
-        cerrarSesion();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/modeloBasico.xhtml");
-    }
-    
-    /**
-     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
-     
-     * @throws IOException Excepciones varias
-     
-     */
-    public void cerrarSesionCOCOMO2() throws IOException{
-        cerrarSesion();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/index.xhtml");
-    }     
 }
