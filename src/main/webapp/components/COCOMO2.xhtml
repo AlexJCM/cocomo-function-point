@@ -735,7 +735,9 @@
             </div>
             <br></br>
             <div>  
-                <h:commandButton class="btn btn-lg btn-info" value="Limpiar Datos" action="#{pf.cerrarSesionCOCOMO2()}" />   
+                <h:commandButton class="btn btn-lg btn-info" value="Limpiar Datos">
+                    <f:ajax listener="#{pf.cerrarSesion('/cocomo2-function-point/faces/index.xhtml')}"/>  
+                </h:commandButton>   
             </div>
             <!--**************** Generacion PDF ********************-->
             <br></br>

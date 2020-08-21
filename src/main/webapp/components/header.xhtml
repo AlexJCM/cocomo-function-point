@@ -4,26 +4,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-
     <ui:composition>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">         
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>                     
-                </button>
-                <a class="navbar-brand" href="#">Cocomo2-PF</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/cocomo2-function-point/faces/index.xhtml">Cocomo2-PF</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <h:link class="nav-link" value="Principal" outcome="index" >
-                        <f:ajax listener="#{pf.cerrarSesion()}"/>  
-                    </h:link>
-                    <h:link class="nav-link" value="Modelo Básico" outcome="modeloBasico" >
-                        <f:ajax listener="#{pf.cerrarSesion()}"/>  
-                    </h:link>
-                    <h:link class="nav-link" value="Manual de usuario" outcome="manual" />
+                    <a class="nav-link active" href="/cocomo2-function-point/faces/index.xhtml">
+                        Principal
+                    </a>
+                    <a class="nav-link" href="/cocomo2-function-point/faces/modeloBasico.xhtml">
+                        Modelo Básico 
+                    </a>
+                    <a class="nav-link" href="/cocomo2-function-point/faces/manual.xhtml">
+                        Manual de Usuario
+                    </a>
                 </div>
             </div>
         </nav>

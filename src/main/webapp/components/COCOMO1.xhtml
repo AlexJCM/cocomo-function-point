@@ -395,7 +395,10 @@
             </div>
             <br></br>
             <div>  
-                <h:commandButton class="btn btn-lg btn-info" value="Limpiar Datos" action="#{pf.cerrarSesionCOCOMO1()}" />   
+                <h:commandButton class="btn btn-lg btn-info" value="Limpiar Datos"  >
+                    <f:ajax listener="#{pf.cerrarSesion('/cocomo2-function-point/faces/modeloBasico.xhtml')}"/>  
+                    <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                </h:commandButton>     
             </div>
         </h:form>
     </ui:composition>
