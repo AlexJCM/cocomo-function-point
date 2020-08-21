@@ -1,40 +1,54 @@
 package controller;
 
 import model.PFModel;
-import controller.Utils;
+import controller.Utils;        
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Esta clase será la encargada de realizar todas las operaciones respectivas al cálculo del PF y hacer que estos cambios se reflejen en el modelo.
- * 
+ * Esta clase será la encargada de realizar todas las operaciones respectivas al
+ * cálculo del PF y hacer que estos cambios se reflejen en el modelo.
+ *
  */
 @Named("pf")
 @SessionScoped
 //@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
 //@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
-public class PFController implements Serializable{
-    
-    private static final long serialVersionUID = 1L;
+public class PFController implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
+    //New feature v2 by alex
+    @Getter
+    @Setter
     private PFModel pfModel;//Instancia de PFModel
     private Utils util;//Instancia de Utils
+   
+    //New feature v2 by alex
+    public PFModel getPfModel() {
+        if (pfModel == null) {
+            pfModel = new PFModel();
+        }
+        return pfModel;
+    }
 
     /**
-
-     * Constructor PFController, su principal función es crear una instancia del modelo PFModel y de la clase Utils.
-
+     * Constructor PFController, su principal función es crear una instancia del
+     * modelo PFModel y de la clase Utils.
+     *
      */
     public PFController() {
         pfModel = new PFModel();
         util = new Utils();
     }
+    
 
 // PAS0 01
     // Valores por defecto de cada nivel complejidad de los factores de ponderación.
@@ -68,11 +82,11 @@ public class PFController implements Serializable{
     @Getter
     @Setter
     private int subTotalAIE = 0; //Suma de todos los Archivos de Interfaz Externos
-    
-     /**
 
+    /**
+     *
      * Método para calcular subtotales de Dominios
-
+     *
      */
     public void calcularSubtotalesDominios() {
         subTotalEE = eeSimple * 3 + eePromedio * 4 + eeComplejo * 6;
@@ -81,29 +95,30 @@ public class PFController implements Serializable{
         subTotalALI = aliSimple * 7 + aliPromedio * 10 + aliComplejo * 15;
         subTotalAIE = aieSimple * 5 + aiePromedio * 7 + aieComplejo * 10;
     }
-    
+
     /**
-
-     * Método para obtener el valor de los Puntos de Función NO Ajustados
-     
+     * Método para obtener el valor de los Puntos de Función NO Ajustados     *
      * @return Puntos de Función NO Ajustados
-
      */
     public int getPFNA() {
         return pfModel.getPFNA();
     }
 
     /**
-
-     * Método para realizar la suma final de todos los puntos función No Ajustados parciales y los reflejará en el modelo
-
+     * Método para realizar la suma final de todos los puntos función No
+     * Ajustados parciales y los reflejará en el modelo
      */
     public void actualizarPFNA() {
+        if (pfModel == null) {
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        }
+        if (pfModel.getPFNA() < 0) {
+            throw new NumberFormatException("El valor de PFNA debe ser  un valor positivo!");
+        }
         calcularSubtotalesDominios();
         pfModel.setPFNA(subTotalEE + subTotalSE + subTotalCE + subTotalALI + subTotalAIE);
     }
 
-    
 // PAS0 02
     //Valores por defecto de calificación de preguntas para Ajustar los Puntos de Función
     @Getter
@@ -118,70 +133,70 @@ public class PFController implements Serializable{
     @Getter
     @Setter
     private int p13Califiacion = 0, p14Califiacion = 0;
-    
+
     //Valores por defecto para la suma total de las calificaciones
     @Getter
     @Setter
     private int totalCalifiaciones = 0;
 
     /**
-
-     * Método para realizar la suma final de todas las calificaciones para Ajuste de los Puntos de Función
-
+     *
+     * Método para realizar la suma final de todas las calificaciones para
+     * Ajuste de los Puntos de Función
+     *
      */
     public void calcularSumaCalifiaciones() {
         totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
     }
 
     /**
-
+     *
      * Método para obtener el Factor de Ajuste del Modelo PFModel
-     
+     *
      * @return double retorna el valor del Factor de Ajuste
-
+     *
      */
-    public double getFactorAjuste() {
-        return pfModel.getFactorDeAjuste();
-    }
-    
+//    public double getFactorAjuste() {
+//        return pfModel.getFactorDeAjuste();
+//    }
+
     /**
-
+     *
      * Método para calcular el Factor de Ajuste
-     
+     *
      * @param totalCalifiaciones Valor para calcular el Factor de Ajuste
-
+     *
      */
     public void setFactorAjuste(double totalCalifiaciones) {
         pfModel.setFactorDeAjuste(util.redondear2Decimales(totalCalifiaciones * 0.01 + 0.65));
     }
-    
+
     /**
-
+     *
      * Método para calcular los puntos de función
-
+     *
      */
     public void ajustarPuntoDeFuncion() {
         pfModel.setPFA(util.redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
     }
 
     /**
-
+     *
      * Método para obtener el valor de los Puntos de Función Ajustados
-     
+     *
      * @return Puntos de Función Ajustados
-
+     *
      */
     public double getPFA() {
-        return pfModel.getPFA();
-    }
+       return pfModel.getPFA();
+   }
 
     /**
-
-     * Método para realizar un conjunto de llamados a otros métodos:
-     *  Calculara la suma de todas las calificaciones
-     *  Calculara el factor de ajuste
-     *  Ajustara los Puntos de Función
-
+     *
+     * Método para realizar un conjunto de llamados a otros métodos: Calculara
+     * la suma de todas las calificaciones Calculara el factor de ajuste
+     * Ajustara los Puntos de Función
+     *
      */
     public void actualizarPFA() {
         calcularSumaCalifiaciones();
@@ -198,24 +213,28 @@ public class PFController implements Serializable{
     private int LC = 0;//Valor de las seleccionada Líneas de Código
     @Getter
     @Setter
+    private Boolean editar = false;//Boolean para conocer si el valor se editara
+    @Getter
+    @Setter
     private double sLoC = 0.0;//Valor de las Líneas de código fuente
     @Getter
     @Setter
     private double kLoC = 0.0;//Valor de las Kilo Líneas de código fuente
-    
+
     /**
-
+     *
      * Método para realizar un conjunto de llamados a otros métodos:
-     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas
-
+     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código 
+     * seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
+     *
      */
     public void actualizarLC() {
-        if(LC>0){
+        if(editar==true){
             sLoC = util.redondear2Decimales(pfModel.getPFA() * LC);
         }else{
+        LC=util.conversionLC(strLC);
             sLoC = util.redondear2Decimales(pfModel.getPFA() * util.conversionLC(strLC));
         }
-        
     }
 
 // PAS0 04 modelo basico    
@@ -240,22 +259,21 @@ public class PFController implements Serializable{
     private double duration = 0.0;//Duración 
 
     /**
-
-     * Método para calcular Kilo Líneas de código fuente
-     *  Se realizar dividiendo sobre 1000 las Líneas de código fuente
-
+     *
+     * Método para calcular Kilo Líneas de código fuente Se realizar dividiendo
+     * sobre 1000 las Líneas de código fuente
+     *
      */
     public void slocTOkloc() {
         kLoC = (sLoC / 1000);
     }
 
     /**
-
-     * Método para calcular el Esfuerzo y la Duración dependiendo de la elección de Proyecto de Software
-     *  0 para PS Orgánico
-     *  1 para PS Semi-Embebido
-     *  2 para PS Incrustado
-
+     *
+     * Método para calcular el Esfuerzo y la Duración dependiendo de la elección
+     * de Proyecto de Software 0 para PS Orgánico 1 para PS Semi-Embebido 2 para
+     * PS Incrustado
+     *
      */
     public void calcularED() {
         switch (SP) {
@@ -274,24 +292,24 @@ public class PFController implements Serializable{
         }
     }
 
-     /**
-
-     * Método para realizar un conjunto de llamados a otros métodos:
-     *  Calculara las KLOC y LOC
-     *  Calculara el Esfuerzo y Duración con relación al tipo de proyecto de software
-
+    /**
+     *
+     * Método para realizar un conjunto de llamados a otros métodos: Calculara
+     * las KLOC y LOC Calculara el Esfuerzo y Duración con relación al tipo de
+     * proyecto de software
+     *
      */
     public void actualizarSP() {
         slocTOkloc();
         calcularED();
     }
-    
+
     /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Básico
-     *  Realizara la actualización del método PFNA del paso 01
-     *  Realizara la actualización del método PFA del paso 02
-     *  Realizara la actualización del método LC del paso 03
-     *  Realizara la actualización del método SP del paso 04
+     * Realizara la actualización del método PFNA del paso 01 Realizara la
+     * actualización del método PFA del paso 02 Realizara la actualización del
+     * método LC del paso 03 Realizara la actualización del método SP del paso
+     * 04
      */
     public void acturalizarBasico() {
         actualizarPFNA();
@@ -322,31 +340,32 @@ public class PFController implements Serializable{
     @Getter
     @Setter
     private double feB = 0.0;//Factor de Escala 
-    
+
     /**
-
+     *
      * Método para sumar todas las valoraciones de los Factores de escala
-
+     *
      */
     public void sumaCalifiacionesFE() {
         sumFE = (util.redondear2Decimales(prec + flex + resl + team + pmat));
     }
 
     /**
-
-     * Método para calcular el factor de Escala utilizando la suma total de las valoraciones
-
+     *
+     * Método para calcular el factor de Escala utilizando la suma total de las
+     * valoraciones
+     *
      */
     public void factorEscala() {
         feB = (0.91 + 0.01 * sumFE);
     }
 
     /**
-
-     * Método para realizar un conjunto de llamados a otros métodos:
-     *  Se sumará el total de las valoraciones de cada factor
-     *  Calculara el factor de escala a base de la suma total de los factores
-
+     *
+     * Método para realizar un conjunto de llamados a otros métodos: Se sumará
+     * el total de las valoraciones de cada factor Calculara el factor de escala
+     * a base de la suma total de los factores
+     *
      */
     public void actualizarFE5() {
         sumaCalifiacionesFE();
@@ -356,78 +375,80 @@ public class PFController implements Serializable{
 // PAS0 05 
     @Getter
     @Setter
-    private double rely = 1.0;//Fiabilidad requerida del software 
+    private double rely = 1.0;//Seguridad requerida
     @Getter
     @Setter
-    private double data = 1.0;//Tamaño de la base de datos
+    private double data = 1.0;//Tamaño de base de datos
     @Getter
     @Setter
-    private double cplx = 1.0;//Complejidad del producto
+    private double docu = 1.0;//Documentación adaptada de ciclo de vida
     @Getter
     @Setter
-    private double docu = 1.0;//Alcance de la documentación requerida
+    private double cplx = 1.0;//Complejidad
     @Getter
     @Setter
-    private double ruse = 1.0;//Porcentaje requerido de componentes reutilizables
+    private double ruse = 1.0;//Reutilización requerida
     @Getter
     @Setter
-    private double time = 1.0;//Restricciones del tiempo de ejecución
+    private double time = 1.0;//Tiempo de ejecución requerido
     @Getter
     @Setter
-    private double stor = 1.0;//Restricciones del almacenamiento principal
+    private double stor = 1.0;//Almacenamiento principal requerido
     @Getter
     @Setter
-    private double virt = 1.0;//Inestabilidad de la máquina virtual
-    @Getter
-    @Setter
-    private double turn = 1.0;//Tiempo de respuesta del computador
+    private double pvol = 1.0;//Volatilidad de la plataforma
     @Getter
     @Setter
     private double acap = 1.0;//Capacidad del analista
     @Getter
     @Setter
-    private double aexp = 1.0;//Experiencia en la aplicación
+    private double aexp = 1.0;//Experiencia del analista
     @Getter
     @Setter
-    private double pcap = 1.0;//Capacidad de los programadores
+    private double pcap = 1.0;//Capacidad del programador
     @Getter
     @Setter
-    private double vexp = 1.0;//Experiencia en S.O utilizado
+    private double pexp = 1.0;//Experiencia en la plataforma de S.O
     @Getter
     @Setter
-    private double lexp = 1.0;//Experiencia en el Lenguaje de Programación
+    private double ltex = 1.0;//Experiencia en lenguaje y herramienta
     @Getter
     @Setter
-    private double modp = 1.0;//Uso de prácticas de programación modernas
+    private double pcon = 1.0;//Continuidad del personal
     @Getter
     @Setter
-    private double tool = 1.0;//Uso de herramientas software
+    private double tool = 1.0;//Uso de herramientas de software
     @Getter
     @Setter
-    private double sced = 1.0;//Uso de herramientas software
+    private double site = 1.0;//Desarrollo multitarea
+    @Getter
+    @Setter
+    private double sced = 1.0;//Esquema de desarrollo programado
+    
     @Getter
     @Setter
     private double fm = 1.0;//Factor Multiplicativo (Multiplicador de Esfuerzo)
 
-     /**
-
-     * Método para calcular la multiplicación total de todos los factores compuestos
-
+    /**
+     *
+     * Método para calcular la multiplicación total de todos los factores
+     * compuestos
+     *
      */
     public void factorMultiplicativo() {
-        fm = (util.redondear2Decimales(rely * data * cplx * docu * ruse * time * stor * virt * turn * acap * aexp * pcap * vexp * lexp * modp * tool * sced));
+        fm = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
     }
 
     /**
-
-     * Método para realizar un conjunto de llamados a otros métodos:
-     *  Calculo del factor Multiplicativo (Multiplicador de Esfuerzo)
-
+     *
+     * Método para realizar un conjunto de llamados a otros métodos: Calculo del
+     * factor Multiplicativo (Multiplicador de Esfuerzo)
+     *
      */
     public void actualizarFEC() {
         factorMultiplicativo();
     }
-    
+
 //PASO 06
     @Getter
     @Setter
@@ -443,21 +464,22 @@ public class PFController implements Serializable{
     private double costoTotal = 0;//Costo total del proyecto
 
     /**
-
-     * Método para realizar un conjunto de llamados a otros métodos:
-     *  Calculara el KLOC
-     *  Calculamos el Esfuerzo, Duración, Personas y Costo total
-
+     *
+     * Método para realizar un conjunto de llamados a otros métodos: 
+     * Calculara el KLOC 
+     * Calculamos el Esfuerzo, Duración, Personas y Costo total
+     *
      */
-    public void acturalizarED() {
+   public void acturalizarED() {
         slocTOkloc();
         effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
         duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
         personas =(int) Math.ceil(util.redondear2Decimales(effort / duration));
-        costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas * 1.10)) + imprevistos));
+        imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas))*0.1));
+        costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
     }
-    
-    /**
+
+     /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Completo
      *  Realizara la actualización del método PFNA del paso 01
      *  Realizara la actualización del método PFA del paso 02
@@ -474,16 +496,43 @@ public class PFController implements Serializable{
         actualizarFEC();
         acturalizarED();
     }
-    
+
 //Generación PDF    
-    /**
-      
+    /**     *
      * Método para general PDF
+     * @throws IOException Excepciones varias
+     */
+    public void generarPDF() throws IOException {
+        util.plantillaParaPDF(pfModel.getPFA(), sLoC);
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean
+     
+     */
+    public void cerrarSesion(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
      
      * @throws IOException Excepciones varias
      
      */
-    public void generarPDF() throws IOException{
-        util.plantillaParaPDF( pfModel.getPFA(), sLoC);
+    public void cerrarSesionCOCOMO1() throws IOException{
+        cerrarSesion();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/modeloBasico.xhtml");
+    }
+    
+    /**
+     * Método para cerrar sesion del ManagedBean y redirigir a su respectivo modelo
+     
+     * @throws IOException Excepciones varias
+     
+     */
+    public void cerrarSesionCOCOMO2() throws IOException{
+        cerrarSesion();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/cocomo2-function-point/faces/index.xhtml");
     }
 }

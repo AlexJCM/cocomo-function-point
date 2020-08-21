@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import static com.google.code.beanmatchers.BeanMatchers.*;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -54,59 +55,61 @@ public class PFTest {
     @Before
     public void init() {
         pf = new PFController();
+        pf.getPfModel().setPFNA(45);
+        pf.getPfModel().setPFA(15.33);
+        pf.getPfModel().setPFNA(11);
+
         pfModel = new PFModel();
     }
-
-    // One big test
+    
+    /** 
+     * Probar el constructor No-Args asegura que un bean tenga un constructor
+     * sin argumentos que funcione.
+     *
+     * Probar todos los Getters y Setters (excepto los de la propiedad
+     * factorAjuste) para garantizar que lo que se almacena con un setter es lo
+     * que se obtiene con el getter relacionado. Nos asegúrese de que todas las
+     * propiedades del bean tengan getters y setters que funcionen.
+     */
     @Test
-    public void testBeanController() {
+    public void testBeanPFController() {
         assertThat(PFController.class, allOf(
-                hasValidBeanConstructor()
-               // hasValidGettersAndSetters()
+                hasValidBeanConstructor(),
+                hasValidGettersAndSettersExcluding("factorAjuste","PFNA", "PFA")
+               // hasValidGettersAndSetters()              
         ));
     }
 
     /**
-     * Probar el constructor No-Args asegura que un bean tenga un constructor
-     * sin argumentos que funcione.
-     */
-    @Test
-    public void shouldHaveANoArgsConstructor() {
-        assertThat(PFController.class, hasValidBeanConstructor());
-    }
-
-    /**
-     * Probar Getters y Setters Matchers para garantizar que lo que se
-     * almacena44 con un setter es lo que se obtiene con el getter relacionado.
-     * Nos asegúrese de que todas las propiedades del bean tengan getters y
-     * setters que funcionen.
-     */
-//    @Test
-//    public void gettersAndSettersShouldWorkForEachProperty() {
-//        assertThat(PFController.class, hasValidGettersAndSetters());     
-//    }
-
-    /**
-     * Asegúrese de que la propiedad "testOnlyThisProperty" tenga un getter y
-     * setter que funcionen.
-     */
-    @Test
-    public void gettersAndSettersShouldWorkForXXXProperty() {
-        assertThat(PFController.class, hasValidGettersAndSettersFor("eeSimple"));
-    }
-
-    /**
-     * Asegúrese de que todas las propiedades del bean, excepto la propiedad
-     * denominada "dontTestPropertyWithThisName", tengan getters y setters que
+     * Asegúrese de que la propiedad "eeSimple" tenga un getter y setter que
      * funcionen.
      */
-//     @Test
-//    public void gettersAndSettersShouldWorkForNotXXXProperty() {
-//        assertThat(PFController.class, hasValidGettersAndSettersExcluding("PFA"));
+//    @Test
+//    public void gettersAndSettersShouldWorkForXXXProperty() {
+//        assertThat(PFController.class, hasValidGettersAndSettersFor("eeSimple"));
 //    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    
+    //*************************************************************
+    //*************************************************************
+    /**
+     * Test para verificar que el valor de PFNA es negativo
+     */
+    @Test(expected = NumberFormatException.class)
+    public void testActualizarPFNATieneValorNegativo() {
+        //PFNA con valor negativo
+        pfModel.setPFNA(-6);
+        pf.setPfModel(pfModel);
+        pf.actualizarPFNA();
+    }
+
+    /**
+     * Test para verificar cunado el objto pfModel es nulo
+     */
+    @Test(expected = NullPointerException.class)
+    public void testPModelEsNulo() {
+        PFModel pfModel = null;
+        pf.setPfModel(pfModel);
+        pf.actualizarPFNA();
+    }
 }

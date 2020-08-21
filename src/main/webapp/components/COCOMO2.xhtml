@@ -1,0 +1,751 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:composition>
+        <h:form id="PF1">
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 01:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" width="280">Parámetros de medición</th>                               
+                                    <th scope="col" width="60" colspan="2">Simple</th>
+                                    <th scope="col" width="60" colspan="2">Promedio</th>
+                                    <th scope="col" width="60" colspan="2">Complejo</th>
+                                    <th scope="col" width="15"></th>
+                                    <th scope="col" width="80" colspan="2">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Cantidad de entradas del usuario</th>
+                                    <td><h:inputText id="input1" class="form-control" value="#{pf.eeSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                                
+                                    <td>x&nbsp;3&nbsp;+</td>
+                                    <td><h:inputText id="input2" class="form-control" value="#{pf.eePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                               
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input3" class="form-control" value="#{pf.eeComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                            
+                                    <td>x&nbsp;6</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalEE" class="form-control" value="#{pf.subTotalEE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> Número de salidas de usuario</th>
+                                    <td><h:inputText id="input4" class="form-control" value="#{pf.seSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                               
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input5" class="form-control" value="#{pf.sePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;5&nbsp;+</td>
+                                    <td><h:inputText id="input6" class="form-control" value="#{pf.seComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;7</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalSE" class="form-control" value="#{pf.subTotalSE}"/></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de consultas de usuarios</th>
+                                    <td><h:inputText id="input7" class="form-control" value="#{pf.ceSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                              
+                                    <td>x&nbsp;3&nbsp;+</td>
+                                    <td><h:inputText id="input8" class="form-control" value="#{pf.cePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                         
+                                    <td>x&nbsp;4&nbsp;+</td>
+                                    <td><h:inputText id="input9" class="form-control" value="#{pf.ceComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;6</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalCE" class="form-control" value="#{pf.subTotalCE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de archivos</th>
+                                    <td><h:inputText id="input10" class="form-control" value="#{pf.aliSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                              
+                                    <td>x&nbsp;7&nbsp;+</td>
+                                    <td><h:inputText id="input11" class="form-control" value="#{pf.aliPromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;10&nbsp;+</td>
+                                    <td><h:inputText id="input12" class="form-control" value="#{pf.aliComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;15</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalALI" class="form-control" value="#{pf.subTotalALI}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Número de interfaces externas.</th>
+                                    <td><h:inputText id="input13" class="form-control" value="#{pf.aieSimple}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                             
+                                    <td>x&nbsp;5&nbsp;+</td>
+                                    <td><h:inputText id="input14" class="form-control" value="#{pf.aiePromedio}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                              
+                                    <td>x&nbsp;7&nbsp;+</td>
+                                    <td><h:inputText id="input15" class="form-control" value="#{pf.aieComplejo}" p:type="number" p:min="0">
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:inputText> 
+                                    </td>                              
+                                    <td>x&nbsp;10</td>
+                                    <td>=</td>
+                                    <td><h:outputText id="idSubTotalAIE" class="form-control" value="#{pf.subTotalAIE}"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="8" class="text-right">Valor Total No Ajustado:</th>
+                                    <td><h:outputText id="idPFNA" class="form-control" value="#{pf.PFNA}"/></td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 02:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" >Preguntas</th>                               
+                                    <th scope="col" width="250">Calificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1. ¿El sistema requiere respaldo y recuperación confiables?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons" >
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio2" value="#{pf.p2Califiacion}" styleClass="toggle-radio-buttons" >
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">3. ¿Existen funciones de procesamiento distribuidas?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio3" value="#{pf.p3Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">4. ¿El desempeño es crucial?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio4" value="#{pf.p4Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">5. ¿El sistema correrá¡ en un entorno operativo existente enormemente utilizado?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio5" value="#{pf.p5Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <th scope="row">6. ¿El sistema requiere entrada de datos en lí­nea?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio6" value="#{pf.p6Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">7. ¿La entrada de datos en lí­nea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio7" value="#{pf.p7Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">8. ¿Los ALI se actualizan en lí­nea?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio8" value="#{pf.p8Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">9. ¿Las entradas, salidas, archivos o consultas son complejos?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio9" value="#{pf.p9Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <th scope="row">10. ¿El procesamiento interno es complejo?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio10" value="#{pf.p10Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">11. ¿El código se diseña para ser reutilizable?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio11" value="#{pf.p11Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">12. ¿La conversión y la instalación se incluyen en el diseño?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio12" value="#{pf.p12Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                               
+                                <tr>
+                                    <th scope="row">13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio13" value="#{pf.p13Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th scope="row">14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?</th>
+                                    <td>
+                                        <h:selectOneRadio id="radio14" value="#{pf.p14Califiacion}" styleClass="toggle-radio-buttons">
+                                            <f:selectItems value="#{util.listaCalificaciones}"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneRadio>
+                                    </td>
+                                </tr>
+                                <tr>                                    
+                                    <th scope="row" class="text-right">Suma Total Calificaciónes:</th>
+                                    <td><h:outputText id="idTC"  value="#{pf.totalCalifiaciones}" class="form-control"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Punto de función Ajustado:</th>
+                                    <td><h:outputText id="idPFA" value="#{pf.PFA}" class="form-control" /></td>
+                                </tr>
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 03:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Líneas de Código</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col" width="150" >Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        Seleccione Lenguaje de Programación
+                                        <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.strLC}">
+                                            <f:selectItems value="#{util.listaLenguajes}" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </th>
+                                    <th scope="row"> 
+                                        Edite las Líneas de Código 
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <h:selectBooleanCheckbox value="#{pf.editar}">
+                                                        <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                                    </h:selectBooleanCheckbox>
+                                                </div>
+                                            </div>
+                                            <h:inputText id="ideLC" value="#{pf.LC}" class="form-control" p:type="number" p:min="14" p:max="119">
+                                                <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                            </h:inputText>
+                                        </div>
+                                    </th>
+                                    <th scope="row"> 
+                                        SLoC 
+                                        <h:outputText id="idLC" value="#{pf.SLoC}" class="form-control"/>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 04:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col">Factores de Escala</th>
+                                    <th scope="col" width="350">Valoración</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Precedentes (PREC)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select2" styleClass="form-control" value="#{pf.prec}">
+                                            <f:selectItem itemLabel="6.20 - Muy Bajo" itemValue="6.20"/>
+                                            <f:selectItem itemLabel="4.96 - Bajo" itemValue="4.96"/>
+                                            <f:selectItem itemLabel="3.72 - Normal" itemValue="3.72"/>
+                                            <f:selectItem itemLabel="2.48 - Alto" itemValue="2.48"/>
+                                            <f:selectItem itemLabel="1.24 - Muy Alto" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.00"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Flexibildad de Desarrollo (FLEX)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select3" styleClass="form-control" value="#{pf.flex}">
+                                            <f:selectItem itemLabel="5.07 - Muy Bajo" itemValue="5.07"/>
+                                            <f:selectItem itemLabel="4.05 - Bajo" itemValue="4.05"/>
+                                            <f:selectItem itemLabel="3.04 - Normal" itemValue="3.04"/>
+                                            <f:selectItem itemLabel="2.03 - Alto" itemValue="2.03"/>
+                                            <f:selectItem itemLabel="1.01 - Muy Alto" itemValue="1.01"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Resolución de Arquitectura/Riesgo (RESL)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select4" styleClass="form-control" value="#{pf.resl}">
+                                            <f:selectItem itemLabel="7.07 - Muy Bajo" itemValue="7.07"/>
+                                            <f:selectItem itemLabel="5.65 - Bajo" itemValue="5.65"/>
+                                            <f:selectItem itemLabel="4.24 - Normal" itemValue="4.24"/>
+                                            <f:selectItem itemLabel="2.83 - Alto" itemValue="2.83"/>
+                                            <f:selectItem itemLabel="1.41 - Muy Alto" itemValue="1.41"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Cohesión del equipo de trabajo (TEAM)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select5" styleClass="form-control" value="#{pf.team}">
+                                            <f:selectItem itemLabel="5.48 - Muy Bajo" itemValue="5.48"/>
+                                            <f:selectItem itemLabel="4.38 - Bajo" itemValue="4.38"/>
+                                            <f:selectItem itemLabel="3.29 - Normal" itemValue="3.29"/>
+                                            <f:selectItem itemLabel="2.19 - Alto" itemValue="2.19"/>
+                                            <f:selectItem itemLabel="1.10 - Muy Alto" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Madurez del Proceso (PMAT)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select6" styleClass="form-control" value="#{pf.pmat}">
+                                            <f:selectItem itemLabel="7.80 - Muy Bajo" itemValue="7.80"/>
+                                            <f:selectItem itemLabel="6.24 - Bajo" itemValue="6.24"/>
+                                            <f:selectItem itemLabel="4.68 - Normal" itemValue="4.68"/>
+                                            <f:selectItem itemLabel="3.12 - Alto" itemValue="3.12"/>
+                                            <f:selectItem itemLabel="1.56 - Muy Alto" itemValue="1.56"/>
+                                            <f:selectItem itemLabel="0.00 - Extra" itemValue="0.0" />
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Valoración Total:</th>
+                                    <td><h:outputText id="idsumFE" value="#{pf.sumFE}" class="form-control"/></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Factor Escala</th>
+                                    <td><h:outputText id="idFE" value="#{pf.feB}" class="form-control"/></td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 05:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" colspan="2">Factores de Esfuerzo Compuesto</th>
+                                    <tr class="text-center">
+                                        <th scope="col">Multiplicadores de Esfuerzo</th>
+                                        <th scope="col" width="350">Valoración</th>
+                                    </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Factores del Producto</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Seguridad requerida (RELY)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select7" styleClass="form-control" value="#{pf.rely}">
+                                            <f:selectItem itemLabel="0.75 - Muy Bajo" itemValue="0.75"/>
+                                            <f:selectItem itemLabel="0.88 - Bajo" itemValue="0.88"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.39 - Muy Alto" itemValue="1.39"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tamaño de base de datos (DATA)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select8" styleClass="form-control" value="#{pf.data}">
+                                            <f:selectItem itemLabel="0.93 - Bajo" itemValue="0.93"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.09 - Alto" itemValue="1.09"/>
+                                            <f:selectItem itemLabel="1.19 - Muy Alto" itemValue="1.19"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Documentación adaptada de ciclo de vida (DOCU)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select9" styleClass="form-control" value="#{pf.docu}">
+                                            <f:selectItem itemLabel="0.89 - Muy Bajo" itemValue="0.89"/>
+                                            <f:selectItem itemLabel="0.95 - Bajo" itemValue="0.95"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.06 - Alto" itemValue="1.06"/>
+                                            <f:selectItem itemLabel="1.13 - Muy Alto" itemValue="1.13"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Complejidad (CPLX)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select10" styleClass="form-control" value="#{pf.cplx}">
+                                            <f:selectItem itemLabel="0.75 - Muy Bajo" itemValue="0.75"/>
+                                            <f:selectItem itemLabel="0.88 - Bajo" itemValue="0.88"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                            <f:selectItem itemLabel="1.66 - Extra" itemValue="1.66"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Reutilización requerida (RUSE)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select11" styleClass="form-control" value="#{pf.ruse}">
+                                            <f:selectItem itemLabel="0.91 - Bajo" itemValue="0.91"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.14 - Alto" itemValue="1.14"/>
+                                            <f:selectItem itemLabel="1.29 - Muy Alto" itemValue="1.29"/>
+                                            <f:selectItem itemLabel="1.49 - Extra" itemValue="1.49"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Factores del Plataforma</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tiempo de ejecución requerido (TIME)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select12" styleClass="form-control" value="#{pf.time}">
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.11 - Alto" itemValue="1.11"/>
+                                            <f:selectItem itemLabel="1.31 - Muy Alto" itemValue="1.31"/>
+                                            <f:selectItem itemLabel="1.67 - Extra" itemValue="1.67"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Almacenamiento principal requerido (STOR)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select13" styleClass="form-control" value="#{pf.stor}">
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.06 - Alto" itemValue="1.06"/>
+                                            <f:selectItem itemLabel="1.21 - Muy Alto" itemValue="1.21"/>
+                                            <f:selectItem itemLabel="1.57 - Extra" itemValue="1.57"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCTidI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Volatilidad de la plataforma (PVOL)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select14" styleClass="form-control" value="#{pf.pvol}">
+                                            <f:selectItem itemLabel="0.87 - Bajo" itemValue="0.87"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="1.15 - Alto" itemValue="1.15"/>
+                                            <f:selectItem itemLabel="1.30 - Muy Alto" itemValue="1.30"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Factores del Personal</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Capacidad del analista (ACAP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select15" styleClass="form-control" value="#{pf.acap}">
+                                            <f:selectItem itemLabel="1.50 - Muy Bajo" itemValue="1.50"/>
+                                            <f:selectItem itemLabel="1.22 - Bajo" itemValue="1.22"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.83 - Alto" itemValue="0.83"/>
+                                            <f:selectItem itemLabel="0.67 - Muy Alto" itemValue="0.67"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia del analista (AEXP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select16" styleClass="form-control" value="#{pf.aexp}">
+                                            <f:selectItem itemLabel="1.22 - Muy Bajo" itemValue="1.22"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.89 - Alto" itemValue="0.89"/>
+                                            <f:selectItem itemLabel="0.81 - Muy Alto" itemValue="0.81"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Capacidad del programador (PCAP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select17" styleClass="form-control" value="#{pf.pcap}">
+                                            <f:selectItem itemLabel="1.37 - Muy Bajo" itemValue="1.37"/>
+                                            <f:selectItem itemLabel="1.16 - Bajo" itemValue="1.16"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.87 - Alto" itemValue="0.87"/>
+                                            <f:selectItem itemLabel="0.74 - Muy Alto" itemValue="0.74"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia en la plataforma de S.O (PEXP)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select18" styleClass="form-control" value="#{pf.pexp}">
+                                            <f:selectItem itemLabel="1.25 - Muy Bajo" itemValue="1.25"/>
+                                            <f:selectItem itemLabel="1.12 - Bajo" itemValue="1.12"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.88 - Alto" itemValue="0.88"/>
+                                            <f:selectItem itemLabel="0.81 - Muy Alto" itemValue="0.81"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Experiencia en lenguaje y herramienta (LTEX)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select19" styleClass="form-control" value="#{pf.ltex}">
+                                            <f:selectItem itemLabel="1.22 - Muy Bajo" itemValue="1.22"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.91 - Alto" itemValue="0.91"/>
+                                            <f:selectItem itemLabel="0.84 - Muy Alto" itemValue="0.84"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Continuidad del personal (PCON)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select20" styleClass="form-control" value="#{pf.pcon}">
+                                            <f:selectItem itemLabel="1.24 - Muy Bajo" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.92 - Alto" itemValue="0.92"/>
+                                            <f:selectItem itemLabel="0.84 - Muy Alto" itemValue="0.84"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
+                                    <th scope="row" colspan="2">Factores del Proyecto</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Uso de herramientas de software (TOOL)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select21" styleClass="form-control" value="#{pf.tool}">
+                                            <f:selectItem itemLabel="1.24 - Muy Bajo" itemValue="1.24"/>
+                                            <f:selectItem itemLabel="1.12 - Bajo" itemValue="1.12"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.86 - Alto" itemValue="0.86"/>
+                                            <f:selectItem itemLabel="0.72 - Muy Alto" itemValue="0.72"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Desarrollo multitarea (SITE)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select22" styleClass="form-control" value="#{pf.site}">
+                                            <f:selectItem itemLabel="1.25 - Muy Bajo" itemValue="1.25"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:selectItem itemLabel="0.92 - Alto" itemValue="0.92"/>
+                                            <f:selectItem itemLabel="0.84 - Muy Alto" itemValue="0.84"/>
+                                            <f:selectItem itemLabel="0.78- Extra" itemValue="0.78"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Esquema de desarrollo programado (SCED)</th>
+                                    <td>
+                                        <h:selectOneMenu id="select23" styleClass="form-control" value="#{pf.sced}">
+                                            <f:selectItem itemLabel="1.29 - Muy Bajo" itemValue="1.29"/>
+                                            <f:selectItem itemLabel="1.10 - Bajo" itemValue="1.10"/>
+                                            <f:selectItem itemLabel="1.00 - Normal" itemValue="1.00"/>
+                                            <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-right">Multiplicador de Esfuerzo</th>
+                                    <td><h:outputText id="idFEC" value="#{pf.fm}" class="form-control"/></td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div class="card">
+                <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 06:</h4>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr class="text-center">
+                                    <th scope="col" width="400">Ingrese el Sueldo</th>
+                                    <th scope="col">Resultados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        Sueldo Mensual 
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                            <h:inputText id="idS"  class="form-control" value="#{pf.sueldo}" p:type="number" p:min="0"> 
+                                                <f:ajax listener="#{pf.acturalizarComplejo()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idsumFE idFE idFEC idE idD idP idCT idI"/>
+                                            </h:inputText>
+                                        </div>
+                                    </th>
+                                    <th scope="row"> 
+                                        Esfuerzo <h:outputText id="idE" value="#{pf.effort}" class="form-control"/>
+                                        Duración <h:outputText id="idD" value="#{pf.duration}" class="form-control"/>
+                                        Número de personas <h:outputText id="idP" value="#{pf.personas}" class="form-control"/>    
+                                        Imprevistos 
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                            <h:outputText id="idI"  value="#{pf.imprevistos}" class="form-control" /> 
+                                        </div>
+                                        Costo total 
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                            <h:outputText id="idCT" value="#{pf.costoTotal}" class="form-control"/>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>          
+            </div>
+            <br></br>
+            <div>  
+                <h:commandButton class="btn btn-lg btn-info" value="Limpiar Datos" action="#{pf.cerrarSesionCOCOMO2()}" />   
+            </div>
+            <!--**************** Generacion PDF ********************-->
+            <br></br>
+            <div>  
+                <center>
+                    <h:commandButton class="btn btn-lg btn-info" value="Generar PDF" action="#{pf.generarPDF()}" />   
+                </center>
+            </div>
+            <br></br>
+            <!--*****************************************************-->   
+        </h:form>
+    </ui:composition>
+</html>
