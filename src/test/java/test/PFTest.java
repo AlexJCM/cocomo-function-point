@@ -88,8 +88,7 @@ public class PFTest {
 //    public void gettersAndSettersShouldWorkForXXXProperty() {
 //        assertThat(PFController.class, hasValidGettersAndSettersFor("eeSimple"));
 //    }
-    
-    
+        
     //*************************************************************
     //*************************************************************
     /**
@@ -104,7 +103,7 @@ public class PFTest {
     }
 
     /**
-     * Test para verificar cunado el objto pfModel es nulo
+     * Test para verificar cuaNdo el objto pfModel es nulo
      */
     @Test(expected = NullPointerException.class)
     public void testPModelEsNulo() {

@@ -17,20 +17,19 @@ import lombok.Setter;
  * cálculo del PF y hacer que estos cambios se reflejen en el modelo.
  *
  */
-@Named("pf")
-@SessionScoped
-//@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
-//@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
-public class PFController implements Serializable {
+//@Named("pf")
+@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
+@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
+public class PFController  {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     
     //New feature v2 by alex
     @Getter
     @Setter
     private PFModel pfModel;//Instancia de PFModel
     private Utils util;//Instancia de Utils
-
+    
     /**
      * Constructor PFController, su principal función es crear una instancia del
      * modelo PFModel y de la clase Utils.
@@ -225,17 +224,12 @@ public class PFController implements Serializable {
 
     /**
      *
-     * Método para realizar un conjunto de llamados a otros métodos:
-<<<<<<< HEAD
      *  Multiplicación de los Puntos de Función Ajustados con las líneas de código 
      * seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
-     *
-=======
      *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
 
->>>>>>> 5295e88681fc1578766ff2baa59809f74d582313
      */
-    public void actualizarLC() {
+    public void actualizarLC() {        
         if(editar==true){
             sLoC = util.redondear2Decimales(pfModel.getPFA() * LC);
         }else{
@@ -496,10 +490,10 @@ public class PFController implements Serializable {
      *  Realizara la actualización del método ED del paso 06
      */
     public void acturalizarComplejo() {
-        actualizarPFNA();
-        actualizarPFA();
-        actualizarLC();
-        actualizarFE5();
+        actualizarPFNA(); // minimop valor posibles de PFNA es 3. Y buscar el valor maximo posible
+        actualizarPFA(); // max Valor es 70 y minimo 0
+        actualizarLC(); //minimo 14 y maximo 119 de LOC x PF.
+        actualizarFE5(); // max valor 35.x
         actualizarFEC();
         acturalizarED();
     }

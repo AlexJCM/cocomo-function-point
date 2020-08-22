@@ -21,13 +21,12 @@ import javax.inject.Named;
 
 /**
  * Esta clase tendrá métodos variados y componentes que tienen un grado de reutilización
- * 
  */
-@Named("util")
-@SessionScoped
-//@ManagedBean(name = "util")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "util", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos)
-//@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
-public class Utils implements Serializable {
+//@Named("util")
+//@SessionScoped
+@ManagedBean(name = "util")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "util", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos)
+@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
+public class Utils {
     
     //ArrayList con la lista de los puntajes para calificar PF2
     @Getter
