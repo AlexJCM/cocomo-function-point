@@ -387,7 +387,11 @@ public class PFController  {
      *
      */
     public void factorEscala() {
-        feB = (0.91 + 0.01 * sumFE);
+        if (prec < 0.0 & flex < 0.0 & resl < 0.0 & team < 0.0 & pmat < 0.0) {
+            throw new NumberFormatException("El factor de escala debe ser un valor positivo!");
+        } else {
+            feB = util.redondear2Decimales(0.91 + 0.01 * sumFE);
+        }
     }
 
     /**
@@ -398,8 +402,16 @@ public class PFController  {
      *
      */
     public void actualizarFE5() {
+        if (pfModel == null) {
+            System.out.println("************ actualizarFE5() pfModel es null *********");
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        }
         sumaCalifiacionesFE();
-        factorEscala();
+        if (sumFE < 0.0 || sumFE > 31.62) {
+            throw new NumberFormatException("La suma de los factores debe ser mayor a cero y menor a 31.62");
+        } else {
+            factorEscala();
+        }
     }
 
 // PAS0 05 
@@ -466,7 +478,11 @@ public class PFController  {
      *
      */
     public void factorMultiplicativo() {
-        fm = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
+        if (rely<=0.0&data<=0.0&docu<=0.0&cplx<=0.0&ruse<=0.0&time<=0.0&stor<=0.0&pvol<=0.0&acap<=0.0&aexp<=0.0&pcap<=0.0&pexp<=0.0&ltex<=0.0&pcon<=0.0&tool<=0.0&site<=0.0&sced<=0.0) {
+            throw new NumberFormatException("Los Factores de Esfuerzo Compuesto deben ser mayor a cero!");
+        }else{
+            fm = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
+        }
     }
 
     /**
@@ -476,7 +492,14 @@ public class PFController  {
      *
      */
     public void actualizarFEC() {
+        if (pfModel == null) {
+            System.out.println("************ actualizarFEC() pfModel es null *********");
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        }
         factorMultiplicativo();
+        if (fm <= 0 || fm >150) {
+            throw new NumberFormatException("El factor multiplicativo debe ser mayor a cero y menor a 149.38");
+        }
     }
 
 //PASO 06
@@ -495,21 +518,29 @@ public class PFController  {
 
     /**
      *
-     * Método para realizar un conjunto de llamados a otros métodos: 
-     * Calculara el KLOC 
-     * Calculamos el Esfuerzo, Duración, Personas y Costo total
+     * Método para realizar un conjunto de llamados a otros métodos: Calculara
+     * el KLOC Calculamos el Esfuerzo, Duración, Personas y Costo total
      *
      */
-   public void acturalizarED() {
-        slocTOkloc();
-        effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
-        duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
-        personas =(int) Math.ceil(util.redondear2Decimales(effort / duration));
-        imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas))*0.1));
-        costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
+    public void actualizarED() {
+        if (pfModel == null) {
+            System.out.println("************ actualizarED() pfModel es null *********");
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        } else {
+            slocTOkloc();
+            if (kLoC <= 0.0) {
+                throw new NumberFormatException("KLOC debe ser mayor a cero!");
+            } else {
+                effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
+                duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
+                personas = (int) Math.ceil(effort / duration);
+                imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) * 0.1));
+                costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
+            }
+        }
     }
 
-     /**
+    /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Completo
      *  Realizara la actualización del método PFNA del paso 01
      *  Realizara la actualización del método PFA del paso 02
@@ -520,11 +551,11 @@ public class PFController  {
      */
     public void acturalizarComplejo() {
         actualizarPFNA(); // minimop valor posibles de PFNA es 3. Y buscar el valor maximo posible
-        actualizarPFA(); //minimo 1.95
-        actualizarLC(); //minimo 14 y maximo 209 de LOC x PF.
+        actualizarPFA(); // max Valor es 70 y minimo 0
+        actualizarLC(); //minimo 14 y maximo 119 de LOC x PF.
         actualizarFE5(); // max valor 35.x
         actualizarFEC();
-        acturalizarED();
+        actualizarED();
     }
 
 //Generación PDF    
@@ -534,15 +565,5 @@ public class PFController  {
      */
     public void generarPDF() throws IOException {
         util.plantillaParaPDF(pfModel.getPFA(), sLoC);
-    }
-    
-    /**
-     * Método para cerrar sesion del ManagedBean
-     * @param dir direccion a redirigir
-     * @throws IOException Excepciones varias
-     */
-    public void cerrarSesion(String dir) throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        FacesContext.getCurrentInstance().getExternalContext().redirect(dir);
     }
 }
