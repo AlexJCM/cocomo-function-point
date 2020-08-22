@@ -145,9 +145,14 @@ public class PFController  {
      * Método para realizar la suma final de todas las calificaciones para
      * Ajuste de los Puntos de Función
      *
+     * @return true si es que el totalCalificaciones es mayor a 70
      */
-    public void calcularSumaCalifiaciones() {
+    public boolean calcularSumaCalifiaciones() {
+        boolean superaLimite = true;
         totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
+        superaLimite = totalCalifiaciones > 70;
+
+        return superaLimite;
     }
 
     /**
@@ -177,8 +182,12 @@ public class PFController  {
      * Método para calcular los puntos de función
      *
      */
-    public void ajustarPuntoDeFuncion() {
+    public boolean ajustarPuntoDeFuncion() {
+        boolean superaLimiteInferior = true;
         pfModel.setPFA(util.redondear2Decimales(pfModel.getPFNA() * pfModel.getFactorDeAjuste()));
+        superaLimiteInferior = pfModel.getPFA() < 1.95;
+
+        return superaLimiteInferior;
     }
 
     /**
@@ -200,9 +209,22 @@ public class PFController  {
      *
      */
     public void actualizarPFA() {
-        calcularSumaCalifiaciones();
-        setFactorAjuste(Double.valueOf(totalCalifiaciones));
-        ajustarPuntoDeFuncion();
+        if (pfModel == null) {
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        }
+        if (pfModel.getPFA() < 0) {
+            throw new NumberFormatException("El valor de PFA debe ser  un valor positivo!");
+        }
+        if (calcularSumaCalifiaciones()) {
+            throw new NumberFormatException("El valor de suma total de Calificaciones debe ser <= 70");
+        } else {
+            setFactorAjuste(Double.valueOf(totalCalifiaciones));
+            //setea el valor de PFA          
+            if (ajustarPuntoDeFuncion()) {
+                System.out.println("***** pfModel.getPFA() es < 1.95 *******");
+                throw new NumberFormatException("El valor minimo posible del PFA debe ser >= 1.95");
+            }
+        }
     }
 
 // PAS0 03    
@@ -211,7 +233,7 @@ public class PFController  {
     private String strLC = "Java *53";//Líneas de código en formato String para guardar el valor obtenido del Select
     @Getter
     @Setter
-    private int LC = 0;//Valor de las seleccionada Líneas de Código
+    private int LC = 53;//Valor de las seleccionadaS Líneas de Código (por defecto tiene 53 por Java)
     @Getter
     @Setter
     private Boolean editar = false;//Boolean para conocer si el valor se editara
@@ -229,7 +251,14 @@ public class PFController  {
      *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
 
      */
-    public void actualizarLC() {        
+    public void actualizarLC() { 
+        if (pfModel == null) {
+            System.out.println("************ actualizarLC() pfModel es null *********");
+            throw new NullPointerException("pfModel tiene datos nulos o es nulo");
+        }  
+        if (LC < 14 || LC > 209) {
+            throw new NumberFormatException("El valor de LC debe ser  un valor >= 14 y <= 209");
+        }
         if(editar==true){
             sLoC = util.redondear2Decimales(pfModel.getPFA() * LC);
         }else{
@@ -491,8 +520,8 @@ public class PFController  {
      */
     public void acturalizarComplejo() {
         actualizarPFNA(); // minimop valor posibles de PFNA es 3. Y buscar el valor maximo posible
-        actualizarPFA(); // max Valor es 70 y minimo 0
-        actualizarLC(); //minimo 14 y maximo 119 de LOC x PF.
+        actualizarPFA(); //minimo 1.95
+        actualizarLC(); //minimo 14 y maximo 209 de LOC x PF.
         actualizarFE5(); // max valor 35.x
         actualizarFEC();
         acturalizarED();
