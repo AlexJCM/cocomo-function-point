@@ -320,4 +320,35 @@ public class PFTest {
         pf.setSced(1.0);
         pf.actualizarFEC();
     }
+    
+    //****************************Test PASO 6*************************
+    /**
+     * Test para verificar cuando el objeto pfModel con actualizarLC es nulo
+     */
+    @Test(expected = NullPointerException.class)
+    public void testPModelConActualizarEDesNulo() {
+        PFModel pfModel = null;
+        pf.setPfModel(pfModel);
+        pf.actualizarED();
+    }
+    
+    /**
+     * Test para verificar que el valor de KLOC es negativo
+     */
+    @Test(expected = NumberFormatException.class)
+    public void testActualizarEDTieneValorNegativo() {
+        //kloc con valor negativo
+        pf.setKLoC(-1.0);
+        pf.actualizarED();
+    }
+
+    /**
+     * Test para verificar que el valor de KLOC es negativo
+     */
+    @Test(expected = NumberFormatException.class)
+    public void testActualizarEDTieneValorCero() {
+        //kloc con valor negativo
+        pf.setKLoC(0.0);
+        pf.actualizarED();
+    }
 }
