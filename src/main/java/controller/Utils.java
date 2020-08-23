@@ -10,22 +10,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import com.itextpdf.html2pdf.HtmlConverter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.Serializable;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 //********************************************
 
 /**
  * Esta clase tendrá métodos variados y componentes que tienen un grado de reutilización
  */
-//@Named("util")
-//@SessionScoped
-@ManagedBean(name = "util")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "util", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos)
-@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
+@ManagedBean(name = "util")//@deprecated Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "util", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos)
+@ViewScoped //@deprecated Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
 public class Utils {
     
     //ArrayList con la lista de los puntajes para calificar PF2
@@ -38,9 +29,7 @@ public class Utils {
     private ArrayList<String> listaLenguajes;
 
     /**
-
      * Constructor Utils, su principal función es cargar los ArrayList
-
      */
     public Utils() {
         listaCalificaciones = new ArrayList<>();
@@ -92,13 +81,9 @@ public class Utils {
     }
 
     /**
-
      * Método para redondear números Double en dos decimales
-
      * @param adjustment El parámetro adjustment define el número que vamos a redondear
-     
      * @return double retorna el número redondeado en dos decimales
-
      */
     public double redondear2Decimales(double adjustment) {
         adjustment = Math.round(adjustment * 100);
@@ -107,13 +92,9 @@ public class Utils {
     }
 
     /**
-
      * Método para dividir un String por '*' y luego convertir su parte decimal a Integer
-
      * @param LC El parámetro LC es el string completo
-     
      * @return int retorna el número convertido
-
      */
     public int conversionLC(String LC) {
         String[] parts = LC.split("\\*");
@@ -121,33 +102,6 @@ public class Utils {
         return vLC;
     }
 
-    //Funcionalidad para generar archivo PDF
-//    /**
-//     * Método para generar un PDF a partir de una variable hardcoreada
-//    
-//     * @throws FileNotFoundException
-//     * @throws IOException
-//     
-//     */
-//    public void toPDF() throws FileNotFoundException, IOException {     
-////        File directory = new File("./");
-////        System.out.println(directory.getAbsolutePath());
-//        //
-//        // String directorioTrabajo = System.getProperty("user.dir");
-//        // System.out.println("El directorio de trabajo es " + directorioTrabajo);
-//        //
-////        Path rutaRelativa = Paths.get("PFController.java");
-////        System.out.println("ruta Relativa: " + rutaRelativa);
-////        Path rutaAbsoluta = rutaRelativa.toAbsolutePath();
-////        System.out.println("ruta Abasoluta: " + rutaAbsoluta);
-//    }
-//
-//
-////    public void htmlToPDF() throws FileNotFoundException, IOException {
-////        HtmlConverter.convertToPdf(new FileInputStream("../../webapp/index.html"),
-////                new FileOutputStream("index-to-pdf.pdf"));
-////        System.out.println("PDF v2 Created :v!");
-////    }
     /**
      * Método para convertir una página página html en PDF
      * @param costoTotal Variable que tiene el costo total del proyecto
@@ -162,7 +116,7 @@ public class Utils {
                 + "<p>" + "Costo Total Estimado: " + costoTotal + "</b>"
                 + "<p>" + "Tiempo Total Estimado: " + tiempoTotal + " <br></br> </b>"
                 + "<a href='https://enigmatic-coast-86151.herokuapp.com/faces/index.xhtml'>Clic aquí para volver a la aplicación</a>";
-        HtmlConverter.convertToPdf(HTML, new FileOutputStream("my-second-pdf.pdf"));
-        System.out.println("PDF created :)!");
+        HtmlConverter.convertToPdf(HTML, new FileOutputStream("COCOMO2.pdf"));
+        System.out.println("El PDF se encuentra en este directorio : "+ System.getProperty("user.dir")+" , con el nombre de = COCOMO2.pdf");
     }
 }

@@ -8,7 +8,6 @@ import lombok.Setter;
  *  Punto Función No-Ajustados
  *  Punto Función Ajustados
  *  Factor de Ajuste
- *
  */
 @Getter//Genera todos los getters de los respectivos atributos de la clase
 @Setter//Genera todos los setters de los respectivos atributos de la clase

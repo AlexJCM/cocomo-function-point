@@ -19,8 +19,6 @@ import org.junit.Test;
 
 /**
  * Referencias: https://github.com/orien/bean-matchers
- *
- * @author Alex
  */
 public class PFTest {
 
@@ -192,53 +190,53 @@ public class PFTest {
 
     //****************************Test PASO 4*************************
     /**
-     * Test para verificar cuando el objeto pfModel con actualizarFE5 es nulo
+     * Test para verificar cuando el objeto pfModel con actualizarFactorEscala es nulo
      */
     @Test(expected = NullPointerException.class)
-    public void testPModelConActualizarFE5esNulo() {
+    public void testPModelConActualizarFactorEscalaesNulo() {
         PFModel pfModel = null;
         pf.setPfModel(pfModel);
-        pf.actualizarFE5();
+        pf.actualizarFactorEscala();
     }
     
     /**
      * Test para verificar que los valores de Factores de escala sean negativos
      */
     @Test(expected = NumberFormatException.class)
-    public void testActualizarFE5TieneValorNegativo() {
+    public void testActualizarFactorEscalaTieneValorNegativo() {
         //Factores de escala negativos
         pf.setPrec(-1.0);
         pf.setFlex(-1.0);
         pf.setResl(-1.0);
         pf.setTeam(-1.0);
         pf.setPmat(-1.0);
-        pf.actualizarFE5();
+        pf.actualizarFactorEscala();
     }
     
     /**
      * Test para verificar que el valor de sumFE es mayor a 31.62
      */
     @Test(expected = NumberFormatException.class)
-    public void testActualizarFE5TieneValorMayorAlLimite() {
+    public void testActualizarFactorEscalaTieneValorMayorAlLimite() {
         //sumFE con valor mayor a 31.62
         pf.setPrec(8.0);
         pf.setFlex(8.0);
         pf.setResl(8.0);
         pf.setTeam(8.0);
         pf.setPmat(8.0);
-        pf.actualizarFE5();
+        pf.actualizarFactorEscala();
     }
     
 
     //****************************Test PASO 5*************************
      /**
-     * Test para verificar cuando el objeto pfModel con actualizarFEC es nulo
+     * Test para verificar cuando el objeto pfModel con actualizarFactorMultiplicativo es nulo
      */
     @Test(expected = NullPointerException.class)
     public void testPModelConActualizarFECesNulo() {
         PFModel pfModel = null;
         pf.setPfModel(pfModel);
-        pf.actualizarFEC();
+        pf.actualizarFactorMultiplicativo();
     }
     
     /**
@@ -246,7 +244,7 @@ public class PFTest {
      * sean negativos
      */
     @Test(expected = NumberFormatException.class)
-    public void testActualizarFECTieneValorNegativo() {
+    public void testActualizarFactorMultiplicativoTieneValorNegativo() {
         //Factores de Esfuerzo Compuesto con valor negativo
         pf.setRely(-1.0);
         pf.setData(-1.0);
@@ -265,7 +263,7 @@ public class PFTest {
         pf.setTool(-1.0);
         pf.setSite(-1.0);
         pf.setSced(-1.0);
-        pf.actualizarFEC();
+        pf.actualizarFactorMultiplicativo();
     }
     
     /**
@@ -273,7 +271,7 @@ public class PFTest {
      * sean cero
      */
     @Test(expected = NumberFormatException.class)
-    public void testActualizarFECTieneValorCero() {
+    public void testActualizarFactorMultiplicativoTieneValorCero() {
         //Factores de Esfuerzo Compuesto con valor negativo
         pf.setRely(0.0);
         pf.setData(0.0);
@@ -292,15 +290,15 @@ public class PFTest {
         pf.setTool(0.0);
         pf.setSite(0.0);
         pf.setSced(0.0);
-        pf.actualizarFEC();
+        pf.actualizarFactorMultiplicativo();
     }
     
      /**
-     * Test para verificar que el valor de fm es mayor a 28.84
+     * Test para verificar que el valor de Factor Multiplicativo es mayor a 149.38
      */
     @Test(expected = NumberFormatException.class)
-    public void testActualizarFECTieneValorMayorAlLimite() {
-        //fm con valor mayor a 28.84
+    public void testActualizarFactorMultiplicativoTieneValorMayorAlLimite() {
+        //FactorMultiplicativo con valor mayor a 149.38
         pf.setRely(2.0);
         pf.setData(2.0);
         pf.setDocu(2.0);
@@ -318,7 +316,7 @@ public class PFTest {
         pf.setTool(1.63);
         pf.setSite(1.0);
         pf.setSced(1.0);
-        pf.actualizarFEC();
+        pf.actualizarFactorMultiplicativo();
     }
     
     //****************************Test PASO 6*************************
@@ -329,7 +327,7 @@ public class PFTest {
     public void testPModelConActualizarEDesNulo() {
         PFModel pfModel = null;
         pf.setPfModel(pfModel);
-        pf.actualizarED();
+        pf.actualizarCostoFinal();
     }
     
     /**
@@ -339,7 +337,7 @@ public class PFTest {
     public void testActualizarEDTieneValorNegativo() {
         //kloc con valor negativo
         pf.setKLoC(-1.0);
-        pf.actualizarED();
+        pf.actualizarCostoFinal();
     }
 
     /**
@@ -349,6 +347,26 @@ public class PFTest {
     public void testActualizarEDTieneValorCero() {
         //kloc con valor negativo
         pf.setKLoC(0.0);
-        pf.actualizarED();
+        pf.actualizarCostoFinal();
+    }
+    
+    /**
+     * Test para verificar que el valor de sueldo es mayor a 10000
+     */
+    @Test(expected = NumberFormatException.class)
+    public void testActualizarCostoFinalTieneValorMayorAlLimite() {
+        //sueldo con valor mayor a 10000
+        pf.setSueldo(10001.0);
+        pf.actualizarCostoFinal();
+    }
+    
+    /**
+     * Test para verificar que el valor de sueldo es menor a 400
+     */
+    @Test(expected = NumberFormatException.class)
+    public void testActualizarCostoFinalTieneValorMenorAlLimite() {
+        //sueldo con valor menor a 400
+        pf.setSueldo(350);
+        pf.actualizarCostoFinal();
     }
 }

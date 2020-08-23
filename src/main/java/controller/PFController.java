@@ -5,25 +5,16 @@ import controller.Utils;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import java.io.Serializable;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Esta clase será la encargada de realizar todas las operaciones respectivas al
- * cálculo del PF y hacer que estos cambios se reflejen en el modelo.
- *
+ * Esta clase será la encargada de realizar todas las operaciones respectivas al cálculo del PF y hacer que estos cambios se reflejen en el modelo.
  */
-//@Named("pf")
-@ManagedBean(name = "pf")// Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
-@ViewScoped //Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
+@ManagedBean(name = "pf")// @deprecated Registramos la clase con JSF y le etiquetamos con un nombre, en este caso "pf", a través del cual se vinculará con los componentes de las vistas JSF. Es decir, las páginas JSF mediante dichas etiquetas pueden acceder al ManagedBean (ya sea a sus propiedades o métodos).
+@ViewScoped //@deprecated Indica que las instancias de la clase serán creadas y gestionadas por el framework JSF.
 public class PFController  {
 
-    //private static final long serialVersionUID = 1L;
-    
     //New feature v2 by alex
     @Getter
     @Setter
@@ -33,7 +24,6 @@ public class PFController  {
     /**
      * Constructor PFController, su principal función es crear una instancia del
      * modelo PFModel y de la clase Utils.
-     *
      */
     public PFController() {
         pfModel = new PFModel();
@@ -85,9 +75,7 @@ public class PFController  {
     private int subTotalAIE = 0; //Suma de todos los Archivos de Interfaz Externos
 
     /**
-     *
      * Método para calcular subtotales de Dominios
-     *
      */
     public void calcularSubtotalesDominios() {
         subTotalEE = eeSimple * 3 + eePromedio * 4 + eeComplejo * 6;
@@ -141,46 +129,35 @@ public class PFController  {
     private int totalCalifiaciones = 0;
 
     /**
-     *
      * Método para realizar la suma final de todas las calificaciones para
      * Ajuste de los Puntos de Función
-     *
      * @return true si es que el totalCalificaciones es mayor a 70
      */
     public boolean calcularSumaCalifiaciones() {
         boolean superaLimite = true;
         totalCalifiaciones = p1Califiacion + p2Califiacion + p3Califiacion + p4Califiacion + p5Califiacion + p6Califiacion + p7Califiacion + p8Califiacion + p9Califiacion + p10Califiacion + p11Califiacion + p12Califiacion + p13Califiacion + p14Califiacion;
         superaLimite = totalCalifiaciones > 70;
-
         return superaLimite;
     }
 
     /**
-     *
      * Método para obtener el Factor de Ajuste del Modelo PFModel
-     *
      * @return double retorna el valor del Factor de Ajuste
-     *
      */
 //    public double getFactorAjuste() {
 //        return pfModel.getFactorDeAjuste();
 //    }
 
     /**
-     *
      * Método para calcular el Factor de Ajuste
-     *
      * @param totalCalifiaciones Valor para calcular el Factor de Ajuste
-     *
      */
     public void setFactorAjuste(double totalCalifiaciones) {
         pfModel.setFactorDeAjuste(util.redondear2Decimales(totalCalifiaciones * 0.01 + 0.65));
     }
 
     /**
-     *
      * Método para calcular los puntos de función
-     *
      */
     public boolean ajustarPuntoDeFuncion() {
         boolean superaLimiteInferior = true;
@@ -191,22 +168,17 @@ public class PFController  {
     }
 
     /**
-     *
      * Método para obtener el valor de los Puntos de Función Ajustados
-     *
      * @return Puntos de Función Ajustados
-     *
      */
     public double getPFA() {
        return pfModel.getPFA();
    }
 
     /**
-     *
      * Método para realizar un conjunto de llamados a otros métodos: Calculara
      * la suma de todas las calificaciones Calculara el factor de ajuste
      * Ajustara los Puntos de Función
-     *
      */
     public void actualizarPFA() {
         if (pfModel == null) {
@@ -221,7 +193,6 @@ public class PFController  {
             setFactorAjuste(Double.valueOf(totalCalifiaciones));
             //setea el valor de PFA          
             if (ajustarPuntoDeFuncion()) {
-                System.out.println("***** pfModel.getPFA() es < 1.95 *******");
                 throw new NumberFormatException("El valor minimo posible del PFA debe ser >= 1.95");
             }
         }
@@ -245,15 +216,11 @@ public class PFController  {
     private double kLoC = 0.0;//Valor de las Kilo Líneas de código fuente
 
     /**
-     *
-     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código 
+     * Multiplicación de los Puntos de Función Ajustados con las líneas de código 
      * seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
-     *  Multiplicación de los Puntos de Función Ajustados con las líneas de código seleccionadas depende de que valor se obtiene si el del select o del inputex se determina mediante un boolean.
-
      */
     public void actualizarLC() { 
         if (pfModel == null) {
-            System.out.println("************ actualizarLC() pfModel es null *********");
             throw new NullPointerException("pfModel tiene datos nulos o es nulo");
         }  
         if (LC < 14 || LC > 209) {
@@ -280,33 +247,32 @@ public class PFController  {
     private double spEab = 3.6, spEbb = 1.20, spEcb = 2.5, spEdb = 0.32;
     @Getter
     @Setter
-    private int SP = 0;//Tipo de Proyecto de Software(Software Proyect)
+    private int proyectoSoftware = 0;//Tipo de Proyecto de Software(Software Proyect)
     @Getter
     @Setter
     private double effort = 0.0;//Esfuerzo
     @Getter
     @Setter
     private double duration = 0.0;//Duración 
+    @Getter
+    @Setter
+    private int meses = 0;//Duracion en meses del proyecto
 
     /**
-     *
      * Método para calcular Kilo Líneas de código fuente Se realizar dividiendo
      * sobre 1000 las Líneas de código fuente
-     *
      */
     public void slocTOkloc() {
-        kLoC = (sLoC / 1000);
+        kLoC = util.redondear2Decimales(sLoC / 1000);
     }
 
     /**
-     *
      * Método para calcular el Esfuerzo y la Duración dependiendo de la elección
      * de Proyecto de Software 0 para PS Orgánico 1 para PS Semi-Embebido 2 para
      * PS Incrustado
-     *
      */
     public void calcularED() {
-        switch (SP) {
+        switch (proyectoSoftware) {
             case 0:
                 effort = (util.redondear2Decimales(spOab * Math.pow(kLoC, spObb)));
                 duration = (util.redondear2Decimales(spOcb * Math.pow(effort, spOdb)));
@@ -320,14 +286,13 @@ public class PFController  {
                 duration = (util.redondear2Decimales(spEcb * Math.pow(effort, spEdb)));
                 break;
         }
+        meses=(int) Math.ceil(duration);
     }
 
     /**
-     *
      * Método para realizar un conjunto de llamados a otros métodos: Calculara
      * las KLOC y LOC Calculara el Esfuerzo y Duración con relación al tipo de
      * proyecto de software
-     *
      */
     public void actualizarSP() {
         slocTOkloc();
@@ -336,10 +301,10 @@ public class PFController  {
 
     /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Básico
-     * Realizara la actualización del método PFNA del paso 01 Realizara la
-     * actualización del método PFA del paso 02 Realizara la actualización del
-     * método LC del paso 03 Realizara la actualización del método SP del paso
-     * 04
+ Realizara la actualización del método PFNA del paso 01 Realizara la
+ actualización del método PFA del paso 02 Realizara la actualización del
+ método LC del paso 03 Realizara la actualización del método proyectoSoftware del paso
+ 04
      */
     public void acturalizarBasico() {
         actualizarPFNA();
@@ -366,48 +331,41 @@ public class PFController  {
     private double pmat = 0.0;//Madurez del Proceso 
     @Getter
     @Setter
-    private double sumFE = 0.0;//Suma total de las valoraciones
+    private double sumFactorEscala = 0.0;//Suma total de las valoraciones
     @Getter
     @Setter
-    private double feB = 0.0;//Factor de Escala 
+    private double factorEscala = 0.0;//Factor de Escala 
 
     /**
-     *
      * Método para sumar todas las valoraciones de los Factores de escala
-     *
      */
     public void sumaCalifiacionesFE() {
-        sumFE = (util.redondear2Decimales(prec + flex + resl + team + pmat));
+        sumFactorEscala = (util.redondear2Decimales(prec + flex + resl + team + pmat));
     }
 
     /**
-     *
      * Método para calcular el factor de Escala utilizando la suma total de las
      * valoraciones
-     *
      */
     public void factorEscala() {
         if (prec < 0.0 & flex < 0.0 & resl < 0.0 & team < 0.0 & pmat < 0.0) {
             throw new NumberFormatException("El factor de escala debe ser un valor positivo!");
         } else {
-            feB = util.redondear2Decimales(0.91 + 0.01 * sumFE);
+            factorEscala = util.redondear2Decimales(0.91 + 0.01 * sumFactorEscala);
         }
     }
 
     /**
-     *
      * Método para realizar un conjunto de llamados a otros métodos: Se sumará
      * el total de las valoraciones de cada factor Calculara el factor de escala
      * a base de la suma total de los factores
-     *
      */
-    public void actualizarFE5() {
+    public void actualizarFactorEscala() {
         if (pfModel == null) {
-            System.out.println("************ actualizarFE5() pfModel es null *********");
             throw new NullPointerException("pfModel tiene datos nulos o es nulo");
         }
         sumaCalifiacionesFE();
-        if (sumFE < 0.0 || sumFE > 31.62) {
+        if (sumFactorEscala < 0.0 || sumFactorEscala > 31.62) {
             throw new NumberFormatException("La suma de los factores debe ser mayor a cero y menor a 31.62");
         } else {
             factorEscala();
@@ -469,35 +427,30 @@ public class PFController  {
     
     @Getter
     @Setter
-    private double fm = 1.0;//Factor Multiplicativo (Multiplicador de Esfuerzo)
+    private double factorMultiplicativo = 1.0;//Factor Multiplicativo (Multiplicador de Esfuerzo)
 
     /**
-     *
      * Método para calcular la multiplicación total de todos los factores
      * compuestos
-     *
      */
     public void factorMultiplicativo() {
         if (rely<=0.0&data<=0.0&docu<=0.0&cplx<=0.0&ruse<=0.0&time<=0.0&stor<=0.0&pvol<=0.0&acap<=0.0&aexp<=0.0&pcap<=0.0&pexp<=0.0&ltex<=0.0&pcon<=0.0&tool<=0.0&site<=0.0&sced<=0.0) {
             throw new NumberFormatException("Los Factores de Esfuerzo Compuesto deben ser mayor a cero!");
         }else{
-            fm = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
+            factorMultiplicativo = (util.redondear2Decimales(rely * data * docu * cplx * ruse * time * stor * pvol * acap * aexp * pcap * pexp * ltex * pcon * tool * site * sced));
         }
     }
 
     /**
-     *
      * Método para realizar un conjunto de llamados a otros métodos: Calculo del
      * factor Multiplicativo (Multiplicador de Esfuerzo)
-     *
      */
-    public void actualizarFEC() {
+    public void actualizarFactorMultiplicativo() {
         if (pfModel == null) {
-            System.out.println("************ actualizarFEC() pfModel es null *********");
             throw new NullPointerException("pfModel tiene datos nulos o es nulo");
         }
         factorMultiplicativo();
-        if (fm <= 0 || fm >150) {
+        if (factorMultiplicativo <= 0 || factorMultiplicativo >150) {
             throw new NumberFormatException("El factor multiplicativo debe ser mayor a cero y menor a 149.38");
         }
     }
@@ -511,31 +464,33 @@ public class PFController  {
     private double imprevistos = 0;//Imprevisto
     @Getter
     @Setter
-    private double sueldo = 0;//Sueldo de programadores
+    private double sueldo = 300;//Sueldo de programadores
     @Getter
     @Setter
     private double costoTotal = 0;//Costo total del proyecto
 
     /**
-     *
      * Método para realizar un conjunto de llamados a otros métodos: Calculara
      * el KLOC Calculamos el Esfuerzo, Duración, Personas y Costo total
-     *
      */
-    public void actualizarED() {
+    public void actualizarCostoFinal() {
         if (pfModel == null) {
-            System.out.println("************ actualizarED() pfModel es null *********");
             throw new NullPointerException("pfModel tiene datos nulos o es nulo");
         } else {
-            slocTOkloc();
-            if (kLoC <= 0.0) {
-                throw new NumberFormatException("KLOC debe ser mayor a cero!");
+            if (sueldo < 300 || sueldo > 10000) {
+                throw new NumberFormatException("El sueldo se debe ser mayor de 300 y menor a 10000");
             } else {
-                effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, feB) * fm);
-                duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFE)));
-                personas = (int) Math.ceil(effort / duration);
-                imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) * 0.1));
-                costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
+                slocTOkloc();
+                if (kLoC <= 0.0) {
+                    throw new NumberFormatException("KLOC debe ser mayor a cero!");
+                } else {
+                    effort = util.redondear2Decimales(2.94 * Math.pow(kLoC, factorEscala) * factorMultiplicativo);
+                    duration = util.redondear2Decimales(3.67 * Math.pow(effort, (0.28 + 0.002 * sumFactorEscala)));
+                    personas = (int) Math.ceil(effort / duration);
+                    imprevistos = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) * 0.1));
+                    costoTotal = util.redondear2Decimales((sueldo * ((duration * 1.25) * (personas)) + imprevistos));
+                    meses = (int) Math.ceil(duration * 1.25);
+                }
             }
         }
     }
@@ -550,12 +505,12 @@ public class PFController  {
      *  Realizara la actualización del método ED del paso 06
      */
     public void acturalizarComplejo() {
-        actualizarPFNA(); // minimop valor posibles de PFNA es 3. Y buscar el valor maximo posible
-        actualizarPFA(); // max Valor es 70 y minimo 0
-        actualizarLC(); //minimo 14 y maximo 119 de LOC x PF.
-        actualizarFE5(); // max valor 35.x
-        actualizarFEC();
-        actualizarED();
+        actualizarPFNA();
+        actualizarPFA();
+        actualizarLC();
+        actualizarFactorEscala();
+        actualizarFactorMultiplicativo();
+        actualizarCostoFinal();
     }
 
 //Generación PDF    
@@ -564,6 +519,6 @@ public class PFController  {
      * @throws IOException Excepciones varias
      */
     public void generarPDF() throws IOException {
-        util.plantillaParaPDF(pfModel.getPFA(), sLoC);
+        util.plantillaParaPDF(costoTotal, meses);
     }
 }

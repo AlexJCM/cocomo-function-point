@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition>
-        <h:form id="PF">
+        <h:form id="PF1">
             <br></br>
             <div class="card">
                 <h4 class="card-header text-center font-weight-bold text-uppercase py-4">PASO 01:</h4>
@@ -27,17 +27,20 @@
                                 <tr>
                                     <th scope="row">Cantidad de entradas del usuario</th>
                                     <td><h:inputText id="input1" class="form-control" value="#{pf.eeSimple}" p:type="number" p:min="0">
-                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                   idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                                
                                     <td>x&nbsp;3&nbsp;+</td>
                                     <td><h:inputText id="input2" class="form-control" value="#{pf.eePromedio}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                               
                                     <td>x&nbsp;4&nbsp;+</td>
                                     <td><h:inputText id="input3" class="form-control" value="#{pf.eeComplejo}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                            
                                     <td>x&nbsp;6</td>
@@ -47,17 +50,20 @@
                                 <tr>
                                     <th scope="row"> Número de salidas de usuario</th>
                                     <td><h:inputText id="input4" class="form-control" value="#{pf.seSimple}" p:type="number" p:min="0">
-                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                   idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                               
                                     <td>x&nbsp;4&nbsp;+</td>
                                     <td><h:inputText id="input5" class="form-control" value="#{pf.sePromedio}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;5&nbsp;+</td>
                                     <td><h:inputText id="input6" class="form-control" value="#{pf.seComplejo}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;7</td>
@@ -68,17 +74,20 @@
                                 <tr>
                                     <th scope="row">Número de consultas de usuarios</th>
                                     <td><h:inputText id="input7" class="form-control" value="#{pf.ceSimple}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                              
                                     <td>x&nbsp;3&nbsp;+</td>
                                     <td><h:inputText id="input8" class="form-control" value="#{pf.cePromedio}" p:type="number" p:min="0">
-                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                   idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                         
                                     <td>x&nbsp;4&nbsp;+</td>
                                     <td><h:inputText id="input9" class="form-control" value="#{pf.ceComplejo}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;6</td>
@@ -88,17 +97,20 @@
                                 <tr>
                                     <th scope="row">Número de archivos</th>
                                     <td><h:inputText id="input10" class="form-control" value="#{pf.aliSimple}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                              
                                     <td>x&nbsp;7&nbsp;+</td>
                                     <td><h:inputText id="input11" class="form-control" value="#{pf.aliPromedio}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;10&nbsp;+</td>
                                     <td><h:inputText id="input12" class="form-control" value="#{pf.aliComplejo}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;15</td>
@@ -108,17 +120,20 @@
                                 <tr>
                                     <th scope="row">Número de interfaces externas.</th>
                                     <td><h:inputText id="input13" class="form-control" value="#{pf.aieSimple}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                             
                                     <td>x&nbsp;5&nbsp;+</td>
                                     <td><h:inputText id="input14" class="form-control" value="#{pf.aiePromedio}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                              
                                     <td>x&nbsp;7&nbsp;+</td>
                                     <td><h:inputText id="input15" class="form-control" value="#{pf.aieComplejo}" p:type="number" p:min="0">
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:inputText> 
                                     </td>                              
                                     <td>x&nbsp;10</td>
@@ -130,7 +145,24 @@
                                     <td><h:outputText id="idPFNA" class="form-control" value="#{pf.PFNA}"/></td>
                                 </tr>
                             </tbody>
-                        </table>   
+                        </table>
+                        <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP1">
+                            <i class="fa fa-info-circle"></i> Ayuda
+                        </button>
+                        <div class="modal fade" id="ModalP1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <center>
+                                            <img src="resources\files\paso1.PNG" class="img-rounded" alt="PASO 1"/>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                     </div>
                 </div>          
             </div>
@@ -152,7 +184,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio1" value="#{pf.p1Califiacion}" styleClass="toggle-radio-buttons" >
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -161,7 +194,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio2" value="#{pf.p2Califiacion}" styleClass="toggle-radio-buttons" >
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -170,7 +204,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio3" value="#{pf.p3Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -188,7 +223,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio5" value="#{pf.p5Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -197,7 +233,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio6" value="#{pf.p6Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -206,7 +243,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio7" value="#{pf.p7Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -215,7 +253,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio8" value="#{pf.p8Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -224,7 +263,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio9" value="#{pf.p9Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                           <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                   idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                                
@@ -233,7 +273,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio10" value="#{pf.p10Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -242,7 +283,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio11" value="#{pf.p11Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -251,7 +293,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio12" value="#{pf.p12Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                               
@@ -260,7 +303,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio13" value="#{pf.p13Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>                              
@@ -269,7 +313,8 @@
                                     <td>
                                         <h:selectOneRadio id="radio14" value="#{pf.p14Califiacion}" styleClass="toggle-radio-buttons">
                                             <f:selectItems value="#{util.listaCalificaciones}"/>
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneRadio>
                                     </td>
                                 </tr>
@@ -283,6 +328,23 @@
                                 </tr>
                             </tbody>
                         </table>  
+                        <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP2">
+                            <i class="fa fa-info-circle"></i> Ayuda
+                        </button>
+                        <div class="modal fade" id="ModalP2" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <center>
+                                            <img src="resources\files\paso2.PNG" class="img-rounded" alt="PASO 2"/>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>          
             </div>
@@ -305,7 +367,8 @@
                                         Seleccione Lenguaje de Programación
                                         <h:selectOneMenu id="select1" styleClass="form-control" value="#{pf.strLC}">
                                             <f:selectItems value="#{util.listaLenguajes}" />
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneMenu>
                                     </th>
                                     <th scope="row"> 
@@ -314,12 +377,14 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <h:selectBooleanCheckbox value="#{pf.editar}">
-                                                        <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                                        <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                                idr1 idr2 idr3 idr4 idr5"/>
                                                     </h:selectBooleanCheckbox>
                                                 </div>
                                             </div>
                                             <h:inputText id="ideLC" value="#{pf.LC}" class="form-control" p:type="number" p:min="14" p:max="119">
-                                                <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC idE idD"/>
+                                                <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC idE idD
+                                                        idr1 idr2 idr3 idr4 idr5"/>
                                             </h:inputText>
                                         </div>
                                     </th>
@@ -329,7 +394,24 @@
                                     </th>
                                 </tr>
                             </tbody>
-                        </table>   
+                        </table>
+                        <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP3">
+                            <i class="fa fa-info-circle"></i> Ayuda
+                        </button>
+                        <div class="modal fade" id="ModalP3" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <center>
+                                            <img src="resources\files\paso3.PNG" class="img-rounded" alt="PASO 3"/>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                     </div>
                 </div>          
             </div>
@@ -373,16 +455,34 @@
                                  <tr>
                                     <th scope="row">Tipo de Proyecto</th>
                                     <td colspan="4">
-                                        <h:selectOneMenu id="select2" styleClass="form-control" value="#{pf.SP}">
+                                        <h:selectOneMenu id="select2" styleClass="form-control" value="#{pf.proyectoSoftware}">
                                             <f:selectItem itemValue="0" itemLabel="Organico" />
                                             <f:selectItem itemValue="1" itemLabel="Semi-Embebido" />
                                             <f:selectItem itemValue="2" itemLabel="Incrustado" />
-                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD"/>
+                                            <f:ajax listener="#{pf.acturalizarBasico()}" render="idPFNA idSubTotalEE idSubTotalSE idSubTotalCE idSubTotalALI idSubTotalAIE idTC idPFA idLC ideLC idE idD
+                                                    idr1 idr2 idr3 idr4 idr5"/>
                                         </h:selectOneMenu>
                                     </td>
                                  </tr>
                             </tbody>
-                        </table>  
+                        </table>
+                        <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP41">
+                            <i class="fa fa-info-circle"></i> Ayuda
+                        </button>
+                        <div class="modal fade" id="ModalP41" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <center>
+                                            <img src="resources\files\paso4.1.PNG" class="img-rounded" alt="PASO 4"/>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                         <center>
                             <p class="lead"><strong>Esfuerzo</strong> a<sub>b</sub>(KLOC)^b<sub>b</sub></p> 
                             <h:outputText id="idE" value="#{pf.effort}" class="form-control" />
@@ -395,7 +495,58 @@
             </div>
             <br></br>
             <div>  
-                <h:link value="Limpiar Datos" outcome="modeloBasico" />    
+                <h:link value="Limpiar Datos" outcome="modeloBasico" class="btn btn-primary btn-lg active" />    
+            </div>
+            <!--**************** Generacion PDF ********************-->
+            <br></br>
+            <center>
+                <button class="btn btn-primary text-nowrap" type="button" data-toggle="modal" data-target="#modalPoll-1">
+                    <span class="spinner-border spinner-border-sm mr-2"></span>
+                    Resultados
+                </button>
+            </center>
+            <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead">Cocomo-PF</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>
+                                <p>
+                                    <strong>RESULTADOS</strong>
+                                </p>
+                                <p>La presente aplicación web realiza el cálculo de los <strong>Puntos de Función.</strong></p>
+                            </div>
+                            <hr>
+                                <div class="form-check mb-4">
+                                    <p><strong>Puntos de Función No Ajustados = </strong><h:outputText id="idr1" value="#{pf.PFNA}"/></p>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <p><strong>Puntos de Función Ajustados = </strong><h:outputText id="idr2" value="#{pf.PFA}"/></p>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <p><strong>SLOC = </strong><h:outputText id="idr3" value="#{pf.SLoC}"/></p>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <p><strong>KLOC = </strong><h:outputText id="idr4" value="#{pf.KLoC}"/></p>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <p><strong>Duración en meses = </strong><h:outputText id="idr5" value="#{pf.meses}"/></p>
+                                </div>
+                            </hr>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <h:commandButton class="btn btn-lg btn-primary" value="Generar PDF" action="#{pf.generarPDF()}" />
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </h:form>
     </ui:composition>
