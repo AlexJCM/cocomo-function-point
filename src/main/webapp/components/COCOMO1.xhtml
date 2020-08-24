@@ -147,7 +147,7 @@
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP1">
-                            <i class="fa fa-info-circle"></i> Ayuda
+                            <i class="fa fa-question"></i>
                         </button>
                         <div class="modal fade" id="ModalP1" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -329,7 +329,7 @@
                             </tbody>
                         </table>  
                         <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP2">
-                            <i class="fa fa-info-circle"></i> Ayuda
+                            <i class="fa fa-question"></i>
                         </button>
                         <div class="modal fade" id="ModalP2" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -396,7 +396,7 @@
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP3">
-                            <i class="fa fa-info-circle"></i> Ayuda
+                            <i class="fa fa-question"></i>
                         </button>
                         <div class="modal fade" id="ModalP3" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -467,7 +467,7 @@
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-info btn-sm" style="position: absolute; right: 0;" data-toggle="modal" data-target="#ModalP41">
-                            <i class="fa fa-info-circle"></i> Ayuda
+                            <i class="fa fa-question"></i>
                         </button>
                         <div class="modal fade" id="ModalP41" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -495,18 +495,17 @@
             </div>
             <br></br>
             <div>  
-                <h:link value="Limpiar Datos" outcome="modeloBasico" class="btn btn-primary btn-lg active" />    
+                <h:link value="Limpiar Datos" outcome="modeloBasico" class="btn btn-primary text-nowrap" />    
             </div>
             <!--**************** Generacion PDF ********************-->
             <br></br>
             <center>
                 <button class="btn btn-primary text-nowrap" type="button" data-toggle="modal" data-target="#modalPoll-1">
-                    <span class="spinner-border spinner-border-sm mr-2"></span>
                     Resultados
                 </button>
             </center>
             <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true" data-backdrop="false">
+                 aria-hidden="true">
                 <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -521,7 +520,6 @@
                                 <p>
                                     <strong>RESULTADOS</strong>
                                 </p>
-                                <p>La presente aplicación web realiza el cálculo de los <strong>Puntos de Función.</strong></p>
                             </div>
                             <hr>
                                 <div class="form-check mb-4">
@@ -542,7 +540,7 @@
                             </hr>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <h:commandButton class="btn btn-lg btn-primary" value="Generar PDF" action="#{pf.generarPDF()}" />
+                            <h:commandButton class="btn btn-primary" value="Generar PDF" action="#{pf.generarPDF()}" />
                             <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
                         </div>
                     </div>

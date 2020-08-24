@@ -247,7 +247,7 @@ public class PFController  {
     private double spEab = 3.6, spEbb = 1.20, spEcb = 2.5, spEdb = 0.32;
     @Getter
     @Setter
-    private int proyectoSoftware = 0;//Tipo de Proyecto de Software(Software Proyect)
+    private int proyectoSoftware = 0;//Tipo de Proyecto de Software(Software Project)
     @Getter
     @Setter
     private double effort = 0.0;//Esfuerzo
@@ -256,7 +256,7 @@ public class PFController  {
     private double duration = 0.0;//Duración 
     @Getter
     @Setter
-    private int meses = 0;//Duracion en meses del proyecto
+    private int meses = 0;//Duración en meses del proyecto
 
     /**
      * Método para calcular Kilo Líneas de código fuente Se realizar dividiendo
@@ -301,10 +301,10 @@ public class PFController  {
 
     /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Básico
- Realizara la actualización del método PFNA del paso 01 Realizara la
- actualización del método PFA del paso 02 Realizara la actualización del
- método LC del paso 03 Realizara la actualización del método proyectoSoftware del paso
- 04
+     * Realizará la actualización del método PFNA del paso 01 
+     * Realizará la actualización del método PFA del paso 02 
+     * Realizará la actualización del método LC del paso 03 
+     * Realizará la actualización del método proyectoSoftware del paso 04
      */
     public void acturalizarBasico() {
         actualizarPFNA();
@@ -497,12 +497,12 @@ public class PFController  {
 
     /**
      * Método para actualizar todos los métodos de COCOMO 2 Modelo Completo
-     *  Realizara la actualización del método PFNA del paso 01
-     *  Realizara la actualización del método PFA del paso 02
-     *  Realizara la actualización del método LC del paso 03
-     *  Realizara la actualización del método FE5 del paso 04
-     *  Realizara la actualización del método FEC del paso 05
-     *  Realizara la actualización del método ED del paso 06
+     *  Realizará la actualización del método PFNA del paso 01
+     *  Realizará la actualización del método PFA del paso 02
+     *  Realizará la actualización del método LC del paso 03
+     *  Realizará la actualización del método FE5 del paso 04
+     *  Realizará la actualización del método FEC del paso 05
+     *  Realizará la actualización del método ED del paso 06
      */
     public void acturalizarComplejo() {
         actualizarPFNA();
