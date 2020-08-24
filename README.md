@@ -33,7 +33,11 @@ Or
 
 - Download the repository files and run [here](https://github.com/AlexJCM/cocomo2-function-point/archive/master.zip)
 
-## Screenshots:
+## Screenshot:
+
+<p align="center">
+  <img src="https://i.postimg.cc/T2rkq3Dy/Cocomo-PF-App.jpg" height="450px" alt="Cocomo-PF">
+</p>
 
 ## License:
 
